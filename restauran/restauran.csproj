@@ -71,6 +71,12 @@
     <Compile Include="views\Insumos.Designer.cs">
       <DependentUpon>Insumos.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\Pedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Pedidos.Designer.cs">
+      <DependentUpon>Pedidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\Productos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\Insumos.resx">
       <DependentUpon>Insumos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Pedidos.resx">
+      <DependentUpon>Pedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Productos.resx">
       <DependentUpon>Productos.cs</DependentUpon>
