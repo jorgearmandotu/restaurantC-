@@ -33,15 +33,15 @@ namespace restauran
 			if(talk.logIn(user, password))
 			{
 				Console.WriteLine("logueado");
-				//MessageBox.Show("logueado");
-				//Productos products = new Productos();
-				//products.Show();
-				log = true;
+                //MessageBox.Show("logueado");
+                //Productos products = new Productos();
+                //products.Show();
+                this.Dispose();
 			}
 			else
 			{
 				Console.WriteLine("no login");
-				//MessageBox.Show("no logueado
+				MessageBox.Show("Datos no validos");
 				
 			}
 		}

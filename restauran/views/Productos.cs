@@ -14,13 +14,9 @@ namespace restauran.views
 	{
 		public Productos()
 		{
-			/*LogIn log = new LogIn();
-			log.Show();
-			if (log.getLog())
-			{
-				InitializeComponent();
-			}*/
+			LogIn log = new LogIn();
 			InitializeComponent();
+            log.ShowDialog();
 		}
 
 		private void label1_Click(object sender, EventArgs e)
