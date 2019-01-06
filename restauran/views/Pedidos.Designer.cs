@@ -31,36 +31,37 @@ namespace restauran.views
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.listViewPedido = new System.Windows.Forms.ListView();
             this.Producto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cantidad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmbMesa = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.listViewOtros = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.listViewEspeciales = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.listViewOtros = new System.Windows.Forms.ListView();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.listViewBebidas = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listViewPlatos = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cmbMesa = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.precio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -80,10 +81,21 @@ namespace restauran.views
             this.groupBox1.Text = "Pedidos";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.listViewPedido);
+            this.groupBox6.Location = new System.Drawing.Point(588, 69);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(381, 600);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Pedido";
+            // 
             // listViewPedido
             // 
             this.listViewPedido.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Producto,
+            this.precio,
             this.cantidad});
             this.listViewPedido.Location = new System.Drawing.Point(6, 21);
             this.listViewPedido.Name = "listViewPedido";
@@ -101,6 +113,73 @@ namespace restauran.views
             // cantidad
             // 
             this.cantidad.Text = "Cantidad";
+            this.cantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.listViewOtros);
+            this.groupBox5.Location = new System.Drawing.Point(292, 379);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(230, 290);
+            this.groupBox5.TabIndex = 7;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Otros";
+            // 
+            // listViewOtros
+            // 
+            this.listViewOtros.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4});
+            this.listViewOtros.Enabled = false;
+            this.listViewOtros.Location = new System.Drawing.Point(7, 30);
+            this.listViewOtros.Name = "listViewOtros";
+            this.listViewOtros.Size = new System.Drawing.Size(217, 251);
+            this.listViewOtros.TabIndex = 0;
+            this.listViewOtros.UseCompatibleStateImageBehavior = false;
+            this.listViewOtros.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Producto";
+            this.columnHeader3.Width = 141;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Precio";
+            this.columnHeader4.Width = 71;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.listViewEspeciales);
+            this.groupBox4.Location = new System.Drawing.Point(9, 379);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(230, 290);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Especiales";
+            // 
+            // listViewEspeciales
+            // 
+            this.listViewEspeciales.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listViewEspeciales.Enabled = false;
+            this.listViewEspeciales.Location = new System.Drawing.Point(7, 30);
+            this.listViewEspeciales.Name = "listViewEspeciales";
+            this.listViewEspeciales.Size = new System.Drawing.Size(217, 251);
+            this.listViewEspeciales.TabIndex = 0;
+            this.listViewEspeciales.UseCompatibleStateImageBehavior = false;
+            this.listViewEspeciales.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Plato";
+            this.columnHeader1.Width = 138;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Precio";
+            this.columnHeader2.Width = 73;
             // 
             // groupBox3
             // 
@@ -112,6 +191,29 @@ namespace restauran.views
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bebidas";
             // 
+            // listViewBebidas
+            // 
+            this.listViewBebidas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader6});
+            this.listViewBebidas.Enabled = false;
+            this.listViewBebidas.Location = new System.Drawing.Point(7, 21);
+            this.listViewBebidas.Name = "listViewBebidas";
+            this.listViewBebidas.Size = new System.Drawing.Size(217, 251);
+            this.listViewBebidas.TabIndex = 0;
+            this.listViewBebidas.UseCompatibleStateImageBehavior = false;
+            this.listViewBebidas.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Producto";
+            this.columnHeader5.Width = 128;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Precio";
+            this.columnHeader6.Width = 83;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.listViewPlatos);
@@ -122,9 +224,34 @@ namespace restauran.views
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Platos";
             // 
+            // listViewPlatos
+            // 
+            this.listViewPlatos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8});
+            this.listViewPlatos.Enabled = false;
+            this.listViewPlatos.Location = new System.Drawing.Point(7, 21);
+            this.listViewPlatos.Name = "listViewPlatos";
+            this.listViewPlatos.Size = new System.Drawing.Size(217, 251);
+            this.listViewPlatos.TabIndex = 0;
+            this.listViewPlatos.UseCompatibleStateImageBehavior = false;
+            this.listViewPlatos.View = System.Windows.Forms.View.Details;
+            this.listViewPlatos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listPlatos_MouseDoubleClick);
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Producto";
+            this.columnHeader7.Width = 125;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Precio";
+            this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader8.Width = 82;
+            // 
             // cmbMesa
             // 
-            this.cmbMesa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbMesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMesa.FormattingEnabled = true;
             this.cmbMesa.Items.AddRange(new object[] {
             "Mesa 1",
@@ -136,6 +263,7 @@ namespace restauran.views
             this.cmbMesa.Name = "cmbMesa";
             this.cmbMesa.Size = new System.Drawing.Size(121, 21);
             this.cmbMesa.TabIndex = 2;
+            this.cmbMesa.SelectedIndexChanged += new System.EventHandler(this.cmbMesa_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -166,125 +294,11 @@ namespace restauran.views
             this.tabPage3.Text = "Desayunos";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
+            // precio
             // 
-            this.groupBox4.Controls.Add(this.listViewEspeciales);
-            this.groupBox4.Location = new System.Drawing.Point(9, 379);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(230, 290);
-            this.groupBox4.TabIndex = 6;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Especiales";
-            // 
-            // listViewEspeciales
-            // 
-            this.listViewEspeciales.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.listViewEspeciales.Location = new System.Drawing.Point(7, 30);
-            this.listViewEspeciales.Name = "listViewEspeciales";
-            this.listViewEspeciales.Size = new System.Drawing.Size(217, 251);
-            this.listViewEspeciales.TabIndex = 0;
-            this.listViewEspeciales.UseCompatibleStateImageBehavior = false;
-            this.listViewEspeciales.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Plato";
-            this.columnHeader1.Width = 138;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Precio";
-            this.columnHeader2.Width = 73;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.listViewOtros);
-            this.groupBox5.Location = new System.Drawing.Point(292, 379);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(230, 290);
-            this.groupBox5.TabIndex = 7;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Otros";
-            // 
-            // listViewOtros
-            // 
-            this.listViewOtros.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader3,
-            this.columnHeader4});
-            this.listViewOtros.Location = new System.Drawing.Point(7, 30);
-            this.listViewOtros.Name = "listViewOtros";
-            this.listViewOtros.Size = new System.Drawing.Size(217, 251);
-            this.listViewOtros.TabIndex = 0;
-            this.listViewOtros.UseCompatibleStateImageBehavior = false;
-            this.listViewOtros.View = System.Windows.Forms.View.Details;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.listViewPedido);
-            this.groupBox6.Location = new System.Drawing.Point(588, 69);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(381, 600);
-            this.groupBox6.TabIndex = 8;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Pedido";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Producto";
-            this.columnHeader3.Width = 141;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Precio";
-            this.columnHeader4.Width = 71;
-            // 
-            // listViewBebidas
-            // 
-            this.listViewBebidas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader5,
-            this.columnHeader6});
-            this.listViewBebidas.Location = new System.Drawing.Point(7, 21);
-            this.listViewBebidas.Name = "listViewBebidas";
-            this.listViewBebidas.Size = new System.Drawing.Size(217, 251);
-            this.listViewBebidas.TabIndex = 0;
-            this.listViewBebidas.UseCompatibleStateImageBehavior = false;
-            this.listViewBebidas.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Producto";
-            this.columnHeader5.Width = 128;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Precio";
-            this.columnHeader6.Width = 83;
-            // 
-            // listViewPlatos
-            // 
-            this.listViewPlatos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader7,
-            this.columnHeader8});
-            this.listViewPlatos.Location = new System.Drawing.Point(7, 21);
-            this.listViewPlatos.Name = "listViewPlatos";
-            this.listViewPlatos.Size = new System.Drawing.Size(217, 251);
-            this.listViewPlatos.TabIndex = 0;
-            this.listViewPlatos.UseCompatibleStateImageBehavior = false;
-            this.listViewPlatos.View = System.Windows.Forms.View.Details;
-            this.listViewPlatos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listPlatos_MouseDoubleClick);
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Producto";
-            this.columnHeader7.Width = 125;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Precio";
-            this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader8.Width = 82;
+            this.precio.Text = "Vlr Unit";
+            this.precio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.precio.Width = 99;
             // 
             // Pedidos
             // 
@@ -296,11 +310,11 @@ namespace restauran.views
             this.Text = "Pedidos";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -332,5 +346,6 @@ namespace restauran.views
         private System.Windows.Forms.ListView listViewPlatos;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader precio;
     }
 }

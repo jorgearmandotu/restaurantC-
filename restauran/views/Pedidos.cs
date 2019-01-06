@@ -13,15 +13,16 @@ namespace restauran.views
 {
     public partial class Pedidos : Form
     {
-        
 
+        private List<Pedido> listPedidos = new List<Pedido>();
         public Pedidos()
         {
             
             LogIn log = new LogIn();
             InitializeComponent();
             log.ShowDialog();
-            colection();
+            loadPlatos();
+            
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -38,9 +39,8 @@ namespace restauran.views
         {
 
         }
-        private void colection()
+        private void loadPlatos()
         {
-            //Pedido pedido = new Pedido();
             List<Platos> platos = new List<Platos>();
             Platos p = new Platos("sancocho", 9000);
             platos.Add(p);
@@ -61,23 +61,63 @@ namespace restauran.views
                  MessageBox.Show("no selecciono nada");
              }else
              {
-                //MessageBox.Show("selecciono "+listPlatos.SelectedItem.ToString());
-                //listBebidas.Items.Add(listPlatos.SelectedItem);
-                List<Pedido> listpedidos = new List<Pedido>();
                 int idPedido = cmbMesa.SelectedIndex;
                 string namePedido = listViewPlatos.SelectedItems[0].Text;
-                string precioPedido = listViewPlatos.SelectedItems[0].SubItems[1].Text;
-                
-
-                 string[] row = { listViewPlatos.SelectedItems[0].Text, listViewPlatos.SelectedItems[0].SubItems[1].Text };
-                 var listViewItem = new ListViewItem(row);
-                 listViewPedido.Items.Add(listViewItem);
+                string prec = listViewPlatos.SelectedItems[0].SubItems[1].Text;
+                decimal precio = Decimal.Parse( prec );
+                int cantidad = 1;
+                if (listPedidos.Count < 1)
+                {
+                    listPedidos.Add(new Pedido(idPedido, namePedido, cantidad, precio));
+                }
+                else
+                {
+                    Pedido pedidoExistente = listPedidos.Find(y => y.Name == namePedido);
+                    if (pedidoExistente != null)
+                    {
+                        pedidoExistente.Cantidad += 1;
+                    }
+                    else
+                    {
+                        listPedidos.Add(new Pedido(idPedido, namePedido, cantidad, precio));
+                    }
+                }
+                listViewPedido.Items.Clear();
+                 foreach(Pedido ped in listPedidos)
+                {
+                    if(ped.Id == cmbMesa.SelectedIndex)
+                    {
+                        MessageBox.Show(cmbMesa.SelectedIndex.ToString());
+                        string[] row = { ped.Name, ped.Precio.ToString(), ped.Cantidad.ToString() };
+                        var listViewItem = new ListViewItem(row);
+                        listViewPedido.Items.Add(listViewItem);
+                    }
+                }
              }
             
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void cmbMesa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbMesa.SelectedIndex >= 0)
+            {
+                listViewPlatos.Enabled = true;
+                listViewBebidas.Enabled = true;
+                listViewEspeciales.Enabled = true;
+                listViewOtros.Enabled = true;
+                
+            }else
+            {
+                listViewPlatos.Enabled = false;
+                listViewBebidas.Enabled = false;
+                listViewEspeciales.Enabled = false;
+                listViewOtros.Enabled = false;
+            }
 
         }
     }
