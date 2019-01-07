@@ -38,5 +38,12 @@ namespace restauran.views
 			Insumos insumo = new Insumos();
 			insumo.ShowDialog();
 		}
+
+		private void Productos_Load(object sender, EventArgs e)
+		{
+			// TODO: esta línea de código carga datos en la tabla 'restaurantDataSet.insumos' Puede moverla o quitarla según sea necesario.
+			this.insumosTableAdapter.Fill(this.restaurantDataSet.insumos);
+
+		}
 	}
 }

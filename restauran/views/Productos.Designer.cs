@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.Ingredientes = new System.Windows.Forms.GroupBox();
 			this.listView1 = new System.Windows.Forms.ListView();
@@ -41,7 +42,7 @@
 			this.btnAddImg = new System.Windows.Forms.Button();
 			this.textBox3 = new System.Windows.Forms.TextBox();
 			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.txtNamePlato = new System.Windows.Forms.TextBox();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -49,9 +50,16 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.restaurantDataSet = new restauran.restaurantDataSet();
+			this.insumosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.insumosTableAdapter = new restauran.restaurantDataSetTableAdapters.insumosTableAdapter();
+			this.insumosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
 			this.groupBox1.SuspendLayout();
 			this.Ingredientes.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.insumosBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.insumosBindingSource1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -62,7 +70,7 @@
 			this.groupBox1.Controls.Add(this.btnAddImg);
 			this.groupBox1.Controls.Add(this.textBox3);
 			this.groupBox1.Controls.Add(this.textBox2);
-			this.groupBox1.Controls.Add(this.textBox1);
+			this.groupBox1.Controls.Add(this.txtNamePlato);
 			this.groupBox1.Controls.Add(this.comboBox1);
 			this.groupBox1.Controls.Add(this.label4);
 			this.groupBox1.Controls.Add(this.label3);
@@ -187,12 +195,12 @@
 			this.textBox2.Size = new System.Drawing.Size(150, 20);
 			this.textBox2.TabIndex = 6;
 			// 
-			// textBox1
+			// txtNamePlato
 			// 
-			this.textBox1.Location = new System.Drawing.Point(70, 47);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(150, 20);
-			this.textBox1.TabIndex = 5;
+			this.txtNamePlato.Location = new System.Drawing.Point(70, 47);
+			this.txtNamePlato.Name = "txtNamePlato";
+			this.txtNamePlato.Size = new System.Drawing.Size(150, 20);
+			this.txtNamePlato.TabIndex = 5;
 			// 
 			// comboBox1
 			// 
@@ -254,6 +262,25 @@
 			this.columnHeader2.Text = "Cantidad";
 			this.columnHeader2.Width = 88;
 			// 
+			// restaurantDataSet
+			// 
+			this.restaurantDataSet.DataSetName = "restaurantDataSet";
+			this.restaurantDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// insumosBindingSource
+			// 
+			this.insumosBindingSource.DataMember = "insumos";
+			this.insumosBindingSource.DataSource = this.restaurantDataSet;
+			// 
+			// insumosTableAdapter
+			// 
+			this.insumosTableAdapter.ClearBeforeFill = true;
+			// 
+			// insumosBindingSource1
+			// 
+			this.insumosBindingSource1.DataMember = "insumos";
+			this.insumosBindingSource1.DataSource = this.restaurantDataSet;
+			// 
 			// Productos
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,11 +289,15 @@
 			this.Controls.Add(this.groupBox1);
 			this.Name = "Productos";
 			this.Text = "productos";
+			this.Load += new System.EventHandler(this.Productos_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.Ingredientes.ResumeLayout(false);
 			this.Ingredientes.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.insumosBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.insumosBindingSource1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -277,7 +308,7 @@
 		private System.Windows.Forms.Button btnAddImg;
 		private System.Windows.Forms.TextBox textBox3;
 		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox txtNamePlato;
 		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
@@ -294,5 +325,9 @@
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
 		private System.Windows.Forms.ColumnHeader columnHeader2;
+		private restaurantDataSet restaurantDataSet;
+		private System.Windows.Forms.BindingSource insumosBindingSource;
+		private restaurantDataSetTableAdapters.insumosTableAdapter insumosTableAdapter;
+		private System.Windows.Forms.BindingSource insumosBindingSource1;
 	}
 }
