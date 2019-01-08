@@ -1,8 +1,11 @@
-﻿using restauran.models;
+﻿using restauran.controller;
+using restauran.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,6 +28,7 @@ namespace restauran.views
 			loadBebidas();
 			loadEspeciales();
 			loadOtros();
+			consulta();
         }
 
 		private void showProductos(object sender, EventArgs e)
@@ -315,6 +319,34 @@ namespace restauran.views
 					listViewPedido.Items.Clear();
 					cargarPedido();   
 				}
+			}
+		}
+
+		private void consulta()
+		{
+			/*using (SqlConnection con1 = new SqlConnection(DataAcces.conection))
+			{
+				con1.Open();
+				SqlCommand cmd = new SqlCommand("select * from insumos", con1);
+				SqlDataReader dr = cmd.ExecuteReader();
+				while (dr.Read())
+				{
+					Console.WriteLine(Convert.ToString(dr["insumo"]));
+				}
+				con1.Close();
+			}*/
+			using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+			{
+				con.Open();
+				OleDbCommand cmd = new OleDbCommand("Select * From insumos", con);
+				OleDbDataReader dr = cmd.ExecuteReader();
+
+				while (dr.Read())
+				{
+					Console.WriteLine(Convert.ToString(dr["insumo"]));
+
+				}
+				con.Close();
 			}
 		}
 	}

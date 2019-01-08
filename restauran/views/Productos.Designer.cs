@@ -32,11 +32,13 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.Ingredientes = new System.Windows.Forms.GroupBox();
 			this.listView1 = new System.Windows.Forms.ListView();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.btnNewIngrediente = new System.Windows.Forms.Button();
 			this.btnAddIngrediente = new System.Windows.Forms.Button();
 			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
-			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.listInsumos = new System.Windows.Forms.ListBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.btnNewCategoria = new System.Windows.Forms.Button();
 			this.btnAddImg = new System.Windows.Forms.Button();
@@ -48,8 +50,6 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.restaurantDataSet = new restauran.restaurantDataSet();
 			this.insumosBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.insumosTableAdapter = new restauran.restaurantDataSetTableAdapters.insumosTableAdapter();
@@ -82,7 +82,6 @@
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Recetas";
-			this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
 			// 
 			// Ingredientes
 			// 
@@ -91,7 +90,7 @@
 			this.Ingredientes.Controls.Add(this.btnAddIngrediente);
 			this.Ingredientes.Controls.Add(this.textBox4);
 			this.Ingredientes.Controls.Add(this.label7);
-			this.Ingredientes.Controls.Add(this.listBox1);
+			this.Ingredientes.Controls.Add(this.listInsumos);
 			this.Ingredientes.Location = new System.Drawing.Point(9, 138);
 			this.Ingredientes.Name = "Ingredientes";
 			this.Ingredientes.Size = new System.Drawing.Size(611, 282);
@@ -110,6 +109,16 @@
 			this.listView1.TabIndex = 7;
 			this.listView1.UseCompatibleStateImageBehavior = false;
 			this.listView1.View = System.Windows.Forms.View.Details;
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "Ingrediente";
+			this.columnHeader1.Width = 268;
+			// 
+			// columnHeader2
+			// 
+			this.columnHeader2.Text = "Cantidad";
+			this.columnHeader2.Width = 88;
 			// 
 			// btnNewIngrediente
 			// 
@@ -146,13 +155,13 @@
 			this.label7.TabIndex = 3;
 			this.label7.Text = "cantidad:";
 			// 
-			// listBox1
+			// listInsumos
 			// 
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.Location = new System.Drawing.Point(6, 19);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(155, 251);
-			this.listBox1.TabIndex = 0;
+			this.listInsumos.FormattingEnabled = true;
+			this.listInsumos.Location = new System.Drawing.Point(6, 19);
+			this.listInsumos.Name = "listInsumos";
+			this.listInsumos.Size = new System.Drawing.Size(155, 251);
+			this.listInsumos.TabIndex = 0;
 			// 
 			// pictureBox1
 			// 
@@ -252,16 +261,6 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Categoria: ";
 			// 
-			// columnHeader1
-			// 
-			this.columnHeader1.Text = "Ingrediente";
-			this.columnHeader1.Width = 268;
-			// 
-			// columnHeader2
-			// 
-			this.columnHeader2.Text = "Cantidad";
-			this.columnHeader2.Width = 88;
-			// 
 			// restaurantDataSet
 			// 
 			this.restaurantDataSet.DataSetName = "restaurantDataSet";
@@ -321,7 +320,7 @@
 		private System.Windows.Forms.Button btnAddIngrediente;
 		private System.Windows.Forms.TextBox textBox4;
 		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.ListBox listInsumos;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
 		private System.Windows.Forms.ColumnHeader columnHeader2;

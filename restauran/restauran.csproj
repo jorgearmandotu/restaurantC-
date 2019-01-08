@@ -51,6 +51,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\DataAcces.cs" />
     <Compile Include="controller\Talks.cs" />
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
