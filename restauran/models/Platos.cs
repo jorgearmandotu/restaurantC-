@@ -8,20 +8,27 @@ namespace restauran.models
 {
     class Platos
     {
-        //private int id;
+        private int id;
         private string nombre;
-        private float precio;
+        private decimal precio;
+		private string image;
+		private int categoria;
 
-        public Platos(string nombre, float precio)
+        public Platos(int id, string nombre, decimal precio, string image, int categoria)
         {
             this.nombre = nombre;
             this.precio = precio;
-            //this.id = id;
+            this.Id = id;
+			this.Image = image;
+			this.Categoria = categoria;
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
-        public float Precio { get => precio; set => precio = value; }
-        //public int Id { get => id; set => id = value; }
+        public decimal Precio { get => precio; set => precio = value; }
+		public string Image { get => image; set => image = value; }
+		public int Categoria { get => categoria; set => categoria = value; }
+		public int Id { get => id; set => id = value; }
+		//public int Id { get => id; set => id = value; }
 
-    }
+	}
 }

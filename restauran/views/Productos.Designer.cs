@@ -30,13 +30,14 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.cmbNamePlato = new System.Windows.Forms.ComboBox();
 			this.Ingredientes = new System.Windows.Forms.GroupBox();
-			this.listView1 = new System.Windows.Forms.ListView();
+			this.listViewReceta = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.btnNewIngrediente = new System.Windows.Forms.Button();
 			this.btnAddIngrediente = new System.Windows.Forms.Button();
-			this.textBox4 = new System.Windows.Forms.TextBox();
+			this.txtCantidadIngrediente = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.listInsumos = new System.Windows.Forms.ListBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -44,7 +45,6 @@
 			this.btnAddImg = new System.Windows.Forms.Button();
 			this.textBox3 = new System.Windows.Forms.TextBox();
 			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.txtNamePlato = new System.Windows.Forms.TextBox();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -54,6 +54,7 @@
 			this.insumosBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.insumosTableAdapter = new restauran.restaurantDataSetTableAdapters.insumosTableAdapter();
 			this.insumosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+			this.btnSaveReceta = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.Ingredientes.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,31 +65,40 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.btnSaveReceta);
+			this.groupBox1.Controls.Add(this.cmbNamePlato);
 			this.groupBox1.Controls.Add(this.Ingredientes);
 			this.groupBox1.Controls.Add(this.pictureBox1);
 			this.groupBox1.Controls.Add(this.btnNewCategoria);
 			this.groupBox1.Controls.Add(this.btnAddImg);
 			this.groupBox1.Controls.Add(this.textBox3);
 			this.groupBox1.Controls.Add(this.textBox2);
-			this.groupBox1.Controls.Add(this.txtNamePlato);
 			this.groupBox1.Controls.Add(this.comboBox1);
 			this.groupBox1.Controls.Add(this.label4);
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Location = new System.Drawing.Point(13, 12);
+			this.groupBox1.Location = new System.Drawing.Point(7, 12);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(631, 426);
+			this.groupBox1.Size = new System.Drawing.Size(631, 462);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Recetas";
 			// 
+			// cmbNamePlato
+			// 
+			this.cmbNamePlato.FormattingEnabled = true;
+			this.cmbNamePlato.Location = new System.Drawing.Point(70, 46);
+			this.cmbNamePlato.Name = "cmbNamePlato";
+			this.cmbNamePlato.Size = new System.Drawing.Size(150, 21);
+			this.cmbNamePlato.TabIndex = 12;
+			// 
 			// Ingredientes
 			// 
-			this.Ingredientes.Controls.Add(this.listView1);
+			this.Ingredientes.Controls.Add(this.listViewReceta);
 			this.Ingredientes.Controls.Add(this.btnNewIngrediente);
 			this.Ingredientes.Controls.Add(this.btnAddIngrediente);
-			this.Ingredientes.Controls.Add(this.textBox4);
+			this.Ingredientes.Controls.Add(this.txtCantidadIngrediente);
 			this.Ingredientes.Controls.Add(this.label7);
 			this.Ingredientes.Controls.Add(this.listInsumos);
 			this.Ingredientes.Location = new System.Drawing.Point(9, 138);
@@ -98,17 +108,17 @@
 			this.Ingredientes.TabStop = false;
 			this.Ingredientes.Text = "Ingredientes:";
 			// 
-			// listView1
+			// listViewReceta
 			// 
-			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			this.listViewReceta.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-			this.listView1.Location = new System.Drawing.Point(198, 78);
-			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(396, 198);
-			this.listView1.TabIndex = 7;
-			this.listView1.UseCompatibleStateImageBehavior = false;
-			this.listView1.View = System.Windows.Forms.View.Details;
+			this.listViewReceta.Location = new System.Drawing.Point(198, 72);
+			this.listViewReceta.Name = "listViewReceta";
+			this.listViewReceta.Size = new System.Drawing.Size(396, 198);
+			this.listViewReceta.TabIndex = 7;
+			this.listViewReceta.UseCompatibleStateImageBehavior = false;
+			this.listViewReceta.View = System.Windows.Forms.View.Details;
 			// 
 			// columnHeader1
 			// 
@@ -138,13 +148,14 @@
 			this.btnAddIngrediente.TabIndex = 5;
 			this.btnAddIngrediente.Text = "Agregar";
 			this.btnAddIngrediente.UseVisualStyleBackColor = true;
+			this.btnAddIngrediente.Click += new System.EventHandler(this.btnAddIngrediente_Click);
 			// 
-			// textBox4
+			// txtCantidadIngrediente
 			// 
-			this.textBox4.Location = new System.Drawing.Point(246, 19);
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(100, 20);
-			this.textBox4.TabIndex = 4;
+			this.txtCantidadIngrediente.Location = new System.Drawing.Point(246, 19);
+			this.txtCantidadIngrediente.Name = "txtCantidadIngrediente";
+			this.txtCantidadIngrediente.Size = new System.Drawing.Size(100, 20);
+			this.txtCantidadIngrediente.TabIndex = 4;
 			// 
 			// label7
 			// 
@@ -203,13 +214,6 @@
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(150, 20);
 			this.textBox2.TabIndex = 6;
-			// 
-			// txtNamePlato
-			// 
-			this.txtNamePlato.Location = new System.Drawing.Point(70, 47);
-			this.txtNamePlato.Name = "txtNamePlato";
-			this.txtNamePlato.Size = new System.Drawing.Size(150, 20);
-			this.txtNamePlato.TabIndex = 5;
 			// 
 			// comboBox1
 			// 
@@ -280,15 +284,23 @@
 			this.insumosBindingSource1.DataMember = "insumos";
 			this.insumosBindingSource1.DataSource = this.restaurantDataSet;
 			// 
+			// btnSaveReceta
+			// 
+			this.btnSaveReceta.Location = new System.Drawing.Point(264, 426);
+			this.btnSaveReceta.Name = "btnSaveReceta";
+			this.btnSaveReceta.Size = new System.Drawing.Size(106, 23);
+			this.btnSaveReceta.TabIndex = 13;
+			this.btnSaveReceta.Text = "Guardar Receta";
+			this.btnSaveReceta.UseVisualStyleBackColor = true;
+			// 
 			// Productos
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(646, 481);
 			this.Controls.Add(this.groupBox1);
 			this.Name = "Productos";
 			this.Text = "productos";
-			this.Load += new System.EventHandler(this.Productos_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.Ingredientes.ResumeLayout(false);
@@ -307,7 +319,6 @@
 		private System.Windows.Forms.Button btnAddImg;
 		private System.Windows.Forms.TextBox textBox3;
 		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.TextBox txtNamePlato;
 		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
@@ -315,10 +326,10 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button btnNewCategoria;
 		private System.Windows.Forms.GroupBox Ingredientes;
-		private System.Windows.Forms.ListView listView1;
+		private System.Windows.Forms.ListView listViewReceta;
 		private System.Windows.Forms.Button btnNewIngrediente;
 		private System.Windows.Forms.Button btnAddIngrediente;
-		private System.Windows.Forms.TextBox textBox4;
+		private System.Windows.Forms.TextBox txtCantidadIngrediente;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.ListBox listInsumos;
 		private System.Windows.Forms.PictureBox pictureBox1;
@@ -328,5 +339,7 @@
 		private System.Windows.Forms.BindingSource insumosBindingSource;
 		private restaurantDataSetTableAdapters.insumosTableAdapter insumosTableAdapter;
 		private System.Windows.Forms.BindingSource insumosBindingSource1;
+		private System.Windows.Forms.ComboBox cmbNamePlato;
+		private System.Windows.Forms.Button btnSaveReceta;
 	}
 }

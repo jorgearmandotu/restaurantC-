@@ -169,7 +169,7 @@ namespace restauran.views
 			this.listViewPedido.TabIndex = 5;
 			this.listViewPedido.UseCompatibleStateImageBehavior = false;
 			this.listViewPedido.View = System.Windows.Forms.View.Details;
-			this.listViewPedido.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewPedido_MouseDoubleClick);
+			this.listViewPedido.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListViewPedido_MouseDoubleClick);
 			// 
 			// Producto
 			// 
@@ -209,7 +209,7 @@ namespace restauran.views
 			this.listViewOtros.TabIndex = 0;
 			this.listViewOtros.UseCompatibleStateImageBehavior = false;
 			this.listViewOtros.View = System.Windows.Forms.View.Details;
-			this.listViewOtros.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listOtros_MouseDoubleClick);
+			this.listViewOtros.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListOtros_MouseDoubleClick);
 			// 
 			// columnHeader3
 			// 
@@ -243,7 +243,7 @@ namespace restauran.views
 			this.listViewEspeciales.TabIndex = 0;
 			this.listViewEspeciales.UseCompatibleStateImageBehavior = false;
 			this.listViewEspeciales.View = System.Windows.Forms.View.Details;
-			this.listViewEspeciales.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listEspeciales_MouseDoubleClick);
+			this.listViewEspeciales.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListEspeciales_MouseDoubleClick);
 			// 
 			// columnHeader1
 			// 
@@ -277,7 +277,7 @@ namespace restauran.views
 			this.listViewBebidas.TabIndex = 0;
 			this.listViewBebidas.UseCompatibleStateImageBehavior = false;
 			this.listViewBebidas.View = System.Windows.Forms.View.Details;
-			this.listViewBebidas.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBebidas_MouseDoubleClick);
+			this.listViewBebidas.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListBebidas_MouseDoubleClick);
 			// 
 			// columnHeader5
 			// 
@@ -311,7 +311,7 @@ namespace restauran.views
 			this.listViewPlatos.TabIndex = 0;
 			this.listViewPlatos.UseCompatibleStateImageBehavior = false;
 			this.listViewPlatos.View = System.Windows.Forms.View.Details;
-			this.listViewPlatos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listPlatos_MouseDoubleClick);
+			this.listViewPlatos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListPlatos_MouseDoubleClick);
 			// 
 			// columnHeader7
 			// 
@@ -338,7 +338,7 @@ namespace restauran.views
 			this.cmbMesa.Name = "cmbMesa";
 			this.cmbMesa.Size = new System.Drawing.Size(121, 21);
 			this.cmbMesa.TabIndex = 2;
-			this.cmbMesa.SelectedIndexChanged += new System.EventHandler(this.cmbMesa_SelectedIndexChanged);
+			this.cmbMesa.SelectedIndexChanged += new System.EventHandler(this.CmbMesa_SelectedIndexChanged);
 			// 
 			// label1
 			// 
@@ -389,7 +389,7 @@ namespace restauran.views
 			this.toolStripInsumos.Name = "toolStripInsumos";
 			this.toolStripInsumos.Size = new System.Drawing.Size(52, 22);
 			this.toolStripInsumos.Text = "Insumos";
-			this.toolStripInsumos.Click += new System.EventHandler(this.showInsumos);
+			this.toolStripInsumos.Click += new System.EventHandler(this.ShowInsumos);
 			// 
 			// toolStripSeparator1
 			// 
@@ -401,7 +401,7 @@ namespace restauran.views
 			this.toolStripProductos.Name = "toolStripProductos";
 			this.toolStripProductos.Size = new System.Drawing.Size(61, 22);
 			this.toolStripProductos.Text = "Productos";
-			this.toolStripProductos.Click += new System.EventHandler(this.showProductos);
+			this.toolStripProductos.Click += new System.EventHandler(this.ShowProductos);
 			// 
 			// toolStripSeparator2
 			// 
@@ -413,7 +413,7 @@ namespace restauran.views
 			this.toolStripMesas.Name = "toolStripMesas";
 			this.toolStripMesas.Size = new System.Drawing.Size(96, 22);
 			this.toolStripMesas.Text = "Mesas/secciones";
-			this.toolStripMesas.Click += new System.EventHandler(this.showMesas);
+			this.toolStripMesas.Click += new System.EventHandler(this.ShowMesas);
 			// 
 			// toolStripSeparator3
 			// 

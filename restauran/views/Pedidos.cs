@@ -18,101 +18,112 @@ namespace restauran.views
     {
 
         private List<Pedido> listPedidos = new List<Pedido>();
-        public Pedidos()
+		List<Platos> platos = new List<Platos>();
+		public Pedidos()
         {
             
             LogIn log = new LogIn();
             InitializeComponent();
             log.ShowDialog();
-            loadPlatos();
-			loadBebidas();
-			loadEspeciales();
-			loadOtros();
+            LoadPlatos();
+			LoadBebidas();
+			LoadEspeciales();
+			LoadOtros();
 			consulta();
         }
 
-		private void showProductos(object sender, EventArgs e)
+		private void ShowProductos(object sender, EventArgs e)
 		{
 			Productos prod = new Productos();
 			prod.ShowDialog();
 		}
 
-		private void showInsumos(object sender, EventArgs e)
+		private void ShowInsumos(object sender, EventArgs e)
 		{
 			Insumos insumo = new Insumos();
 			insumo.ShowDialog();
 		}
 
-		private void showMesas(object sender, EventArgs e)
+		private void ShowMesas(object sender, EventArgs e)
 		{
 			Mesas mesa = new Mesas();
 			mesa.ShowDialog();
 		}
 
-		private void loadPlatos()
+		private void LoadPlatos()
         {
-            List<Platos> platos = new List<Platos>();
-            Platos p = new Platos("sancocho", 9000);
-            platos.Add(p);
-            platos.Add(new Platos("arroz de coco", 10000));
-            platos.Add(new Platos("pollo asado", 9000));
+			using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+			{
+				con.Open();
+				OleDbCommand cmd = new OleDbCommand("Select * From platos", con);
+				OleDbDataReader dr = cmd.ExecuteReader();
 
-            foreach ( Platos plato in platos) {
-                string[] row = { plato.Nombre, plato.Precio.ToString() };
-                var listViewItem = new ListViewItem(row);
-                listViewPlatos.Items.Add(listViewItem);
+				while (dr.Read())
+				{
+					//ingredientes.Add(Convert.ToString(dr["insumo"]));
+					int id = Convert.ToInt32(dr["id"]);
+					string plato = Convert.ToString(dr["plato"]);
+					decimal precio = Convert.ToDecimal(dr["precio"]);
+					string image = Convert.ToString(dr["image"]);
+					int categoria = Convert.ToInt32(dr["categoria"]);
+					platos.Add(new Platos(id, plato, precio, image, categoria));
+
+				}
+				con.Close();
+			}
+
+			foreach ( Platos plato in platos) {
+				if(plato.Categoria == 1)
+				{
+					string[] row = { plato.Nombre, plato.Precio.ToString() };
+					var listViewItem = new ListViewItem(row);
+					listViewPlatos.Items.Add(listViewItem);
+				}
             }
         }
 
-		private void loadBebidas()
+		private void LoadBebidas()
 		{
-			List<Platos> bebidas = new List<Platos>();
-			Platos p = new Platos("jugo en agua", 3000);
-			bebidas.Add(p);
-			bebidas.Add(new Platos("jugo en leche", 3500));
-			bebidas.Add(new Platos("cerveza poker", 3500));
-
-			foreach (Platos plato in bebidas)
+			foreach (Platos plato in platos)
 			{
-				string[] row = { plato.Nombre, plato.Precio.ToString() };
-				var listViewItem = new ListViewItem(row);
-				listViewBebidas.Items.Add(listViewItem);
+				if(plato.Categoria == 2)
+				{
+					string[] row = { plato.Nombre, plato.Precio.ToString() };
+					var listViewItem = new ListViewItem(row);
+					listViewBebidas.Items.Add(listViewItem);
+				}
 			}
 		}
 
-		private void loadEspeciales()
+		private void LoadEspeciales()
 		{
-			List<Platos> especiales = new List<Platos>();
-			Platos p = new Platos("sancocho de bagre", 12000);
-			especiales.Add(p);
-			especiales.Add(new Platos("cangrejo asado", 15000));
-			especiales.Add(new Platos("concha sudada", 11000));
 
-			foreach (Platos plato in especiales)
+			foreach (Platos plato in platos)
 			{
-				string[] row = { plato.Nombre, plato.Precio.ToString() };
-				var listViewItem = new ListViewItem(row);
-				listViewEspeciales.Items.Add(listViewItem);
+				if (plato.Categoria == 3)
+				{
+					string[] row = { plato.Nombre, plato.Precio.ToString() };
+					var listViewItem = new ListViewItem(row);
+					listViewEspeciales.Items.Add(listViewItem);
+				}
 			}
 		}
 
-		private void loadOtros()
+		private void LoadOtros()
 		{
-			List<Platos> otros = new List<Platos>();
-			Platos p = new Platos("baso de agua", 12000);
-			otros.Add(p);
-			otros.Add(new Platos("helado caliente", 15000));
-			otros.Add(new Platos("wafless y crepes", 11000));
-
-			foreach (Platos plato in otros)
+			foreach (Platos plato in platos)
 			{
-				string[] row = { plato.Nombre, plato.Precio.ToString() };
-				var listViewItem = new ListViewItem(row);
-				listViewOtros.Items.Add(listViewItem);
+				if(plato.Categoria == 4)
+				{
+					string[] row = { plato.Nombre, plato.Precio.ToString() };
+					var listViewItem = new ListViewItem(row);
+					listViewOtros.Items.Add(listViewItem);
+
+				}
 			}
 		}
 
-		private void listPlatos_MouseDoubleClick(object sender, MouseEventArgs e)
+		private void ListPlatos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 			if (listViewPlatos.SelectedItems == null)
              {
@@ -142,12 +153,12 @@ namespace restauran.views
                     }
                 }
                 listViewPedido.Items.Clear();
-				cargarPedido();
+				CargarPedido();
              }
             
         }
 
-		private void listBebidas_MouseDoubleClick(object sender, MouseEventArgs e)
+		private void ListBebidas_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			if (listViewBebidas.SelectedItems == null)
 			{
@@ -178,12 +189,12 @@ namespace restauran.views
 					}
 				}
 				listViewPedido.Items.Clear();
-				cargarPedido();
+				CargarPedido();
 			}
 
 		}
 
-		private void listEspeciales_MouseDoubleClick(object sender, MouseEventArgs e)
+		private void ListEspeciales_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			if (listViewEspeciales.SelectedItems == null)
 			{
@@ -215,12 +226,12 @@ namespace restauran.views
 					}
 				}
 				listViewPedido.Items.Clear();
-				cargarPedido();
+				CargarPedido();
 			}
 
 		}
 
-		private void listOtros_MouseDoubleClick(object sender, MouseEventArgs e)
+		private void ListOtros_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			if (listViewOtros.SelectedItems == null)
 			{
@@ -251,17 +262,17 @@ namespace restauran.views
 					}
 				}
 				listViewPedido.Items.Clear();
-				cargarPedido();
+				CargarPedido();
 			}
 
 		}
 
 
-        private void cmbMesa_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbMesa_SelectedIndexChanged(object sender, EventArgs e)
         {
 			//MessageBox.Show(cmbMesa.SelectedIndex.ToString());
 			listViewPedido.Items.Clear();
-			cargarPedido();
+			CargarPedido();
             if(cmbMesa.SelectedIndex >= 0)
             {
                 listViewPlatos.Enabled = true;
@@ -279,7 +290,7 @@ namespace restauran.views
 
         }
 
-		private void cargarPedido()
+		private void CargarPedido()
 		{
 			Decimal vlrPagar = 0;
 			foreach (Pedido ped in listPedidos)
@@ -299,7 +310,7 @@ namespace restauran.views
 			lblImpConsumo.Text = String.Format("{0:C}",imp);
 		}
 
-		private void listViewPedido_MouseDoubleClick(object sender, MouseEventArgs e)
+		private void ListViewPedido_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			if(listViewPedido.SelectedItems != null)
 			{
@@ -317,7 +328,7 @@ namespace restauran.views
 						listPedidos.Remove(pedidoselect);
 					}
 					listViewPedido.Items.Clear();
-					cargarPedido();   
+					CargarPedido();   
 				}
 			}
 		}
