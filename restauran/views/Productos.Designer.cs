@@ -51,14 +51,14 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.restaurantDataSet = new restauran.restaurantDataSet();
+			//this.restaurantDataSet = new restauran.restaurantDataSet();
 			this.insumosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.insumosTableAdapter = new restauran.restaurantDataSetTableAdapters.insumosTableAdapter();
+			//this.insumosTableAdapter = new restauran.restaurantDataSetTableAdapters.insumosTableAdapter();
 			this.insumosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
 			this.groupBox1.SuspendLayout();
 			this.Ingredientes.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).BeginInit();
+			//((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.insumosBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.insumosBindingSource1)).BeginInit();
 			this.SuspendLayout();
@@ -278,22 +278,22 @@
 			// 
 			// restaurantDataSet
 			// 
-			this.restaurantDataSet.DataSetName = "restaurantDataSet";
-			this.restaurantDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			//this.restaurantDataSet.DataSetName = "restaurantDataSet";
+			//this.restaurantDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 			// 
 			// insumosBindingSource
 			// 
 			this.insumosBindingSource.DataMember = "insumos";
-			this.insumosBindingSource.DataSource = this.restaurantDataSet;
+			//this.insumosBindingSource.DataSource = this.restaurantDataSet;
 			// 
 			// insumosTableAdapter
 			// 
-			this.insumosTableAdapter.ClearBeforeFill = true;
+			//this.insumosTableAdapter.ClearBeforeFill = true;
 			// 
 			// insumosBindingSource1
 			// 
 			this.insumosBindingSource1.DataMember = "insumos";
-			this.insumosBindingSource1.DataSource = this.restaurantDataSet;
+			//this.insumosBindingSource1.DataSource = this.restaurantDataSet;
 			// 
 			// Productos
 			// 
@@ -308,7 +308,7 @@
 			this.Ingredientes.ResumeLayout(false);
 			this.Ingredientes.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).EndInit();
+			//((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.insumosBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.insumosBindingSource1)).EndInit();
 			this.ResumeLayout(false);
@@ -337,9 +337,9 @@
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
 		private System.Windows.Forms.ColumnHeader columnHeader2;
-		private restaurantDataSet restaurantDataSet;
+		//private restaurantDataSet restaurantDataSet;
 		private System.Windows.Forms.BindingSource insumosBindingSource;
-		private restaurantDataSetTableAdapters.insumosTableAdapter insumosTableAdapter;
+		//private restaurantDataSetTableAdapters.insumosTableAdapter insumosTableAdapter;
 		private System.Windows.Forms.BindingSource insumosBindingSource1;
 		private System.Windows.Forms.ComboBox cmbNamePlato;
 		private System.Windows.Forms.Button btnSaveReceta;

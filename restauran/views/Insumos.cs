@@ -37,7 +37,6 @@ namespace restauran.views
 				using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
 				{ 
 					OleDbCommand cmd = new OleDbCommand();
-					OleDbTransaction transaction = null;
 					cmd.Connection = con;
 				try
 					{
@@ -45,17 +44,16 @@ namespace restauran.views
 						//OleDbCommand cmd = new OleDbCommand(sql);
 						//cmd.Connection = con;
 
-						transaction = con.BeginTransaction(IsolationLevel.ReadCommitted);
-						cmd.Transaction = transaction;
-
 						cmd.CommandText = sql;
-						if (cmd.ExecuteNonQuery() > 0){
-							MessageBox.Show("insumo agregado satisfactoriamente");
-							transaction.Commit();
-						}
-						else
+						try
 						{
-							transaction.Rollback();
+							if (cmd.ExecuteNonQuery() > 0)
+							{
+								MessageBox.Show("insumo agregado satisfactoriamente");
+							}
+						}catch(Exception ex)
+						{
+							MessageBox.Show("Ocurrio un error al insertar: "+ex.Message);
 						}
 						txtNameInsumo.Text = "";
 						txtStockInicial.Text = "";
