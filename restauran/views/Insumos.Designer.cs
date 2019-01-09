@@ -29,15 +29,15 @@
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.txtNameInsumo = new System.Windows.Forms.TextBox();
-			this.txtUnidad = new System.Windows.Forms.TextBox();
-			this.txtStockInicial = new System.Windows.Forms.TextBox();
-			this.txtStockMinimo = new System.Windows.Forms.TextBox();
 			this.btnIngresoInsumo = new System.Windows.Forms.Button();
+			this.txtStockMinimo = new System.Windows.Forms.TextBox();
+			this.txtStockInicial = new System.Windows.Forms.TextBox();
+			this.txtUnidad = new System.Windows.Forms.TextBox();
+			this.txtNameInsumo = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -59,32 +59,43 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Insumos";
 			// 
-			// label1
+			// btnIngresoInsumo
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(6, 29);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(50, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Nombre: ";
+			this.btnIngresoInsumo.Location = new System.Drawing.Point(61, 143);
+			this.btnIngresoInsumo.Name = "btnIngresoInsumo";
+			this.btnIngresoInsumo.Size = new System.Drawing.Size(224, 23);
+			this.btnIngresoInsumo.TabIndex = 7;
+			this.btnIngresoInsumo.Text = "Ingresar";
+			this.btnIngresoInsumo.UseVisualStyleBackColor = true;
+			this.btnIngresoInsumo.Click += new System.EventHandler(this.btnIngresoInsumo_Click);
 			// 
-			// label2
+			// txtStockMinimo
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(6, 82);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(66, 13);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "stock Inicial:";
+			this.txtStockMinimo.Location = new System.Drawing.Point(85, 100);
+			this.txtStockMinimo.Name = "txtStockMinimo";
+			this.txtStockMinimo.Size = new System.Drawing.Size(200, 20);
+			this.txtStockMinimo.TabIndex = 6;
 			// 
-			// label3
+			// txtStockInicial
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(1, 107);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(74, 13);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "Stock Minimo:";
+			this.txtStockInicial.Location = new System.Drawing.Point(85, 75);
+			this.txtStockInicial.Name = "txtStockInicial";
+			this.txtStockInicial.Size = new System.Drawing.Size(200, 20);
+			this.txtStockInicial.TabIndex = 5;
+			// 
+			// txtUnidad
+			// 
+			this.txtUnidad.Location = new System.Drawing.Point(85, 50);
+			this.txtUnidad.Name = "txtUnidad";
+			this.txtUnidad.Size = new System.Drawing.Size(200, 20);
+			this.txtUnidad.TabIndex = 4;
+			// 
+			// txtNameInsumo
+			// 
+			this.txtNameInsumo.Location = new System.Drawing.Point(85, 22);
+			this.txtNameInsumo.Name = "txtNameInsumo";
+			this.txtNameInsumo.Size = new System.Drawing.Size(200, 20);
+			this.txtNameInsumo.TabIndex = 1;
 			// 
 			// label4
 			// 
@@ -95,42 +106,32 @@
 			this.label4.TabIndex = 3;
 			this.label4.Text = "Unidad:";
 			// 
-			// txtNameInsumo
+			// label3
 			// 
-			this.txtNameInsumo.Location = new System.Drawing.Point(85, 22);
-			this.txtNameInsumo.Name = "txtNameInsumo";
-			this.txtNameInsumo.Size = new System.Drawing.Size(200, 20);
-			this.txtNameInsumo.TabIndex = 1;
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(1, 107);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(74, 13);
+			this.label3.TabIndex = 2;
+			this.label3.Text = "Stock Minimo:";
 			// 
-			// txtUnidad
+			// label2
 			// 
-			this.txtUnidad.Location = new System.Drawing.Point(85, 50);
-			this.txtUnidad.Name = "txtUnidad";
-			this.txtUnidad.Size = new System.Drawing.Size(200, 20);
-			this.txtUnidad.TabIndex = 4;
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(6, 82);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(66, 13);
+			this.label2.TabIndex = 1;
+			this.label2.Text = "stock Inicial:";
 			// 
-			// txtStockInicial
+			// label1
 			// 
-			this.txtStockInicial.Location = new System.Drawing.Point(85, 75);
-			this.txtStockInicial.Name = "txtStockInicial";
-			this.txtStockInicial.Size = new System.Drawing.Size(200, 20);
-			this.txtStockInicial.TabIndex = 5;
-			// 
-			// txtStockMinimo
-			// 
-			this.txtStockMinimo.Location = new System.Drawing.Point(85, 100);
-			this.txtStockMinimo.Name = "txtStockMinimo";
-			this.txtStockMinimo.Size = new System.Drawing.Size(200, 20);
-			this.txtStockMinimo.TabIndex = 6;
-			// 
-			// btnIngresoInsumo
-			// 
-			this.btnIngresoInsumo.Location = new System.Drawing.Point(61, 143);
-			this.btnIngresoInsumo.Name = "btnIngresoInsumo";
-			this.btnIngresoInsumo.Size = new System.Drawing.Size(224, 23);
-			this.btnIngresoInsumo.TabIndex = 7;
-			this.btnIngresoInsumo.Text = "Ingresar";
-			this.btnIngresoInsumo.UseVisualStyleBackColor = true;
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(6, 29);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(50, 13);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Nombre: ";
 			// 
 			// Insumos
 			// 

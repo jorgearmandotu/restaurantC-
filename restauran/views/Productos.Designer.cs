@@ -30,6 +30,7 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.btnSaveReceta = new System.Windows.Forms.Button();
 			this.cmbNamePlato = new System.Windows.Forms.ComboBox();
 			this.Ingredientes = new System.Windows.Forms.GroupBox();
 			this.listViewReceta = new System.Windows.Forms.ListView();
@@ -43,9 +44,9 @@
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.btnNewCategoria = new System.Windows.Forms.Button();
 			this.btnAddImg = new System.Windows.Forms.Button();
-			this.textBox3 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.txtImage = new System.Windows.Forms.TextBox();
+			this.txtPrecio = new System.Windows.Forms.TextBox();
+			this.cmbCategoria = new System.Windows.Forms.ComboBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
 			this.insumosBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.insumosTableAdapter = new restauran.restaurantDataSetTableAdapters.insumosTableAdapter();
 			this.insumosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-			this.btnSaveReceta = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.Ingredientes.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,9 +71,9 @@
 			this.groupBox1.Controls.Add(this.pictureBox1);
 			this.groupBox1.Controls.Add(this.btnNewCategoria);
 			this.groupBox1.Controls.Add(this.btnAddImg);
-			this.groupBox1.Controls.Add(this.textBox3);
-			this.groupBox1.Controls.Add(this.textBox2);
-			this.groupBox1.Controls.Add(this.comboBox1);
+			this.groupBox1.Controls.Add(this.txtImage);
+			this.groupBox1.Controls.Add(this.txtPrecio);
+			this.groupBox1.Controls.Add(this.cmbCategoria);
 			this.groupBox1.Controls.Add(this.label4);
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Controls.Add(this.label2);
@@ -85,6 +85,16 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Recetas";
 			// 
+			// btnSaveReceta
+			// 
+			this.btnSaveReceta.Location = new System.Drawing.Point(264, 426);
+			this.btnSaveReceta.Name = "btnSaveReceta";
+			this.btnSaveReceta.Size = new System.Drawing.Size(106, 23);
+			this.btnSaveReceta.TabIndex = 13;
+			this.btnSaveReceta.Text = "Guardar Receta";
+			this.btnSaveReceta.UseVisualStyleBackColor = true;
+			this.btnSaveReceta.Click += new System.EventHandler(this.btnSaveReceta_Click);
+			// 
 			// cmbNamePlato
 			// 
 			this.cmbNamePlato.FormattingEnabled = true;
@@ -92,6 +102,7 @@
 			this.cmbNamePlato.Name = "cmbNamePlato";
 			this.cmbNamePlato.Size = new System.Drawing.Size(150, 21);
 			this.cmbNamePlato.TabIndex = 12;
+			this.cmbNamePlato.SelectedIndexChanged += new System.EventHandler(this.CmbNamePlato_SelectedIndexChanged);
 			// 
 			// Ingredientes
 			// 
@@ -201,33 +212,33 @@
 			this.btnAddImg.Text = "Buscar";
 			this.btnAddImg.UseVisualStyleBackColor = true;
 			// 
-			// textBox3
+			// txtImage
 			// 
-			this.textBox3.Location = new System.Drawing.Point(70, 100);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(100, 20);
-			this.textBox3.TabIndex = 7;
+			this.txtImage.Location = new System.Drawing.Point(70, 100);
+			this.txtImage.Name = "txtImage";
+			this.txtImage.Size = new System.Drawing.Size(100, 20);
+			this.txtImage.TabIndex = 7;
 			// 
-			// textBox2
+			// txtPrecio
 			// 
-			this.textBox2.Location = new System.Drawing.Point(70, 73);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(150, 20);
-			this.textBox2.TabIndex = 6;
+			this.txtPrecio.Location = new System.Drawing.Point(70, 73);
+			this.txtPrecio.Name = "txtPrecio";
+			this.txtPrecio.Size = new System.Drawing.Size(150, 20);
+			this.txtPrecio.TabIndex = 6;
 			// 
-			// comboBox1
+			// cmbCategoria
 			// 
-			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Items.AddRange(new object[] {
+			this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cmbCategoria.FormattingEnabled = true;
+			this.cmbCategoria.Items.AddRange(new object[] {
             "Platos",
             "Bebidas",
             "Especiales",
             "Otros"});
-			this.comboBox1.Location = new System.Drawing.Point(70, 19);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(150, 21);
-			this.comboBox1.TabIndex = 4;
+			this.cmbCategoria.Location = new System.Drawing.Point(70, 19);
+			this.cmbCategoria.Name = "cmbCategoria";
+			this.cmbCategoria.Size = new System.Drawing.Size(150, 21);
+			this.cmbCategoria.TabIndex = 4;
 			// 
 			// label4
 			// 
@@ -284,15 +295,6 @@
 			this.insumosBindingSource1.DataMember = "insumos";
 			this.insumosBindingSource1.DataSource = this.restaurantDataSet;
 			// 
-			// btnSaveReceta
-			// 
-			this.btnSaveReceta.Location = new System.Drawing.Point(264, 426);
-			this.btnSaveReceta.Name = "btnSaveReceta";
-			this.btnSaveReceta.Size = new System.Drawing.Size(106, 23);
-			this.btnSaveReceta.TabIndex = 13;
-			this.btnSaveReceta.Text = "Guardar Receta";
-			this.btnSaveReceta.UseVisualStyleBackColor = true;
-			// 
 			// Productos
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,9 +319,9 @@
 
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Button btnAddImg;
-		private System.Windows.Forms.TextBox textBox3;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.TextBox txtImage;
+		private System.Windows.Forms.TextBox txtPrecio;
+		private System.Windows.Forms.ComboBox cmbCategoria;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;
