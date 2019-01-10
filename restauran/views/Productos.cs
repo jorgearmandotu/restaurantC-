@@ -197,9 +197,15 @@ namespace restauran.views
 			else
 			{
 				//creo plato nuevo con id -10
-				Platos plato = new Platos(idPlato, cmbNamePlato.Text, Convert.ToDecimal(txtPrecio.Text), txtImage.Text, (cmbCategoria.SelectedIndex+1));
+				Platos plato = new Platos(idPlato, cmbNamePlato.Text.ToUpper(), Convert.ToDecimal(txtPrecio.Text), txtImage.Text, (cmbCategoria.SelectedIndex+1));
+                
+                /*string sql = $"INSERT INTO platos (plato, precio, image, categoria)" +
+                            $" VALUES('{plato.Nombre}', {plato.Precio}, '{plato.Image}', {plato.Categoria});";*/
 
-				using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+                string sql = $"INSERT INTO platos (plato, precio, [image], categoria)" +
+                    $" VALUES('{plato.Nombre}', {plato.Precio}, '{plato.Image}', {plato.Categoria});";
+
+                using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
 				{
 					OleDbCommand cmd = new OleDbCommand();
 					OleDbTransaction transaction = null;
@@ -207,44 +213,47 @@ namespace restauran.views
 					try
 					{
 						con.Open();
-						//transaction = con.BeginTransaction(IsolationLevel.ReadCommitted);
+                        transaction = con.BeginTransaction(IsolationLevel.ReadCommitted);
 
-						//cmd.Connection = con;
-						//cmd.Transaction = transaction;
+                        cmd.Connection = con;
+                        cmd.Transaction = transaction;
 
-						//INSERT INTO PLATOS (plato, precio, image, categoria)
-						//VALUES('rellena', 2500, 'no hay', 3)
-						string sql = "INSERT INTO platos (plato, precio, image, categoria) " +
-							"VALUES (\""+plato.Nombre+"\", "+plato.Precio+", \""+plato.Image+"\", "+plato.Categoria+")";
+                        //INSERT INTO PLATOS (plato, precio, image, categoria)
+                        //VALUES('rellena', 2500, 'no hay', 3)
+                        
 						MessageBox.Show(sql);
 						cmd.CommandText = sql;
 
-						cmd.ExecuteNonQuery();
+						if(cmd.ExecuteNonQuery()>0)
+                        {
+                            MessageBox.Show("Insercionde plato exitosa");
+                        }
 
 						//obtengo id de plato recorro listado de ingredientes
-						/*
-						 * try
+						
+						try
 						{
+                            //NO PUEDO OBTENER UN ID DE PLATO Q ACABA DE INGRESAR A LA BASE DE DATOS :p
 							int idPlatoInsertar = ObtenerIdPlato(1, plato.Nombre);
 							foreach(Recetas ingrediente in receta)
 							{
 								cmd.CommandText = $"INSERT INTO recetas (plato, insumo, cantidad) " +
-									$"VALUES ({idPlatoInsertar}, {ingrediente.Insumo}, {ingrediente.Cantidad})";
+									$"VALUES ({idPlatoInsertar}, {ingrediente.Insumo}, {ingrediente.Cantidad});";
 								cmd.ExecuteNonQuery();
 							}
 						}catch(Exception ex)
 						{
 							MessageBox.Show("el plato aun no se ha insertado "+ex.Message);
-						}*/
+						}
 
-						//transaction.Commit();
+						transaction.Commit();
 					}
 					catch(Exception ex)
 					{
 						MessageBox.Show(ex.ToString());
 						try
 						{
-							//transaction.Rollback();
+							transaction.Rollback();
 						}
 						catch
 						{
@@ -255,7 +264,7 @@ namespace restauran.views
 					con.Close();
 				}
 
-			}
+            }
 		}
 
 		private int ObtenerIdPlato(int id, string name)
