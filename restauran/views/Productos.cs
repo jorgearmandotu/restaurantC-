@@ -35,10 +35,13 @@ namespace restauran.views
 		{
 			Insumos insumo = new Insumos();
 			insumo.ShowDialog();
+			cargarInsumos();
 		}
 
 		private void cargarInsumos()
 		{
+			listInsumos.Items.Clear();
+			ingredientes.Clear();
 			using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
 			{
 				con.Open();
@@ -66,6 +69,7 @@ namespace restauran.views
 
 		private void cargarcmbPlatos()
 		{
+			platos.Clear();
 			using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
 			{
 				con.Open();
@@ -136,6 +140,7 @@ namespace restauran.views
 		private void cargarReceta()
 		{
 			listViewReceta.Items.Clear();
+			//receta.Clear();
 			if (cmbNamePlato.SelectedIndex < 0)
 			{
 				foreach (Recetas insumo in receta)
@@ -155,6 +160,7 @@ namespace restauran.views
 			}
 			else
 			{
+				//busco plato
 				Platos platoEncontrado = platos.Find(x => x.Nombre == cmbNamePlato.SelectedItem.ToString());
 				if (platoEncontrado != null)
 				{
@@ -181,90 +187,17 @@ namespace restauran.views
 		private void CmbNamePlato_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			listViewReceta.Items.Clear();
+			LoadDataRecetas();
 			cargarReceta();
 		}
 
 		private void btnSaveReceta_Click(object sender, EventArgs e)
 		{
-			//plato, insumo, cantidad
-			//idplato, id insumo
-			//obtengo id de plato o creo un nuevo
-			int idPlato = ObtenerIdPlato(cmbNamePlato.SelectedIndex, cmbNamePlato.Text);
-			if (idPlato != -10)
+			//valido q todos los datos esten completos
+			if (cmbCategoria.SelectedIndex >-1 && cmbNamePlato.Text.Length >0 && txtPrecio.TextLength > 0)
 			{
-				//plato existente a actualizar
+				AddReceta();
 			}
-			else
-			{
-				//creo plato nuevo con id -10
-				Platos plato = new Platos(idPlato, cmbNamePlato.Text.ToUpper(), Convert.ToDecimal(txtPrecio.Text), txtImage.Text, (cmbCategoria.SelectedIndex+1));
-                
-                /*string sql = $"INSERT INTO platos (plato, precio, image, categoria)" +
-                            $" VALUES('{plato.Nombre}', {plato.Precio}, '{plato.Image}', {plato.Categoria});";*/
-
-                string sql = $"INSERT INTO platos (plato, precio, [image], categoria)" +
-                    $" VALUES('{plato.Nombre}', {plato.Precio}, '{plato.Image}', {plato.Categoria});";
-
-                using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
-				{
-					OleDbCommand cmd = new OleDbCommand();
-					OleDbTransaction transaction = null;
-					cmd.Connection = con;
-					try
-					{
-						con.Open();
-                        transaction = con.BeginTransaction(IsolationLevel.ReadCommitted);
-
-                        cmd.Connection = con;
-                        cmd.Transaction = transaction;
-
-                        //INSERT INTO PLATOS (plato, precio, image, categoria)
-                        //VALUES('rellena', 2500, 'no hay', 3)
-                        
-						MessageBox.Show(sql);
-						cmd.CommandText = sql;
-
-						if(cmd.ExecuteNonQuery()>0)
-                        {
-                            MessageBox.Show("Insercionde plato exitosa");
-                        }
-
-						//obtengo id de plato recorro listado de ingredientes
-						
-						try
-						{
-                            //NO PUEDO OBTENER UN ID DE PLATO Q ACABA DE INGRESAR A LA BASE DE DATOS :p
-							int idPlatoInsertar = ObtenerIdPlato(1, plato.Nombre);
-							foreach(Recetas ingrediente in receta)
-							{
-								cmd.CommandText = $"INSERT INTO recetas (plato, insumo, cantidad) " +
-									$"VALUES ({idPlatoInsertar}, {ingrediente.Insumo}, {ingrediente.Cantidad});";
-								cmd.ExecuteNonQuery();
-							}
-						}catch(Exception ex)
-						{
-							MessageBox.Show("el plato aun no se ha insertado "+ex.Message);
-						}
-
-						transaction.Commit();
-					}
-					catch(Exception ex)
-					{
-						MessageBox.Show(ex.ToString());
-						try
-						{
-							transaction.Rollback();
-						}
-						catch
-						{
-							//la transaccion no esta activa
-						}
-					}
-					//no es necesario al salir del bloque using se cierra la coneccion
-					con.Close();
-				}
-
-            }
 		}
 
 		private int ObtenerIdPlato(int id, string name)
@@ -287,6 +220,119 @@ namespace restauran.views
 			return idPlato;
 		}
 
-		
+		private void AddReceta()
+		{
+			//obtengo id de plato o creo un nuevo
+			int idPlato = ObtenerIdPlato(cmbNamePlato.SelectedIndex, cmbNamePlato.Text);
+			if (idPlato != -10)
+			{
+				//plato existente a actualizar
+			}
+			else
+			{
+				//creo plato nuevo con id -10
+				Platos plato = new Platos(idPlato, cmbNamePlato.Text.ToUpper().Trim(),
+					Convert.ToDecimal(txtPrecio.Text), txtImage.Text, (cmbCategoria.SelectedIndex + 1));
+
+				string sql = $"INSERT INTO platos (plato, precio, [image], categoria)" +
+					$" VALUES('{plato.Nombre}', {plato.Precio}, '{plato.Image}', {plato.Categoria});";
+
+				using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+				{
+					OleDbCommand cmd = new OleDbCommand();
+					cmd.Connection = con;
+					try
+					{
+						con.Open();
+						cmd.Connection = con;
+						cmd.CommandText = sql;
+						if (cmd.ExecuteNonQuery() > 0)
+						{
+							//obtengo id de plato y recorro listado de ingredientes
+							con.Close();
+							try
+							{
+								con.Open();
+								cmd.Connection = con;
+								//recargo el cmb platos y refresco la list
+								cargarcmbPlatos();
+								int idPlatoInsertar = ObtenerIdPlato(1, plato.Nombre);
+								foreach (Recetas ingrediente in receta)
+								{
+									cmd.CommandText = $"INSERT INTO recetas (plato, insumo, cantidad) " +
+										$"VALUES ({idPlatoInsertar}, {ingrediente.Insumo}, {ingrediente.Cantidad});";
+									cmd.ExecuteNonQuery();
+								}
+								txtCantidadIngrediente.Text = "";
+								txtImage.Text = "";
+								txtPrecio.Text = "";
+								cmbNamePlato.Text = "";
+								cmbCategoria.SelectedIndex = -1;
+								listViewReceta.Items.Clear();
+							}
+							catch (Exception ex)
+							{
+								MessageBox.Show("ocurrio un error al ingresar los ingredientes: " + ex.Message);
+							}
+						}
+					}
+					catch (Exception ex)
+					{
+						MessageBox.Show("no se pudo ingresar el plato: " + ex.Message);
+					}
+					//no es necesario al salir del bloque using se cierra la coneccion
+					con.Close();
+				}
+
+			}
+		}
+
+		private void LoadDataRecetas()
+		{
+			string sql = "SELECT plato, insumo, cantidad FROM recetas;";
+			using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+			{
+				OleDbCommand cmd = new OleDbCommand();
+				cmd.Connection = con;
+				try
+				{
+					con.Open();
+					cmd.CommandText = sql;
+					OleDbDataReader dr = cmd.ExecuteReader();
+					receta.Clear();
+					while (dr.Read())
+					{
+						int plato = Convert.ToInt32(dr["plato"]);
+						int insumo = Convert.ToInt32(dr["insumo"]);
+						int cantidad = Convert.ToInt32(dr["cantidad"]);
+						Recetas recetaPlato = new Recetas(plato, insumo, cantidad);
+						receta.Add(recetaPlato);
+					}
+					con.Close();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+				foreach (Recetas rec in receta)
+				{
+					string NamePlato = ObtenerNamePlato(rec.IdPlato);
+					string[] row = { NamePlato, rec.Cantidad.ToString() };
+					var listViewItem = new ListViewItem(row);
+					listViewReceta.Items.Add(listViewItem);
+				}
+			}
+		}
+
+		private string ObtenerNamePlato(int id)
+		{
+			string name = "";
+			Platos plato = platos.Find(x => x.Id == id);
+			if(plato != null)
+			{
+				name = plato.Nombre;
+			}
+			return name;
+		}
 	}
 }

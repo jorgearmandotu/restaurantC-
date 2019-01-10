@@ -51,14 +51,11 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			//this.restaurantDataSet = new restauran.restaurantDataSet();
 			this.insumosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			//this.insumosTableAdapter = new restauran.restaurantDataSetTableAdapters.insumosTableAdapter();
 			this.insumosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
 			this.groupBox1.SuspendLayout();
 			this.Ingredientes.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			//((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.insumosBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.insumosBindingSource1)).BeginInit();
 			this.SuspendLayout();
@@ -81,7 +78,7 @@
 			this.groupBox1.Location = new System.Drawing.Point(7, 12);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(631, 462);
-			this.groupBox1.TabIndex = 0;
+			this.groupBox1.TabIndex = 13;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Recetas";
 			// 
@@ -90,7 +87,7 @@
 			this.btnSaveReceta.Location = new System.Drawing.Point(264, 426);
 			this.btnSaveReceta.Name = "btnSaveReceta";
 			this.btnSaveReceta.Size = new System.Drawing.Size(106, 23);
-			this.btnSaveReceta.TabIndex = 13;
+			this.btnSaveReceta.TabIndex = 11;
 			this.btnSaveReceta.Text = "Guardar Receta";
 			this.btnSaveReceta.UseVisualStyleBackColor = true;
 			this.btnSaveReceta.Click += new System.EventHandler(this.btnSaveReceta_Click);
@@ -101,7 +98,7 @@
 			this.cmbNamePlato.Location = new System.Drawing.Point(70, 46);
 			this.cmbNamePlato.Name = "cmbNamePlato";
 			this.cmbNamePlato.Size = new System.Drawing.Size(150, 21);
-			this.cmbNamePlato.TabIndex = 12;
+			this.cmbNamePlato.TabIndex = 2;
 			this.cmbNamePlato.SelectedIndexChanged += new System.EventHandler(this.CmbNamePlato_SelectedIndexChanged);
 			// 
 			// Ingredientes
@@ -115,7 +112,7 @@
 			this.Ingredientes.Location = new System.Drawing.Point(9, 138);
 			this.Ingredientes.Name = "Ingredientes";
 			this.Ingredientes.Size = new System.Drawing.Size(611, 282);
-			this.Ingredientes.TabIndex = 11;
+			this.Ingredientes.TabIndex = 12;
 			this.Ingredientes.TabStop = false;
 			this.Ingredientes.Text = "Ingredientes:";
 			// 
@@ -127,7 +124,7 @@
 			this.listViewReceta.Location = new System.Drawing.Point(198, 72);
 			this.listViewReceta.Name = "listViewReceta";
 			this.listViewReceta.Size = new System.Drawing.Size(396, 198);
-			this.listViewReceta.TabIndex = 7;
+			this.listViewReceta.TabIndex = 10;
 			this.listViewReceta.UseCompatibleStateImageBehavior = false;
 			this.listViewReceta.View = System.Windows.Forms.View.Details;
 			// 
@@ -146,7 +143,7 @@
 			this.btnNewIngrediente.Location = new System.Drawing.Point(479, 29);
 			this.btnNewIngrediente.Name = "btnNewIngrediente";
 			this.btnNewIngrediente.Size = new System.Drawing.Size(115, 23);
-			this.btnNewIngrediente.TabIndex = 6;
+			this.btnNewIngrediente.TabIndex = 9;
 			this.btnNewIngrediente.Text = "Nuevo Ingrediente";
 			this.btnNewIngrediente.UseVisualStyleBackColor = true;
 			this.btnNewIngrediente.Click += new System.EventHandler(this.btnNewIngrediente_Click);
@@ -156,7 +153,7 @@
 			this.btnAddIngrediente.Location = new System.Drawing.Point(381, 29);
 			this.btnAddIngrediente.Name = "btnAddIngrediente";
 			this.btnAddIngrediente.Size = new System.Drawing.Size(75, 23);
-			this.btnAddIngrediente.TabIndex = 5;
+			this.btnAddIngrediente.TabIndex = 8;
 			this.btnAddIngrediente.Text = "Agregar";
 			this.btnAddIngrediente.UseVisualStyleBackColor = true;
 			this.btnAddIngrediente.Click += new System.EventHandler(this.btnAddIngrediente_Click);
@@ -166,7 +163,7 @@
 			this.txtCantidadIngrediente.Location = new System.Drawing.Point(246, 19);
 			this.txtCantidadIngrediente.Name = "txtCantidadIngrediente";
 			this.txtCantidadIngrediente.Size = new System.Drawing.Size(100, 20);
-			this.txtCantidadIngrediente.TabIndex = 4;
+			this.txtCantidadIngrediente.TabIndex = 7;
 			// 
 			// label7
 			// 
@@ -183,7 +180,7 @@
 			this.listInsumos.Location = new System.Drawing.Point(6, 19);
 			this.listInsumos.Name = "listInsumos";
 			this.listInsumos.Size = new System.Drawing.Size(155, 251);
-			this.listInsumos.TabIndex = 0;
+			this.listInsumos.TabIndex = 6;
 			// 
 			// pictureBox1
 			// 
@@ -198,7 +195,7 @@
 			this.btnNewCategoria.Location = new System.Drawing.Point(255, 16);
 			this.btnNewCategoria.Name = "btnNewCategoria";
 			this.btnNewCategoria.Size = new System.Drawing.Size(53, 23);
-			this.btnNewCategoria.TabIndex = 9;
+			this.btnNewCategoria.TabIndex = 5;
 			this.btnNewCategoria.Text = "Nueva";
 			this.btnNewCategoria.UseVisualStyleBackColor = true;
 			this.btnNewCategoria.Click += new System.EventHandler(this.btnNewCategoria_Click);
@@ -208,7 +205,7 @@
 			this.btnAddImg.Location = new System.Drawing.Point(176, 98);
 			this.btnAddImg.Name = "btnAddImg";
 			this.btnAddImg.Size = new System.Drawing.Size(52, 23);
-			this.btnAddImg.TabIndex = 8;
+			this.btnAddImg.TabIndex = 4;
 			this.btnAddImg.Text = "Buscar";
 			this.btnAddImg.UseVisualStyleBackColor = true;
 			// 
@@ -224,7 +221,7 @@
 			this.txtPrecio.Location = new System.Drawing.Point(70, 73);
 			this.txtPrecio.Name = "txtPrecio";
 			this.txtPrecio.Size = new System.Drawing.Size(150, 20);
-			this.txtPrecio.TabIndex = 6;
+			this.txtPrecio.TabIndex = 3;
 			// 
 			// cmbCategoria
 			// 
@@ -238,7 +235,7 @@
 			this.cmbCategoria.Location = new System.Drawing.Point(70, 19);
 			this.cmbCategoria.Name = "cmbCategoria";
 			this.cmbCategoria.Size = new System.Drawing.Size(150, 21);
-			this.cmbCategoria.TabIndex = 4;
+			this.cmbCategoria.TabIndex = 1;
 			// 
 			// label4
 			// 
@@ -276,24 +273,13 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Categoria: ";
 			// 
-			// restaurantDataSet
-			// 
-			//this.restaurantDataSet.DataSetName = "restaurantDataSet";
-			//this.restaurantDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
 			// insumosBindingSource
 			// 
 			this.insumosBindingSource.DataMember = "insumos";
-			//this.insumosBindingSource.DataSource = this.restaurantDataSet;
-			// 
-			// insumosTableAdapter
-			// 
-			//this.insumosTableAdapter.ClearBeforeFill = true;
 			// 
 			// insumosBindingSource1
 			// 
 			this.insumosBindingSource1.DataMember = "insumos";
-			//this.insumosBindingSource1.DataSource = this.restaurantDataSet;
 			// 
 			// Productos
 			// 
@@ -308,7 +294,6 @@
 			this.Ingredientes.ResumeLayout(false);
 			this.Ingredientes.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			//((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.insumosBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.insumosBindingSource1)).EndInit();
 			this.ResumeLayout(false);

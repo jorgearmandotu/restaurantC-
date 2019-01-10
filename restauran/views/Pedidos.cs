@@ -26,9 +26,6 @@ namespace restauran.views
             InitializeComponent();
             log.ShowDialog();
             LoadPlatos();
-			LoadBebidas();
-			LoadEspeciales();
-			LoadOtros();
 			consulta();
         }
 
@@ -36,6 +33,7 @@ namespace restauran.views
 		{
 			Productos prod = new Productos();
 			prod.ShowDialog();
+			LoadPlatos();
 		}
 
 		private void ShowInsumos(object sender, EventArgs e)
@@ -52,6 +50,11 @@ namespace restauran.views
 
 		private void LoadPlatos()
         {
+			platos.Clear();
+			listViewPlatos.Items.Clear();
+			listViewBebidas.Items.Clear();
+			listViewEspeciales.Items.Clear();
+			listViewOtros.Items.Clear();
 			using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
 			{
 				con.Open();
@@ -78,50 +81,25 @@ namespace restauran.views
 					string[] row = { plato.Nombre, plato.Precio.ToString() };
 					var listViewItem = new ListViewItem(row);
 					listViewPlatos.Items.Add(listViewItem);
-				}
-            }
-        }
-
-		private void LoadBebidas()
-		{
-			foreach (Platos plato in platos)
-			{
-				if(plato.Categoria == 2)
+				}else if (plato.Categoria == 2)
 				{
 					string[] row = { plato.Nombre, plato.Precio.ToString() };
 					var listViewItem = new ListViewItem(row);
 					listViewBebidas.Items.Add(listViewItem);
-				}
-			}
-		}
-
-		private void LoadEspeciales()
-		{
-
-			foreach (Platos plato in platos)
-			{
-				if (plato.Categoria == 3)
+				}else if (plato.Categoria == 3)
 				{
 					string[] row = { plato.Nombre, plato.Precio.ToString() };
 					var listViewItem = new ListViewItem(row);
 					listViewEspeciales.Items.Add(listViewItem);
 				}
-			}
-		}
-
-		private void LoadOtros()
-		{
-			foreach (Platos plato in platos)
-			{
-				if(plato.Categoria == 4)
+				else
 				{
 					string[] row = { plato.Nombre, plato.Precio.ToString() };
 					var listViewItem = new ListViewItem(row);
 					listViewOtros.Items.Add(listViewItem);
-
 				}
-			}
-		}
+            }
+        }
 
 		private void ListPlatos_MouseDoubleClick(object sender, MouseEventArgs e)
         {

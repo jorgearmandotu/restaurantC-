@@ -139,6 +139,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(389, 207);
 			this.Controls.Add(this.groupBox1);
+			this.MaximumSize = new System.Drawing.Size(405, 246);
 			this.Name = "Insumos";
 			this.Text = "Insumos";
 			this.groupBox1.ResumeLayout(false);
