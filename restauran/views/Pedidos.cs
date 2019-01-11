@@ -27,6 +27,7 @@ namespace restauran.views
             log.ShowDialog();
             LoadPlatos();
 			consulta();
+            LoadMesas();
         }
 
 		private void ShowProductos(object sender, EventArgs e)
@@ -46,6 +47,7 @@ namespace restauran.views
 		{
 			Mesas mesa = new Mesas();
 			mesa.ShowDialog();
+            LoadMesas();
 		}
 
 		private void LoadPlatos()
@@ -338,5 +340,30 @@ namespace restauran.views
 				con.Close();
 			}
 		}
-	}
+
+        private void LoadMesas()
+        {
+            using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+            {
+                try
+                {
+                    con.Open();
+                    OleDbCommand cmd = new OleDbCommand("Select * From mesas", con);
+                    OleDbDataReader dr = cmd.ExecuteReader();
+                    cmbMesa.Items.Clear();
+                    while (dr.Read())
+                    {
+                        //Console.WriteLine(Convert.ToString(dr["nombre"]));
+                        cmbMesa.Items.Add(Convert.ToString(dr["nombre"]));
+
+                    }
+                    con.Close();
+                }catch(Exception ex)
+                {
+                    MessageBox.Show("Error: ", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+    }
 }

@@ -15,9 +15,9 @@ namespace restauran.views
 {
 	public partial class Productos : Form
 	{
-		List<InsumosModel> ingredientes = new List<InsumosModel>();
-		List<Recetas> receta = new List<Recetas>();
-		List<Platos> platos = new List<Platos>();
+		List<InsumosModel> listIngredientes = new List<InsumosModel>();
+		List<Recetas> listReceta = new List<Recetas>();
+		List<Platos> listPlatos = new List<Platos>();
 		public Productos()
 		{
 			InitializeComponent();
@@ -41,7 +41,7 @@ namespace restauran.views
 		private void cargarInsumos()
 		{
 			listInsumos.Items.Clear();
-			ingredientes.Clear();
+			listIngredientes.Clear();
 			using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
 			{
 				con.Open();
@@ -56,12 +56,12 @@ namespace restauran.views
 					int stock = Convert.ToInt32(dr["stock"]);
 					string unidad = Convert.ToString(dr["unidad"]);
 					int stockMinimo = Convert.ToInt32(dr["stockMinimo"]);
-					ingredientes.Add(new InsumosModel(id, name, unidad, stock, stockMinimo));
+					listIngredientes.Add(new InsumosModel(id, name, unidad, stock, stockMinimo));
 
 				}
 				con.Close();
 			}
-			foreach (InsumosModel insumo in ingredientes)
+			foreach (InsumosModel insumo in listIngredientes)
 			{
 				listInsumos.Items.Add(insumo.Insumo);
 			}
@@ -69,7 +69,7 @@ namespace restauran.views
 
 		private void cargarcmbPlatos()
 		{
-			platos.Clear();
+			listPlatos.Clear();
 			using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
 			{
 				con.Open();
@@ -84,12 +84,12 @@ namespace restauran.views
 					decimal precio = Convert.ToDecimal(dr["precio"]);
 					string image = Convert.ToString(dr["image"]);
 					int categoria = Convert.ToInt32(dr["categoria"]);
-					platos.Add(new Platos(id, plato, precio, image, categoria));
+					listPlatos.Add(new Platos(id, plato, precio, image, categoria));
 
 				}
 				con.Close();
 			}
-			foreach (Platos plato in platos)
+			foreach (Platos plato in listPlatos)
 			{
 				cmbNamePlato.Items.Add(plato.Nombre.ToString());
 			}
@@ -100,20 +100,20 @@ namespace restauran.views
 			if(listInsumos.SelectedItem != null && txtCantidadIngrediente.TextLength > 0)
 			{
 				//busco ingrediente para obtener su id
-				InsumosModel ingredienteEncontrado = ingredientes.Find(x => x.Insumo == listInsumos.SelectedItem.ToString());
+				InsumosModel ingredienteEncontrado = listIngredientes.Find(x => x.Insumo == listInsumos.SelectedItem.ToString());
 				if(ingredienteEncontrado != null)
 				{
 					//verifico q sea un nuevo plato o  modificacion de un existente
 					int idPlato = ObtenerIdPlato(cmbNamePlato.SelectedIndex, cmbNamePlato.Text);
 					//verifico si hay items en listado receta
-					if (receta.Count > 0)
+					if (listReceta.Count > 0)
 					{
 						//busco si ya existe el ingrediente
-						Recetas ingrediente = receta.Find(x => x.Insumo == ingredienteEncontrado.Id);
+						Recetas ingrediente = listReceta.Find(x => x.Insumo == ingredienteEncontrado.Id);
 						if(ingrediente == null)
 						{
 							//agrego el nuevo ingrediente a la receta
-							receta.Add(new Recetas(idPlato, ingredienteEncontrado.Id, Convert.ToInt32(txtCantidadIngrediente.Text)));
+							listReceta.Add(new Recetas(idPlato, ingredienteEncontrado.Id, Convert.ToInt32(txtCantidadIngrediente.Text)));
 							cargarReceta();
 						}
 						else
@@ -128,7 +128,7 @@ namespace restauran.views
 					else
 					{
 						//agrego ingrediente a receta
-						receta.Add(new Recetas(idPlato, ingredienteEncontrado.Id, Convert.ToInt32(txtCantidadIngrediente.Text)));
+						listReceta.Add(new Recetas(idPlato, ingredienteEncontrado.Id, Convert.ToInt32(txtCantidadIngrediente.Text)));
 						cargarReceta();
 					}
 					txtCantidadIngrediente.Text = "";
@@ -143,12 +143,12 @@ namespace restauran.views
 			//receta.Clear();
 			if (cmbNamePlato.SelectedIndex < 0)
 			{
-				foreach (Recetas insumo in receta)
+				foreach (Recetas insumo in listReceta)
 				{
 					if(insumo.IdPlato == -10)
 					{
 						//busco el insumo para obtener su nombre
-						InsumosModel ingrediente = ingredientes.Find(x => x.Id == insumo.Insumo);
+						InsumosModel ingrediente = listIngredientes.Find(x => x.Id == insumo.Insumo);
 						if (ingrediente != null)
 						{
 							string[] row = { ingrediente.Insumo, insumo.Cantidad.ToString() };
@@ -161,16 +161,16 @@ namespace restauran.views
 			else
 			{
 				//busco plato
-				Platos platoEncontrado = platos.Find(x => x.Nombre == cmbNamePlato.SelectedItem.ToString());
+				Platos platoEncontrado = listPlatos.Find(x => x.Nombre == cmbNamePlato.SelectedItem.ToString());
 				if (platoEncontrado != null)
 				{
 					int idPlato = platoEncontrado.Id;
-					foreach (Recetas insumo in receta)
+					foreach (Recetas insumo in listReceta)
 					{
 						if (insumo.IdPlato == idPlato)
 						{
 							//busco el insumo para obtener su nombre
-							InsumosModel ingrediente = ingredientes.Find(x => x.Id == insumo.Insumo);
+							InsumosModel ingrediente = listIngredientes.Find(x => x.Id == insumo.Insumo);
 							if (ingrediente != null)
 							{
 								string[] row = { ingrediente.Insumo, insumo.Cantidad.ToString() };
@@ -187,6 +187,12 @@ namespace restauran.views
 		private void CmbNamePlato_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			listViewReceta.Items.Clear();
+            if (cmbNamePlato.SelectedIndex > -1)
+            {
+                //obtengo categoria de plato
+                Platos plato = listPlatos.Find(x => x.Nombre == cmbNamePlato.Text);
+                cmbCategoria.SelectedIndex = plato.Categoria - 1;
+            }
 			LoadDataRecetas();
 			cargarReceta();
 		}
@@ -207,7 +213,7 @@ namespace restauran.views
 			if (id >= 0)
 			{
 				//busco plato seleccionado y consigo su id
-				Platos platoEncontrado = platos.Find(x => x.Nombre == name);
+				Platos platoEncontrado = listPlatos.Find(x => x.Nombre == name);
 				if (platoEncontrado != null)
 				{
 					idPlato = platoEncontrado.Id;
@@ -222,16 +228,76 @@ namespace restauran.views
 
 		private void AddReceta()
 		{
-			//obtengo id de plato o creo un nuevo
-			int idPlato = ObtenerIdPlato(cmbNamePlato.SelectedIndex, cmbNamePlato.Text);
-			if (idPlato != -10)
+            //obtengo id de plato o creo un nuevo
+            //int idPlato = -10; //ObtenerIdPlato(cmbNamePlato.SelectedIndex, cmbNamePlato.Text);
+            //obtengo plato si existe
+            Platos platoExistente = listPlatos.Find(x => x.Nombre == cmbNamePlato.Text);
+			if (platoExistente != null)
 			{
-				//plato existente a actualizar
+                //plato existente a actualizar
+                platoExistente.Categoria = cmbCategoria.SelectedIndex + 1;
+                platoExistente.Precio = Convert.ToDecimal(txtPrecio.Text);
+                platoExistente.Image = txtImage.Text;
+
+                string sql = $"UPDATE PLATOS SET categoria = {platoExistente.Categoria}, " +
+                    $"precio = {platoExistente.Precio}, [image] = '{platoExistente.Image}' WHERE id = {platoExistente.Id}; ";
+                using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+                {
+                    OleDbCommand cmd = new OleDbCommand();
+                    cmd.Connection = con;
+                    try
+                    {
+                        con.Open();
+                        cmd.CommandText = sql;
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            con.Close();
+                            string sqldelReceta = $"DELETE FROM recetas WHERE plato = {platoExistente.Id}";
+                            OleDbTransaction transaction = null;
+                            cmd.Connection = con;
+
+                            try
+                            {
+                                con.Open();
+                                transaction = con.BeginTransaction();
+                                cmd.Connection = con;
+                                cmd.Transaction = transaction;
+                                cmd.CommandText = sqldelReceta;
+                                cmd.ExecuteNonQuery();
+
+                                //ingreso receta
+                                foreach (Recetas ingrediente in listReceta)
+                                {
+                                    cmd.CommandText = $"INSERT INTO recetas (plato, insumo, cantidad) " +
+                                        $"VALUES ({platoExistente.Id}, {ingrediente.Insumo}, {ingrediente.Cantidad});";
+                                    cmd.ExecuteNonQuery();
+                                }
+                                transaction.Commit();
+                                MessageBox.Show("Transaccion exitosa", "operacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtCantidadIngrediente.Text = "";
+                                txtImage.Text = "";
+                                txtPrecio.Text = "";
+                                cmbNamePlato.Text = "";
+                                cmbCategoria.SelectedIndex = -1;
+                                listViewReceta.Items.Clear();
+                            }
+                            catch(Exception ex)
+                            {
+                                transaction.Rollback();
+                                MessageBox.Show("no de puedo realizar la operacion "+ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }catch(Exception ex)
+                    {
+                        MessageBox.Show("Error al iniciar operacion "+ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
 			}
 			else
 			{
-				//creo plato nuevo con id -10
-				Platos plato = new Platos(idPlato, cmbNamePlato.Text.ToUpper().Trim(),
+                //creo plato nuevo con id -
+                int idPlato = -10;
+                Platos plato = new Platos(idPlato, cmbNamePlato.Text.ToUpper().Trim(),
 					Convert.ToDecimal(txtPrecio.Text), txtImage.Text, (cmbCategoria.SelectedIndex + 1));
 
 				string sql = $"INSERT INTO platos (plato, precio, [image], categoria)" +
@@ -257,7 +323,7 @@ namespace restauran.views
 								//recargo el cmb platos y refresco la list
 								cargarcmbPlatos();
 								int idPlatoInsertar = ObtenerIdPlato(1, plato.Nombre);
-								foreach (Recetas ingrediente in receta)
+								foreach (Recetas ingrediente in listReceta)
 								{
 									cmd.CommandText = $"INSERT INTO recetas (plato, insumo, cantidad) " +
 										$"VALUES ({idPlatoInsertar}, {ingrediente.Insumo}, {ingrediente.Cantidad});";
@@ -299,14 +365,14 @@ namespace restauran.views
 					con.Open();
 					cmd.CommandText = sql;
 					OleDbDataReader dr = cmd.ExecuteReader();
-					receta.Clear();
+					listReceta.Clear();
 					while (dr.Read())
 					{
 						int plato = Convert.ToInt32(dr["plato"]);
 						int insumo = Convert.ToInt32(dr["insumo"]);
 						int cantidad = Convert.ToInt32(dr["cantidad"]);
 						Recetas recetaPlato = new Recetas(plato, insumo, cantidad);
-						receta.Add(recetaPlato);
+						listReceta.Add(recetaPlato);
 					}
 					con.Close();
 				}
@@ -314,7 +380,7 @@ namespace restauran.views
 				{
 					MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
-				foreach (Recetas rec in receta)
+				foreach (Recetas rec in listReceta)
 				{
 					string NamePlato = ObtenerNamePlato(rec.IdPlato);
 					string[] row = { NamePlato, rec.Cantidad.ToString() };
@@ -327,12 +393,76 @@ namespace restauran.views
 		private string ObtenerNamePlato(int id)
 		{
 			string name = "";
-			Platos plato = platos.Find(x => x.Id == id);
+			Platos plato = listPlatos.Find(x => x.Id == id);
 			if(plato != null)
 			{
 				name = plato.Nombre;
 			}
 			return name;
 		}
-	}
+
+        private void btnAddImg_Click(object sender, EventArgs e)
+        {
+            //abro cuadro de dialogo
+            selectImage.ShowDialog();
+        }
+
+        private void NumberTxt_Leave(object sender, EventArgs e)
+        {
+            string text = txtPrecio.Text.Trim();
+            try
+            {
+                decimal number = Convert.ToDecimal(text);
+            }
+            catch
+            {
+                txtPrecio.Text = "";
+            }
+        }
+
+        private void ValidateInt(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCantidadIngrediente_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                int cant = Convert.ToInt32(txtCantidadIngrediente.Text.Trim());
+            }
+            catch {
+                txtCantidadIngrediente.Text = "";
+            }
+        }
+
+        private void listViewReceta_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listViewReceta.SelectedItems != null)
+            {
+                int idPlato = ObtenerIdPlato(cmbNamePlato.SelectedIndex, cmbNamePlato.Text);
+                string nameInsumo = listViewReceta.SelectedItems[0].Text;
+                InsumosModel insumo = listIngredientes.Find(x => x.Insumo == nameInsumo);
+                int idInsumo = insumo.Id;
+                int cantidad = Convert.ToInt32(listViewReceta.SelectedItems[0].SubItems[1].Text);
+
+                Recetas recetaEncontrada = listReceta.Find(x => x.IdPlato == idPlato && x.Insumo == idInsumo);
+                if(recetaEncontrada != null)
+                {
+                    listReceta.Remove(recetaEncontrada);
+                    cargarReceta();
+                }
+            }
+        }
+    }
 }

@@ -67,5 +67,60 @@ namespace restauran.views
 				}
 			}
 		}
-	}
+
+        private void ValidateNumbertxtStockInical(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ValidateTxtStockMinimokeypress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void LeaveTxtStockInical(object sender, EventArgs e)
+        {
+            try
+            {
+                Convert.ToInt32(txtStockInicial.Text.Trim());
+            }
+            catch
+            {
+                txtStockInicial.Text = "";
+            }
+        }
+
+        private void txtStockMinimo_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                Convert.ToInt32(txtStockMinimo.Text.Trim());
+            }
+            catch
+            {
+                txtStockMinimo.Text = "";
+            }
+        }
+    }
 }
