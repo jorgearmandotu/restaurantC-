@@ -71,6 +71,8 @@ namespace restauran.views
             this.toolStripMesas = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -394,7 +396,9 @@ namespace restauran.views
             this.toolStripSeparator2,
             this.toolStripMesas,
             this.toolStripSeparator3,
-            this.toolStripLabel1});
+            this.toolStripLabel1,
+            this.toolStripSeparator4,
+            this.toolStripLabel2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1008, 25);
@@ -443,6 +447,18 @@ namespace restauran.views
             this.toolStripLabel1.Size = new System.Drawing.Size(52, 22);
             this.toolStripLabel1.Text = "Personal";
             this.toolStripLabel1.Click += new System.EventHandler(this.GestionPersonal);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(95, 22);
+            this.toolStripLabel2.Text = "Gestion Insumos";
+            this.toolStripLabel2.Click += new System.EventHandler(this.GestionInsumos);
             // 
             // Pedidos
             // 
@@ -511,5 +527,7 @@ namespace restauran.views
 		private System.Windows.Forms.ComboBox cmbMesero;
 		private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
     }
 }

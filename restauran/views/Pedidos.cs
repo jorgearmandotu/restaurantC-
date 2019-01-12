@@ -399,5 +399,11 @@ namespace restauran.views
             persona.ShowDialog();
             LoadMeseros();
         }
+
+        private void GestionInsumos(object sender, EventArgs e)
+        {
+            EntradasView gestion = new EntradasView();
+            gestion.ShowDialog();
+        }
     }
 }
