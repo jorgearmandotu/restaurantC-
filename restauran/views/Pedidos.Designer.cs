@@ -31,7 +31,7 @@ namespace restauran.views
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbMesero = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnFacturar = new System.Windows.Forms.Button();
@@ -70,6 +70,7 @@ namespace restauran.views
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMesas = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -81,7 +82,7 @@ namespace restauran.views
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cmbMesero);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.groupBox6);
             this.groupBox1.Controls.Add(this.groupBox5);
@@ -97,13 +98,13 @@ namespace restauran.views
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pedidos";
             // 
-            // comboBox1
+            // cmbMesero
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(343, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(179, 21);
-            this.comboBox1.TabIndex = 10;
+            this.cmbMesero.FormattingEnabled = true;
+            this.cmbMesero.Location = new System.Drawing.Point(343, 19);
+            this.cmbMesero.Name = "cmbMesero";
+            this.cmbMesero.Size = new System.Drawing.Size(179, 21);
+            this.cmbMesero.TabIndex = 10;
             // 
             // label4
             // 
@@ -392,7 +393,8 @@ namespace restauran.views
             this.toolStripProductos,
             this.toolStripSeparator2,
             this.toolStripMesas,
-            this.toolStripSeparator3});
+            this.toolStripSeparator3,
+            this.toolStripLabel1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1008, 25);
@@ -434,6 +436,13 @@ namespace restauran.views
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(52, 22);
+            this.toolStripLabel1.Text = "Personal";
+            this.toolStripLabel1.Click += new System.EventHandler(this.GestionPersonal);
             // 
             // Pedidos
             // 
@@ -499,7 +508,8 @@ namespace restauran.views
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripLabel toolStripMesas;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ComboBox cmbMesero;
 		private System.Windows.Forms.Label label4;
-	}
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+    }
 }

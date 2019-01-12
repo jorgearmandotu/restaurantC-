@@ -28,6 +28,7 @@ namespace restauran.views
             LoadPlatos();
 			consulta();
             LoadMesas();
+            LoadMeseros();
         }
 
 		private void ShowProductos(object sender, EventArgs e)
@@ -364,6 +365,39 @@ namespace restauran.views
                 }
             }
 
+        }
+
+        private void LoadMeseros()
+        {
+            using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+            {
+                try
+                {
+                    con.Open();
+                    OleDbCommand cmd = new OleDbCommand("Select * From personal", con);
+                    OleDbDataReader dr = cmd.ExecuteReader();
+                    cmbMesero.Items.Clear();
+                    while (dr.Read())
+                    {
+                        //Console.WriteLine(Convert.ToString(dr["nombre"]));
+                        cmbMesero.Items.Add(Convert.ToString(dr["nombre"]));
+
+                    }
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: ", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void GestionPersonal(object sender, EventArgs e)
+        {
+            PersonalView persona = new PersonalView();
+            persona.ShowDialog();
+            LoadMeseros();
         }
     }
 }

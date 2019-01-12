@@ -189,9 +189,11 @@ namespace restauran.views
 			listViewReceta.Items.Clear();
             if (cmbNamePlato.SelectedIndex > -1)
             {
-                //obtengo categoria de plato
+                //obtengo datos de plato
                 Platos plato = listPlatos.Find(x => x.Nombre == cmbNamePlato.Text);
                 cmbCategoria.SelectedIndex = plato.Categoria - 1;
+                txtPrecio.Text = plato.Precio.ToString();
+                txtImage.Text = plato.Image;
             }
 			LoadDataRecetas();
 			cargarReceta();

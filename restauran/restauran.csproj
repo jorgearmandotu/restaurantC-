@@ -83,6 +83,12 @@
     <Compile Include="views\Mesas.Designer.cs">
       <DependentUpon>Mesas.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\PersonalView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\PersonalView.Designer.cs">
+      <DependentUpon>PersonalView.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\Pedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\Pedidos.resx">
       <DependentUpon>Pedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\PersonalView.resx">
+      <DependentUpon>PersonalView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Productos.resx">
       <DependentUpon>Productos.cs</DependentUpon>
