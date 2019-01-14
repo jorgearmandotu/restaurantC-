@@ -30,12 +30,13 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtCCDel = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.btnRetiro = new System.Windows.Forms.Button();
             this.txtMotivoRetiro = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.dateFechaSalida = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
-            this.cmbNombre = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnIngresar = new System.Windows.Forms.Button();
@@ -55,8 +56,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtTipoId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtCCDel = new System.Windows.Forms.TextBox();
+            this.txtNameRetiro = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -74,6 +74,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtNameRetiro);
             this.groupBox3.Controls.Add(this.txtCCDel);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.btnRetiro);
@@ -81,7 +82,6 @@
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.dateFechaSalida);
             this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.cmbNombre);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Location = new System.Drawing.Point(6, 242);
             this.groupBox3.Name = "groupBox3";
@@ -89,6 +89,24 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Retiro de personal";
+            // 
+            // txtCCDel
+            // 
+            this.txtCCDel.Location = new System.Drawing.Point(93, 26);
+            this.txtCCDel.Name = "txtCCDel";
+            this.txtCCDel.Size = new System.Drawing.Size(181, 20);
+            this.txtCCDel.TabIndex = 8;
+            this.txtCCDel.TabStop = false;
+            this.txtCCDel.Leave += new System.EventHandler(this.ViewNametxt);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(280, 68);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 13);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "FechaRetiro:";
             // 
             // btnRetiro
             // 
@@ -98,12 +116,13 @@
             this.btnRetiro.TabIndex = 6;
             this.btnRetiro.Text = "Retirar";
             this.btnRetiro.UseVisualStyleBackColor = true;
+            this.btnRetiro.Click += new System.EventHandler(this.RetirarPersonal);
             // 
             // txtMotivoRetiro
             // 
-            this.txtMotivoRetiro.Location = new System.Drawing.Point(58, 61);
+            this.txtMotivoRetiro.Location = new System.Drawing.Point(93, 61);
             this.txtMotivoRetiro.Name = "txtMotivoRetiro";
-            this.txtMotivoRetiro.Size = new System.Drawing.Size(195, 20);
+            this.txtMotivoRetiro.Size = new System.Drawing.Size(181, 20);
             this.txtMotivoRetiro.TabIndex = 5;
             // 
             // label11
@@ -111,9 +130,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(14, 68);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(42, 13);
+            this.label11.Size = new System.Drawing.Size(71, 13);
             this.label11.TabIndex = 4;
-            this.label11.Text = "Motivo:";
+            this.label11.Text = "Causa Retiro:";
             // 
             // dateFechaSalida
             // 
@@ -126,25 +145,16 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(280, 32);
+            this.label10.Location = new System.Drawing.Point(14, 26);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(24, 13);
+            this.label10.Size = new System.Drawing.Size(73, 13);
             this.label10.TabIndex = 2;
-            this.label10.Text = "CC:";
-            // 
-            // cmbNombre
-            // 
-            this.cmbNombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbNombre.FormattingEnabled = true;
-            this.cmbNombre.Location = new System.Drawing.Point(58, 24);
-            this.cmbNombre.Name = "cmbNombre";
-            this.cmbNombre.Size = new System.Drawing.Size(194, 21);
-            this.cmbNombre.TabIndex = 1;
+            this.label10.Text = "Identificacion:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 32);
+            this.label8.Location = new System.Drawing.Point(280, 29);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 13);
             this.label8.TabIndex = 0;
@@ -318,22 +328,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "tipo de identificacion:";
             // 
-            // label12
+            // txtNameRetiro
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(280, 68);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 13);
-            this.label12.TabIndex = 7;
-            this.label12.Text = "FechaRetiro:";
-            // 
-            // txtCCDel
-            // 
-            this.txtCCDel.Enabled = false;
-            this.txtCCDel.Location = new System.Drawing.Point(354, 25);
-            this.txtCCDel.Name = "txtCCDel";
-            this.txtCCDel.Size = new System.Drawing.Size(200, 20);
-            this.txtCCDel.TabIndex = 8;
+            this.txtNameRetiro.Location = new System.Drawing.Point(354, 25);
+            this.txtNameRetiro.Name = "txtNameRetiro";
+            this.txtNameRetiro.Size = new System.Drawing.Size(200, 20);
+            this.txtNameRetiro.TabIndex = 9;
+            this.txtNameRetiro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Invalidatekey);
             // 
             // PersonalView
             // 
@@ -371,7 +372,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNumIdentificacion;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox cmbNombre;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.DateTimePicker dateFechaIngreso;
@@ -383,5 +383,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtCCDel;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtNameRetiro;
     }
 }

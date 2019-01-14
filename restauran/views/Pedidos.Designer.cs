@@ -64,7 +64,6 @@ namespace restauran.views
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripInsumos = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripProductos = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -73,6 +72,7 @@ namespace restauran.views
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -390,7 +390,6 @@ namespace restauran.views
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripInsumos,
             this.toolStripSeparator1,
             this.toolStripProductos,
             this.toolStripSeparator2,
@@ -398,19 +397,13 @@ namespace restauran.views
             this.toolStripSeparator3,
             this.toolStripLabel1,
             this.toolStripSeparator4,
-            this.toolStripLabel2});
+            this.toolStripLabel2,
+            this.toolStripSeparator5});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1008, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripInsumos
-            // 
-            this.toolStripInsumos.Name = "toolStripInsumos";
-            this.toolStripInsumos.Size = new System.Drawing.Size(52, 22);
-            this.toolStripInsumos.Text = "Insumos";
-            this.toolStripInsumos.Click += new System.EventHandler(this.ShowInsumos);
             // 
             // toolStripSeparator1
             // 
@@ -456,9 +449,14 @@ namespace restauran.views
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(95, 22);
-            this.toolStripLabel2.Text = "Gestion Insumos";
+            this.toolStripLabel2.Size = new System.Drawing.Size(60, 22);
+            this.toolStripLabel2.Text = "Inventario";
             this.toolStripLabel2.Click += new System.EventHandler(this.GestionInsumos);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
             // Pedidos
             // 
@@ -518,7 +516,6 @@ namespace restauran.views
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button btnFacturar;
 		private System.Windows.Forms.ToolStrip toolStrip1;
-		private System.Windows.Forms.ToolStripLabel toolStripInsumos;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripLabel toolStripProductos;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -529,5 +526,6 @@ namespace restauran.views
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

@@ -15,11 +15,11 @@ namespace restauran.views
 {
     public partial class PersonalView : Form
     {
-        List<Personal> personal = new List<Personal>();
+        List<Personal> listPersonal = new List<Personal>();
         public PersonalView()
         {
             InitializeComponent();
-            LoadCmbPersonal();
+            LoadListPersonal();
         }
 
         private void IngresarPersonal(object sender, EventArgs e)
@@ -66,6 +66,8 @@ namespace restauran.views
                         txtPhone.Text = "";
                         txtTipoId.Text = "CC";
                         dateFechaIngreso.ResetText();
+                        LoadListPersonal();
+                        MessageBox.Show("Transaccion Exitosa", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
@@ -75,18 +77,53 @@ namespace restauran.views
             }
         }
 
+        private void ViewNametxt(object sender, EventArgs e)
+        {
+            string id = txtCCDel.Text;
+            Personal persona = listPersonal.Find(x => x.Identificacion == id);
+            if (persona != null)
+            {
+                txtNameRetiro.Text = persona.Nombre;
+            }
+        }
+
         private void RetirarPersonal(object sender, EventArgs e)
         {
             string id = txtCCDel.Text;
             string motivo = txtMotivoRetiro.Text;
-            Personal persona = personal.Find(x => x.Identificacion == id);
+            Personal persona = listPersonal.Find(x => x.Identificacion == id);
             if(persona != null)
             {
-                string sql = "DElETE FROM personal WHERE identificacion = "+persona.Identificacion;
+                string sql = "DElETE FROM personal WHERE identificacion = @Id";
+                using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+                {
+                    try
+                    {
+                        con.Open();
+                        OleDbCommand cmd = new OleDbCommand(sql, con);
+                        cmd.Parameters.Add("@Id", OleDbType.Char).Value = persona.Identificacion;
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        txtCCDel.Text = "";
+                        txtNameRetiro.Text = "";
+                        txtMotivoRetiro.Text = "";
+                        LoadListPersonal();
+                        MessageBox.Show("Transaccionn exitosa", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: "+ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Esta identificacion no se encuentra registrada", "Alerta",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void LoadCmbPersonal()
+        private void LoadListPersonal()
         {
             string sql = "select * from personal";
             using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
@@ -96,7 +133,7 @@ namespace restauran.views
                     con.Open();
                     OleDbCommand cmd = new OleDbCommand(sql, con);
                     OleDbDataReader dr = cmd.ExecuteReader();
-                    cmbNombre.Items.Clear();
+                    listPersonal.Clear();
                     while (dr.Read())
                     {
                         string id = Convert.ToString(dr["identificacion"]);
@@ -125,23 +162,26 @@ namespace restauran.views
                         {
                             causaRetiro = Convert.ToString(dr["causaRetiro"]);
                         }
-                        personal.Add(new Personal(id, nombre, telefono, email, tipoId, otros, 
+                        listPersonal.Add(new Personal(id, nombre, telefono, email, tipoId, otros, 
                             fechaIngreso, fechaRetiro, direccion, causaRetiro));
                         //cmbNombre.Items.Add(Convert.ToString(dr["nombre"]));
                     }
                     con.Close();
-                    foreach(Personal p in personal)
-                    {
-                        
-                        cmbNombre.DisplayMember = p.Nombre;
-                        cmbNombre.ValueMember = p.Identificacion;
-                    }
+                    //listPersonal.Insert(0, new Personal { Identificacion = Convert.ToString(0), Nombre = "<Seleccionar>" });
+                    
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: "+ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        
+        
+
+        private void Invalidatekey(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }
