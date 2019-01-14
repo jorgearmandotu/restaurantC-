@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="models\InsumosModel.cs" />
     <Compile Include="models\Pedido.cs" />
+    <Compile Include="models\Personal.cs" />
     <Compile Include="models\Platos.cs" />
     <Compile Include="models\Recetas.cs" />
     <Compile Include="Program.cs" />
