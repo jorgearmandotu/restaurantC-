@@ -103,6 +103,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "LogIn";
             this.Text = "LOG IN";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LogIn_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

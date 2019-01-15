@@ -34,9 +34,12 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtObservation = new System.Windows.Forms.RichTextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.dateAddinsumo = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.txtVlrUnitario = new System.Windows.Forms.TextBox();
@@ -53,15 +56,15 @@
             this.cmbProvider = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCantdel = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.btnDarBaja = new System.Windows.Forms.Button();
+            this.txtObservationBaja = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.cmbProductsBaja = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dateBaja = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -92,6 +95,7 @@
             this.button2.TabIndex = 11;
             this.button2.Text = "Guardar Datos";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.SaveItemsFacturaView);
             // 
             // listViewFactura
             // 
@@ -99,11 +103,12 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader4,
+            this.columnHeader5,
             this.columnHeader3,
-            this.columnHeader5});
+            this.columnHeader6});
             this.listViewFactura.Location = new System.Drawing.Point(6, 264);
             this.listViewFactura.Name = "listViewFactura";
-            this.listViewFactura.Size = new System.Drawing.Size(528, 146);
+            this.listViewFactura.Size = new System.Drawing.Size(540, 146);
             this.listViewFactura.TabIndex = 10;
             this.listViewFactura.UseCompatibleStateImageBehavior = false;
             this.listViewFactura.View = System.Windows.Forms.View.Details;
@@ -111,35 +116,38 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "N.";
-            this.columnHeader1.Width = 33;
+            this.columnHeader1.Width = 30;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Producto";
-            this.columnHeader2.Width = 288;
+            this.columnHeader2.Width = 220;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Unidad";
-            this.columnHeader4.Width = 70;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.DisplayIndex = 4;
-            this.columnHeader3.Text = "Cantidad";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader3.Width = 56;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.DisplayIndex = 3;
             this.columnHeader5.Text = "Vlr. Unitario";
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader5.Width = 75;
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Cantidad";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader3.Width = 70;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Total";
+            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader6.Width = 80;
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.richTextBox2);
+            this.groupBox2.Controls.Add(this.txtObservation);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.dateAddinsumo);
             this.groupBox2.Controls.Add(this.label9);
@@ -158,6 +166,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Productos:";
             // 
+            // txtObservation
+            // 
+            this.txtObservation.Location = new System.Drawing.Point(93, 106);
+            this.txtObservation.Name = "txtObservation";
+            this.txtObservation.Size = new System.Drawing.Size(435, 48);
+            this.txtObservation.TabIndex = 18;
+            this.txtObservation.Text = "";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 106);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(81, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Observaciones:";
+            // 
             // dateAddinsumo
             // 
             this.dateAddinsumo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -165,7 +190,7 @@
             this.dateAddinsumo.Name = "dateAddinsumo";
             this.dateAddinsumo.Size = new System.Drawing.Size(109, 20);
             this.dateAddinsumo.TabIndex = 16;
-            this.dateAddinsumo.Value = new System.DateTime(2019, 1, 14, 16, 38, 31, 0);
+            this.dateAddinsumo.Value = new System.DateTime(2019, 1, 15, 10, 4, 54, 0);
             // 
             // label9
             // 
@@ -293,51 +318,56 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(248, 32);
+            this.label4.Location = new System.Drawing.Point(200, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Cantidad:";
             // 
-            // textBox2
+            // txtCantdel
             // 
-            this.textBox2.Location = new System.Drawing.Point(311, 29);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(111, 20);
-            this.textBox2.TabIndex = 9;
+            this.txtCantdel.Location = new System.Drawing.Point(258, 25);
+            this.txtCantdel.Name = "txtCantdel";
+            this.txtCantdel.Size = new System.Drawing.Size(92, 20);
+            this.txtCantdel.TabIndex = 9;
+            this.txtCantdel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateInt);
+            this.txtCantdel.Leave += new System.EventHandler(this.CantidadValidBaja_Leave);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.richTextBox1);
+            this.groupBox3.Controls.Add(this.dateBaja);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.btnDarBaja);
+            this.groupBox3.Controls.Add(this.txtObservationBaja);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.comboBox3);
+            this.groupBox3.Controls.Add(this.txtCantdel);
+            this.groupBox3.Controls.Add(this.cmbProductsBaja);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(21, 484);
+            this.groupBox3.Location = new System.Drawing.Point(12, 484);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(555, 169);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bajas";
             // 
-            // button4
+            // btnDarBaja
             // 
-            this.button4.Location = new System.Drawing.Point(251, 140);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "Dar de Baja";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnDarBaja.Location = new System.Drawing.Point(251, 140);
+            this.btnDarBaja.Name = "btnDarBaja";
+            this.btnDarBaja.Size = new System.Drawing.Size(75, 23);
+            this.btnDarBaja.TabIndex = 12;
+            this.btnDarBaja.Text = "Dar de Baja";
+            this.btnDarBaja.UseVisualStyleBackColor = true;
+            this.btnDarBaja.Click += new System.EventHandler(this.DarBaja);
             // 
-            // richTextBox1
+            // txtObservationBaja
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(83, 61);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(454, 65);
-            this.richTextBox1.TabIndex = 11;
-            this.richTextBox1.Text = "";
+            this.txtObservationBaja.Location = new System.Drawing.Point(83, 61);
+            this.txtObservationBaja.Name = "txtObservationBaja";
+            this.txtObservationBaja.Size = new System.Drawing.Size(454, 65);
+            this.txtObservationBaja.TabIndex = 11;
+            this.txtObservationBaja.Text = "";
             // 
             // label6
             // 
@@ -357,30 +387,31 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Producto:";
             // 
-            // comboBox3
+            // cmbProductsBaja
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(65, 24);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(146, 21);
-            this.comboBox3.TabIndex = 8;
+            this.cmbProductsBaja.FormattingEnabled = true;
+            this.cmbProductsBaja.Location = new System.Drawing.Point(65, 24);
+            this.cmbProductsBaja.Name = "cmbProductsBaja";
+            this.cmbProductsBaja.Size = new System.Drawing.Size(128, 21);
+            this.cmbProductsBaja.TabIndex = 8;
             // 
-            // label10
+            // label11
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 106);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(81, 13);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "Observaciones:";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(363, 32);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(40, 13);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Fecha:";
             // 
-            // richTextBox2
+            // dateBaja
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(93, 106);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(435, 48);
-            this.richTextBox2.TabIndex = 18;
-            this.richTextBox2.Text = "";
+            this.dateBaja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateBaja.Location = new System.Drawing.Point(409, 26);
+            this.dateBaja.Name = "dateBaja";
+            this.dateBaja.Size = new System.Drawing.Size(125, 20);
+            this.dateBaja.TabIndex = 14;
+            this.dateBaja.Value = new System.DateTime(2019, 1, 15, 16, 21, 29, 0);
             // 
             // EntradasView
             // 
@@ -420,13 +451,13 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnAddItemfact;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCantdel;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button btnDarBaja;
+        private System.Windows.Forms.RichTextBox txtObservationBaja;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbProductsBaja;
         private System.Windows.Forms.TextBox txtCantAdd;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
@@ -435,7 +466,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DateTimePicker dateAddinsumo;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox txtObservation;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.DateTimePicker dateBaja;
+        private System.Windows.Forms.Label label11;
     }
 }

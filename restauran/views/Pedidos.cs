@@ -22,9 +22,9 @@ namespace restauran.views
 		public Pedidos()
         {
             
-            LogIn log = new LogIn();
+            //LogIn log = new LogIn();
             InitializeComponent();
-            log.ShowDialog();
+            //log.ShowDialog();
             LoadPlatos();
 			consulta();
             LoadMesas();

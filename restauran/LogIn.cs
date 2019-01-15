@@ -36,6 +36,9 @@ namespace restauran
                 //MessageBox.Show("logueado");
                 //Productos products = new Productos();
                 //products.Show();
+                Pedidos pedido = new Pedidos();
+                this.Hide();
+                pedido.ShowDialog();
                 this.Dispose();
 			}
 			else
@@ -54,5 +57,10 @@ namespace restauran
 		{
 			return log;
 		}
-	}
+
+        private void LogIn_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+    }
 }

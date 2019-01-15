@@ -59,6 +59,7 @@
     <Compile Include="LogIn.Designer.cs">
       <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="models\Ingresos.cs" />
     <Compile Include="models\InsumosModel.cs" />
     <Compile Include="models\Pedido.cs" />
     <Compile Include="models\Personal.cs" />

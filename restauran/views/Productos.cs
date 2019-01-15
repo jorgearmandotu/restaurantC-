@@ -264,7 +264,7 @@ namespace restauran.views
                                 transaction = con.BeginTransaction();
                                 cmd.Connection = con;
                                 cmd.Transaction = transaction;
-                                cmd.CommandText = sqldelReceta;
+                                cmd.CommandText = sqldelReceta;//primera sentencia sql
                                 cmd.ExecuteNonQuery();
 
                                 //ingreso receta

@@ -17,6 +17,8 @@ namespace restauran.views
     {
         List<Provider> listProvider = new List<Provider>();
         List<InsumosModel> listInsumos = new List<InsumosModel>();
+        List<Ingresos> listIngresos = new List<Ingresos>();
+        int numberIndex = 1;
         public EntradasView()
         {
             InitializeComponent();
@@ -41,6 +43,7 @@ namespace restauran.views
         private void LoadListProvider()
         {
             cmbProvider.Items.Clear();
+            listProvider.Clear();
             string sql = "SELECT * FROM PROVEEDOR";
             try
             {
@@ -51,9 +54,15 @@ namespace restauran.views
                     OleDbDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
-                        listProvider.Add(new Provider(dr["nit"].ToString(), dr["proveedor"].ToString(), dr["telefono"].ToString(), 
-                            dr["direccion"].ToString(), dr["email"].ToString(), dr["otros"].ToString()));
-                        cmbProvider.Items.Add(dr["proveedor"].ToString());
+                        int id = Convert.ToInt32(dr["id"]);
+                        string nit = dr["nit"].ToString();
+                        string providerName = dr["proveedor"].ToString();
+                        string phone = dr["telefono"].ToString();
+                        string adress = dr["direccion"].ToString();
+                        string email = dr["email"].ToString();
+                        string others = dr["otros"].ToString();
+                        listProvider.Add(new Provider(id, nit, providerName, phone, adress, email, others));
+                        cmbProvider.Items.Add(providerName);
                     }
                 }
             }catch (Exception ex)
@@ -65,6 +74,8 @@ namespace restauran.views
         private void LoadListProducts()
         {
             cmbInsumo.Items.Clear();
+            cmbProductsBaja.Items.Clear();
+            listInsumos.Clear();
             string sql = "SELECT * FROM insumos";
             try
             {
@@ -75,9 +86,14 @@ namespace restauran.views
                     OleDbDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
-                        listInsumos.Add(new InsumosModel(Convert.ToInt32(dr["id"]), dr["insumo"].ToString(),
-                            dr["unidad"].ToString(), Convert.ToInt32(dr["stock"]), Convert.ToInt32(dr["stockMinimo"])));
-                        cmbInsumo.Items.Add(dr["insumo"].ToString());
+                        int id = Convert.ToInt32(dr["id"]);
+                        string name = dr["insumo"].ToString();
+                        string unidad = dr["unidad"].ToString();
+                        int stock = Convert.ToInt32(dr["stock"]);
+                        int stockMinimo = Convert.ToInt32(dr["stockMinimo"]);
+                        listInsumos.Add(new InsumosModel(id, name, unidad, stock,stockMinimo));
+                        cmbInsumo.Items.Add(name);
+                        cmbProductsBaja.Items.Add(name);
                     }
                 }
             }
@@ -93,7 +109,7 @@ namespace restauran.views
             string nFactura = txtNumberSales.Text.Trim();
             string insumo = cmbInsumo.Text;
             string cant = txtCantAdd.Text.Trim();
-            string vlrUnit = txtVlrUnitario.Text;
+            string vlrUnit = txtVlrUnitario.Text.Trim();
             string fecha = dateAddinsumo.Text;
             //DateTime fecha = Convert.ToDateTime(dateAddinsumo);
             
@@ -101,32 +117,37 @@ namespace restauran.views
             if(provider.Length>0 && nFactura.Length>0 && insumo.Length>0 && cant.Length > 0
                 && vlrUnit.Length>0 && fecha.Length>0)
             {
+                //vamos a guradar datos en lista ingresos
                 InsumosModel insumoExistente = listInsumos.Find(x => x.Insumo == insumo);
-                if (insumoExistente != null)
+                Provider proveedorExistente = listProvider.Find(x => x.Name == provider);
+                if (insumoExistente != null && proveedorExistente != null)
                 {
-                    string sql = "INSERT INTO ingresos (insumo, vlrUnitario, recibo, cantidad, proveedor, observacion, fecha) VALUES " +
-                        "(@Insumo, @VlrUnitario, @Recibo, @Cantidad, @Proveedor, @Observacion, @Fecha)";
                     try
                     {
-                        using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
-                        {
-                            con.Open();
-                            OleDbCommand cmd = new OleDbCommand();
-                            OleDbTransaction transaction = null;
-                            cmd.Connection = con;
-                            cmd.Transaction = transaction;
-                            con.BeginTransaction();
-                            cmd.CommandText = sql;
+                        decimal vlrUnitario = Convert.ToDecimal(txtVlrUnitario.Text);
+                        int cantidad = Convert.ToInt32(txtCantAdd.Text);
+                        DateTime fechaAdd = Convert.ToDateTime(dateAddinsumo.Text);
+                        int idProveedor = Convert.ToInt32(proveedorExistente.Id);
+                        listIngresos.Add(new Ingresos(insumoExistente.Id, vlrUnitario, txtNumberSales.Text, cantidad, 
+                            idProveedor, txtObservation.Text, fechaAdd));
+                        string[] row = { numberIndex++.ToString(), insumoExistente.Insumo, insumoExistente.Unidad,
+                            cantidad.ToString(), vlrUnitario.ToString(), Convert.ToString(vlrUnitario*cantidad)};
+                        var listViewItem = new ListViewItem(row);
+                        listViewFactura.Items.Add(listViewItem);
+                        cmbInsumo.Text = "";
+                        txtVlrUnitario.Text = "";
+                        txtCantAdd.Text = "";
+                        txtObservation.Text = "";
 
-                            cmd.Parameters.Add();
-                        }
-                    }catch(Exception ex)
+                    }catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageError(ex);
                     }
                 }
             }
         }
+
+        
 
         private void ValidateInt(object sender, KeyPressEventArgs e)
         {
@@ -153,6 +174,132 @@ namespace restauran.views
             catch
             {
                 txtCantAdd.Text = "";
+            }
+        }
+
+        private void CantidadValidBaja_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                int cant = Convert.ToInt32(txtCantdel.Text.Trim());
+            }
+            catch
+            {
+                txtCantAdd.Text = "";
+            }
+        }
+
+        private void MessageError(Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void SaveItemsFacturaView(object sender, EventArgs e)
+        {
+            using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+            {
+                foreach (Ingresos ingreso in listIngresos)
+                {
+                    OleDbTransaction transaction = null;
+                    try
+                    {
+                        OleDbCommand cmd = new OleDbCommand();
+                        cmd.Connection = con;
+                        con.Open();
+                        transaction = con.BeginTransaction();
+                        cmd.Connection = con;
+                        cmd.Transaction = transaction;
+                        //agregar a ingresos y sumo stock
+                        string sql = $"INSERT INTO ingresos (insumo, vlrUnitario, recibo, cantidad, proveedor, observacion, fecha) VALUES " +
+                             $"(@insumo, @vlrUnitario, @recibo, @cantidad, @proveedor, " +
+                             $"@observacion, @fecha);";
+                        //MessageBox.Show(sql);
+                        cmd.CommandText = sql;
+                        cmd.Parameters.Add("@insumo", OleDbType.Integer).Value = ingreso.Insumo;
+                        cmd.Parameters.Add("@vlrUnitario", OleDbType.Decimal).Value = ingreso.VlrUnitario;
+                        cmd.Parameters.Add("@recibo", OleDbType.Char).Value = ingreso.Recibo;
+                        cmd.Parameters.Add("@cantidad", OleDbType.Integer).Value = ingreso.Cantidad;
+                        cmd.Parameters.Add("@proveedor", OleDbType.Integer).Value = ingreso.Proveedor;
+                        cmd.Parameters.Add("@observacion", OleDbType.Char).Value = ingreso.Observacion;
+                        cmd.Parameters.Add("@fecha", OleDbType.Date).Value = ingreso.Fecha;
+                        //MessageBox.Show("el id de proveedor es " + ingreso.Proveedor + " el id de insumo es " + ingreso.Insumo);
+
+                        cmd.ExecuteNonQuery();
+
+                        string sql2 = $"UPDATE  insumos SET stock= (stock + {ingreso.Cantidad} )  WHERE id = @Id;";
+                        //cmd.Parameters.Add("@Cant", OleDbType.Integer).Value = ingreso.Cantidad;
+                        cmd.Parameters.Add("@Id", OleDbType.Integer).Value = ingreso.Insumo;
+                        MessageBox.Show(sql2);
+                        cmd.CommandText = sql2;
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                        con.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        try
+                        {
+                            transaction.Rollback();
+                        }
+                        catch
+                        {
+                            //transaction no esta activa
+                        }
+                        MessageBox.Show("data base" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                listViewFactura.Items.Clear();
+                listIngresos.Clear();
+                cmbProvider.Text = "";
+                txtNumberSales.Text = "";
+                cmbProvider.Text = "";
+                txtCantAdd.Text = "";
+                txtObservation.Text = "";
+                txtVlrUnitario.Text = "";
+            }
+        }
+
+        private void DarBaja(object sender, EventArgs e)
+        {
+            using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+            {
+                OleDbTransaction transaction = null;
+                try
+                {
+                    int cantidad = Convert.ToInt32(txtCantdel.Text);
+                    InsumosModel insumoExistente = listInsumos.Find(x => x.Insumo == cmbProductsBaja.Text);
+                    
+                    OleDbCommand cmd = new OleDbCommand();
+                    cmd.Connection = con;
+                    con.Open();
+                    transaction = con.BeginTransaction();
+                    cmd.Connection = con;
+                    cmd.Transaction = transaction;
+                    string sql = $"UPDATE insumos SET stock = (stock - {cantidad} )  WHERE id = @Id;";
+                    string sql2 = $"INSERT INTO bajas (insumo, cantidad, observacion, fecha) VALUES (@insumo, @cantidad," +
+                        $"@observacion, @fecha)";
+                    cmd.Parameters.Add("@Id", OleDbType.Integer).Value = insumoExistente.Id;
+                    cmd.Parameters.Add("@Cantidad", OleDbType.Integer).Value = cantidad;
+                    cmd.Parameters.Add("@observacion", OleDbType.Char).Value = txtObservationBaja.Text.Trim();
+                    cmd.Parameters.Add("@fecha", OleDbType.Date).Value = Convert.ToDateTime(dateBaja.Text);
+
+                    cmd.CommandText = sql;
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = sql2;
+                    cmd.ExecuteNonQuery();
+                    transaction.Commit();
+                    con.Close();
+                    MessageBox.Show("Transaccion exitosa", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch(Exception ex)
+                {
+                    try
+                    {
+                        transaction.Rollback();
+                    }
+                    catch { }
+                    MessageError(ex);
+                }
             }
         }
     }
