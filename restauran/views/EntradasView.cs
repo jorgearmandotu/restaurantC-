@@ -101,7 +101,30 @@ namespace restauran.views
             if(provider.Length>0 && nFactura.Length>0 && insumo.Length>0 && cant.Length > 0
                 && vlrUnit.Length>0 && fecha.Length>0)
             {
+                InsumosModel insumoExistente = listInsumos.Find(x => x.Insumo == insumo);
+                if (insumoExistente != null)
+                {
+                    string sql = "INSERT INTO ingresos (insumo, vlrUnitario, recibo, cantidad, proveedor, observacion, fecha) VALUES " +
+                        "(@Insumo, @VlrUnitario, @Recibo, @Cantidad, @Proveedor, @Observacion, @Fecha)";
+                    try
+                    {
+                        using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+                        {
+                            con.Open();
+                            OleDbCommand cmd = new OleDbCommand();
+                            OleDbTransaction transaction = null;
+                            cmd.Connection = con;
+                            cmd.Transaction = transaction;
+                            con.BeginTransaction();
+                            cmd.CommandText = sql;
 
+                            cmd.Parameters.Add();
+                        }
+                    }catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 

@@ -29,12 +29,20 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.listViewFactura = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dateAddinsumo = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtVlrUnitario = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCantAdd = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnAddItemfact = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbInsumo = new System.Windows.Forms.ComboBox();
@@ -52,14 +60,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtCantAdd = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtVlrUnitario = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button2 = new System.Windows.Forms.Button();
-            this.dateAddinsumo = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -77,10 +79,19 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(555, 386);
+            this.groupBox1.Size = new System.Drawing.Size(555, 466);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Entradas";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(212, 430);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(138, 23);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Guardar Datos";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // listViewFactura
             // 
@@ -90,7 +101,7 @@
             this.columnHeader4,
             this.columnHeader3,
             this.columnHeader5});
-            this.listViewFactura.Location = new System.Drawing.Point(6, 199);
+            this.listViewFactura.Location = new System.Drawing.Point(6, 264);
             this.listViewFactura.Name = "listViewFactura";
             this.listViewFactura.Size = new System.Drawing.Size(528, 146);
             this.listViewFactura.TabIndex = 10;
@@ -119,8 +130,17 @@
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader3.Width = 56;
             // 
+            // columnHeader5
+            // 
+            this.columnHeader5.DisplayIndex = 3;
+            this.columnHeader5.Text = "Vlr. Unitario";
+            this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader5.Width = 75;
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.richTextBox2);
+            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.dateAddinsumo);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txtVlrUnitario);
@@ -133,14 +153,66 @@
             this.groupBox2.Controls.Add(this.btnNewInsumo);
             this.groupBox2.Location = new System.Drawing.Point(6, 56);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(540, 137);
+            this.groupBox2.Size = new System.Drawing.Size(540, 202);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Productos:";
             // 
+            // dateAddinsumo
+            // 
+            this.dateAddinsumo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateAddinsumo.Location = new System.Drawing.Point(422, 64);
+            this.dateAddinsumo.Name = "dateAddinsumo";
+            this.dateAddinsumo.Size = new System.Drawing.Size(109, 20);
+            this.dateAddinsumo.TabIndex = 16;
+            this.dateAddinsumo.Value = new System.DateTime(2019, 1, 14, 16, 38, 31, 0);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(357, 70);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Fecha:";
+            // 
+            // txtVlrUnitario
+            // 
+            this.txtVlrUnitario.Location = new System.Drawing.Point(422, 29);
+            this.txtVlrUnitario.Name = "txtVlrUnitario";
+            this.txtVlrUnitario.Size = new System.Drawing.Size(109, 20);
+            this.txtVlrUnitario.TabIndex = 14;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(357, 37);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Vlr.Unitario";
+            // 
+            // txtCantAdd
+            // 
+            this.txtCantAdd.Location = new System.Drawing.Point(65, 63);
+            this.txtCantAdd.Name = "txtCantAdd";
+            this.txtCantAdd.Size = new System.Drawing.Size(149, 20);
+            this.txtCantAdd.TabIndex = 12;
+            this.txtCantAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateInt);
+            this.txtCantAdd.Leave += new System.EventHandler(this.CantidadValid_Leave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 70);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 13);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Cantidad:";
+            // 
             // btnAddItemfact
             // 
-            this.btnAddItemfact.Location = new System.Drawing.Point(245, 108);
+            this.btnAddItemfact.Location = new System.Drawing.Point(245, 169);
             this.btnAddItemfact.Name = "btnAddItemfact";
             this.btnAddItemfact.Size = new System.Drawing.Size(75, 23);
             this.btnAddItemfact.TabIndex = 10;
@@ -243,7 +315,7 @@
             this.groupBox3.Controls.Add(this.textBox2);
             this.groupBox3.Controls.Add(this.comboBox3);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(12, 404);
+            this.groupBox3.Location = new System.Drawing.Point(21, 484);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(555, 169);
             this.groupBox3.TabIndex = 1;
@@ -293,79 +365,28 @@
             this.comboBox3.Size = new System.Drawing.Size(146, 21);
             this.comboBox3.TabIndex = 8;
             // 
-            // label7
+            // label10
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 70);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Cantidad:";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 106);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(81, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Observaciones:";
             // 
-            // txtCantAdd
+            // richTextBox2
             // 
-            this.txtCantAdd.Location = new System.Drawing.Point(65, 63);
-            this.txtCantAdd.Name = "txtCantAdd";
-            this.txtCantAdd.Size = new System.Drawing.Size(149, 20);
-            this.txtCantAdd.TabIndex = 12;
-            this.txtCantAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateInt);
-            this.txtCantAdd.Leave += new System.EventHandler(this.CantidadValid_Leave);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(357, 37);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Vlr.Unitario";
-            // 
-            // txtVlrUnitario
-            // 
-            this.txtVlrUnitario.Location = new System.Drawing.Point(422, 29);
-            this.txtVlrUnitario.Name = "txtVlrUnitario";
-            this.txtVlrUnitario.Size = new System.Drawing.Size(109, 20);
-            this.txtVlrUnitario.TabIndex = 14;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(357, 70);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Fecha:";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.DisplayIndex = 3;
-            this.columnHeader5.Text = "Vlr. Unitario";
-            this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader5.Width = 75;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(225, 351);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // dateAddinsumo
-            // 
-            this.dateAddinsumo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateAddinsumo.Location = new System.Drawing.Point(422, 64);
-            this.dateAddinsumo.Name = "dateAddinsumo";
-            this.dateAddinsumo.Size = new System.Drawing.Size(109, 20);
-            this.dateAddinsumo.TabIndex = 16;
-            this.dateAddinsumo.Value = new System.DateTime(2019, 1, 14, 16, 38, 31, 0);
+            this.richTextBox2.Location = new System.Drawing.Point(93, 106);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(435, 48);
+            this.richTextBox2.TabIndex = 18;
+            this.richTextBox2.Text = "";
             // 
             // EntradasView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 584);
+            this.ClientSize = new System.Drawing.Size(574, 666);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "EntradasView";
@@ -414,5 +435,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DateTimePicker dateAddinsumo;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Label label10;
     }
 }
