@@ -10,7 +10,7 @@ namespace restauran.controller
 	class DataAcces
 	{
 		public static string conection = ConfigurationManager.ConnectionStrings["restaurantConnectionString"].ConnectionString;
-
+        //public static decimal impuestoConsumo = Properties.Settings.Default.ImpuestoConsumo;
 		
 	}
 }

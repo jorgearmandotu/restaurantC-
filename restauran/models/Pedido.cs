@@ -12,7 +12,7 @@ namespace restauran.models
         private string name;//name producto
         private int cantidad;//cantidad
         private decimal precio;//precio
-        private int idProduct;
+        //private int idProduct;
 
         public Pedido(int id, string name, int cantidad, decimal precio)
         {

@@ -85,6 +85,10 @@ namespace restauran.views
             {
                 txtNameRetiro.Text = persona.Nombre;
             }
+            else
+            {
+                txtNameRetiro.Text = "";
+            }
         }
 
         private void RetirarPersonal(object sender, EventArgs e)

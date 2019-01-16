@@ -18,7 +18,8 @@ namespace restauran.views
     {
 
         private List<Pedido> listPedidos = new List<Pedido>();
-		List<Platos> platos = new List<Platos>();
+		List<Platos> listPlatos = new List<Platos>();
+        List<Clientes> listClientes = new List<Clientes>();
 		public Pedidos()
         {
             
@@ -29,6 +30,7 @@ namespace restauran.views
 			consulta();
             LoadMesas();
             LoadMeseros();
+            LoadClientes();
         }
 
 		private void ShowProductos(object sender, EventArgs e)
@@ -53,7 +55,7 @@ namespace restauran.views
 
 		private void LoadPlatos()
         {
-			platos.Clear();
+			listPlatos.Clear();
 			listViewPlatos.Items.Clear();
 			listViewBebidas.Items.Clear();
 			listViewEspeciales.Items.Clear();
@@ -72,13 +74,13 @@ namespace restauran.views
 					decimal precio = Convert.ToDecimal(dr["precio"]);
 					string image = Convert.ToString(dr["image"]);
 					int categoria = Convert.ToInt32(dr["categoria"]);
-					platos.Add(new Platos(id, plato, precio, image, categoria));
+					listPlatos .Add(new Platos(id, plato, precio, image, categoria));
 
 				}
 				con.Close();
 			}
 
-			foreach ( Platos plato in platos) {
+			foreach ( Platos plato in listPlatos) {
 				if(plato.Categoria == 1)
 				{
 					string[] row = { plato.Nombre, plato.Precio.ToString() };
@@ -254,7 +256,7 @@ namespace restauran.views
 			//MessageBox.Show(cmbMesa.SelectedIndex.ToString());
 			listViewPedido.Items.Clear();
 			CargarPedido();
-            if(cmbMesa.SelectedIndex >= 0)
+            if(cmbMesa.SelectedIndex >= 0 && cmbMesero.SelectedIndex >= 0)
             {
                 listViewPlatos.Enabled = true;
                 listViewBebidas.Enabled = true;
@@ -286,7 +288,7 @@ namespace restauran.views
 				}
 			}
 			lblValorPagar.Text = String.Format("{0:C}",vlrPagar);
-			decimal impConsumo = 0.08m;
+            decimal impConsumo = Properties.Settings.Default.ImpuestoConsumo;
 			decimal imp = vlrPagar * impConsumo;
 			lblImpConsumo.Text = String.Format("{0:C}",imp);
 		}
@@ -404,6 +406,108 @@ namespace restauran.views
         {
             EntradasView gestion = new EntradasView();
             gestion.ShowDialog();
+        }
+
+        private void SettingsShow(object sender, EventArgs e)
+        {
+            SettingsView setting = new SettingsView();
+            setting.ShowDialog();
+        }
+
+        private void SelectedChangedCommitCmbMesero(object sender, EventArgs e)
+        {
+            if (cmbMesa.SelectedIndex >= 0 && cmbMesero.SelectedIndex >= 0)
+            {
+                listViewPlatos.Enabled = true;
+                listViewBebidas.Enabled = true;
+                listViewEspeciales.Enabled = true;
+                listViewOtros.Enabled = true;
+
+            }
+            else
+            {
+                listViewPlatos.Enabled = false;
+                listViewBebidas.Enabled = false;
+                listViewEspeciales.Enabled = false;
+                listViewOtros.Enabled = false;
+            }
+        }
+
+        private void ClientesShow(object sender, EventArgs e)
+        {
+            ClientesView clientes = new ClientesView("");
+            clientes.ShowDialog();
+        }
+
+        private void LoadClientes()
+        {
+            string sql = "SELECT * FROM clientes";
+            using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+            {
+                try
+                {
+                    con.Open();
+                    OleDbCommand cmd = new OleDbCommand(sql, con);
+                    OleDbDataReader dr = cmd.ExecuteReader();
+                    listClientes.Clear();
+                    while (dr.Read())
+                    {
+                        string name = dr["nombre"].ToString();
+                        string identificacion = dr["identificacion"].ToString();
+                        string tipoId = dr["tipoId"].ToString();
+                        string telefono = dr["telefono"].ToString();
+                        string email = dr["email"].ToString();
+                        string direccion = dr["direccion"].ToString();
+                        listClientes.Add(new Clientes(name, identificacion, tipoId, telefono, email, direccion));
+                    }
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: ", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void FacturarPedido(object sender, EventArgs e)
+        {
+            //listPedidos;
+        }
+
+        private void ValidCliente(object sender, EventArgs e)
+        {
+            ValidCliente();
+        }
+
+        private void ValidClienteEnter(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                ValidCliente();
+            }
+        }
+
+        private void ValidCliente()
+        {
+            string id = txtIdCliente.Text.Trim();
+            Clientes cliente = listClientes.Find(x => x.Identificacion == id);
+            if (cliente != null)
+            {
+                lblNameCliente.Text = cliente.Nombre;
+            }
+            else
+            {
+                lblNameCliente.Text = "";
+            }
+        }
+
+        private void AddCliente(object sender, EventArgs e)
+        {
+            string id = txtIdCliente.Text.Trim();
+            ClientesView cliente = new ClientesView(id);
+            cliente.ShowDialog();
+            LoadClientes();
+            ValidCliente();
         }
     }
 }

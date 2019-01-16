@@ -290,6 +290,10 @@ namespace restauran.views
                     transaction.Commit();
                     con.Close();
                     MessageBox.Show("Transaccion exitosa", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtCantdel.Text = "";
+                    cmbProductsBaja.Text = "";
+                    dateBaja.ResetText();
+                    txtObservationBaja.Text = "";
                 }
                 catch(Exception ex)
                 {

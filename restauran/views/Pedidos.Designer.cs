@@ -34,6 +34,10 @@ namespace restauran.views
             this.cmbMesero = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnNewCliente = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtIdCliente = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnFacturar = new System.Windows.Forms.Button();
             this.lblImpConsumo = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -73,6 +77,11 @@ namespace restauran.views
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.lblNameCliente = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -102,11 +111,13 @@ namespace restauran.views
             // 
             // cmbMesero
             // 
+            this.cmbMesero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMesero.FormattingEnabled = true;
             this.cmbMesero.Location = new System.Drawing.Point(343, 19);
             this.cmbMesero.Name = "cmbMesero";
             this.cmbMesero.Size = new System.Drawing.Size(179, 21);
             this.cmbMesero.TabIndex = 10;
+            this.cmbMesero.SelectionChangeCommitted += new System.EventHandler(this.SelectedChangedCommitCmbMesero);
             // 
             // label4
             // 
@@ -119,6 +130,11 @@ namespace restauran.views
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.lblNameCliente);
+            this.groupBox6.Controls.Add(this.btnNewCliente);
+            this.groupBox6.Controls.Add(this.label6);
+            this.groupBox6.Controls.Add(this.txtIdCliente);
+            this.groupBox6.Controls.Add(this.label5);
             this.groupBox6.Controls.Add(this.btnFacturar);
             this.groupBox6.Controls.Add(this.lblImpConsumo);
             this.groupBox6.Controls.Add(this.label3);
@@ -132,6 +148,43 @@ namespace restauran.views
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Pedido";
             // 
+            // btnNewCliente
+            // 
+            this.btnNewCliente.Location = new System.Drawing.Point(305, 472);
+            this.btnNewCliente.Name = "btnNewCliente";
+            this.btnNewCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnNewCliente.TabIndex = 15;
+            this.btnNewCliente.Text = "Nuevo";
+            this.btnNewCliente.UseVisualStyleBackColor = true;
+            this.btnNewCliente.Click += new System.EventHandler(this.AddCliente);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(21, 512);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(82, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Nombre Cliente:";
+            // 
+            // txtIdCliente
+            // 
+            this.txtIdCliente.Location = new System.Drawing.Point(129, 475);
+            this.txtIdCliente.Name = "txtIdCliente";
+            this.txtIdCliente.Size = new System.Drawing.Size(157, 20);
+            this.txtIdCliente.TabIndex = 12;
+            this.txtIdCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidClienteEnter);
+            this.txtIdCliente.Leave += new System.EventHandler(this.ValidCliente);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 482);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Identificacion CLiente:";
+            // 
             // btnFacturar
             // 
             this.btnFacturar.Location = new System.Drawing.Point(104, 551);
@@ -140,12 +193,13 @@ namespace restauran.views
             this.btnFacturar.TabIndex = 10;
             this.btnFacturar.Text = "Facturar";
             this.btnFacturar.UseVisualStyleBackColor = true;
+            this.btnFacturar.Click += new System.EventHandler(this.FacturarPedido);
             // 
             // lblImpConsumo
             // 
             this.lblImpConsumo.AutoSize = true;
             this.lblImpConsumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImpConsumo.Location = new System.Drawing.Point(255, 472);
+            this.lblImpConsumo.Location = new System.Drawing.Point(255, 411);
             this.lblImpConsumo.MinimumSize = new System.Drawing.Size(120, 20);
             this.lblImpConsumo.Name = "lblImpConsumo";
             this.lblImpConsumo.Size = new System.Drawing.Size(120, 20);
@@ -155,7 +209,7 @@ namespace restauran.views
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(126, 479);
+            this.label3.Location = new System.Drawing.Point(144, 418);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 13);
             this.label3.TabIndex = 8;
@@ -165,7 +219,7 @@ namespace restauran.views
             // 
             this.lblValorPagar.AutoSize = true;
             this.lblValorPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorPagar.Location = new System.Drawing.Point(255, 501);
+            this.lblValorPagar.Location = new System.Drawing.Point(260, 442);
             this.lblValorPagar.MinimumSize = new System.Drawing.Size(120, 20);
             this.lblValorPagar.Name = "lblValorPagar";
             this.lblValorPagar.Size = new System.Drawing.Size(120, 20);
@@ -175,7 +229,7 @@ namespace restauran.views
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(162, 508);
+            this.label2.Location = new System.Drawing.Point(180, 449);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 6;
@@ -189,7 +243,7 @@ namespace restauran.views
             this.cantidad});
             this.listViewPedido.Location = new System.Drawing.Point(6, 21);
             this.listViewPedido.Name = "listViewPedido";
-            this.listViewPedido.Size = new System.Drawing.Size(369, 431);
+            this.listViewPedido.Size = new System.Drawing.Size(369, 373);
             this.listViewPedido.TabIndex = 5;
             this.listViewPedido.UseCompatibleStateImageBehavior = false;
             this.listViewPedido.View = System.Windows.Forms.View.Details;
@@ -398,7 +452,11 @@ namespace restauran.views
             this.toolStripLabel1,
             this.toolStripSeparator4,
             this.toolStripLabel2,
-            this.toolStripSeparator5});
+            this.toolStripSeparator5,
+            this.toolStripLabel3,
+            this.toolStripSeparator6,
+            this.toolStripLabel4,
+            this.toolStripSeparator7});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1008, 25);
@@ -413,8 +471,8 @@ namespace restauran.views
             // toolStripProductos
             // 
             this.toolStripProductos.Name = "toolStripProductos";
-            this.toolStripProductos.Size = new System.Drawing.Size(61, 22);
-            this.toolStripProductos.Text = "Productos";
+            this.toolStripProductos.Size = new System.Drawing.Size(47, 22);
+            this.toolStripProductos.Text = "Recetas";
             this.toolStripProductos.Click += new System.EventHandler(this.ShowProductos);
             // 
             // toolStripSeparator2
@@ -457,6 +515,40 @@ namespace restauran.views
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(49, 22);
+            this.toolStripLabel3.Text = "Settings";
+            this.toolStripLabel3.Click += new System.EventHandler(this.SettingsShow);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel4
+            // 
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(49, 22);
+            this.toolStripLabel4.Text = "Clientes";
+            this.toolStripLabel4.Click += new System.EventHandler(this.ClientesShow);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // lblNameCliente
+            // 
+            this.lblNameCliente.AutoSize = true;
+            this.lblNameCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameCliente.Location = new System.Drawing.Point(129, 505);
+            this.lblNameCliente.MinimumSize = new System.Drawing.Size(157, 20);
+            this.lblNameCliente.Name = "lblNameCliente";
+            this.lblNameCliente.Size = new System.Drawing.Size(157, 20);
+            this.lblNameCliente.TabIndex = 16;
             // 
             // Pedidos
             // 
@@ -527,5 +619,14 @@ namespace restauran.views
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.Button btnNewCliente;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtIdCliente;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblNameCliente;
     }
 }

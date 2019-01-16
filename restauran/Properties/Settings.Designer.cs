@@ -32,5 +32,17 @@ namespace restauran.Properties {
                 return ((string)(this["restaurantConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal ImpuestoConsumo {
+            get {
+                return ((decimal)(this["ImpuestoConsumo"]));
+            }
+            set {
+                this["ImpuestoConsumo"] = value;
+            }
+        }
     }
 }
