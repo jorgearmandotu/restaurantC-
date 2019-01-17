@@ -14,6 +14,7 @@ namespace restauran.models
         private string telefonoo;
         private string email;
         private string direccion;
+        //private List<Pedido> pedido;
 
         public Clientes(string nombre, string identificacion, string tipoIdentificacion, string telefonoo, string email, string direccion)
         {
@@ -31,5 +32,6 @@ namespace restauran.models
         public string Telefonoo { get => telefonoo; set => telefonoo = value; }
         public string Email { get => email; set => email = value; }
         public string Direccion { get => direccion; set => direccion = value; }
+        //internal List<Pedido> Pedido { get => pedido; set => pedido = value; }
     }
 }

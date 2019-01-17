@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtImpuestoConsumo = new System.Windows.Forms.TextBox();
             this.btnSaveImpuestoConsumo = new System.Windows.Forms.Button();
+            this.txtImpuestoConsumo = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,45 +40,46 @@
             this.groupBox1.Controls.Add(this.btnSaveImpuestoConsumo);
             this.groupBox1.Controls.Add(this.txtImpuestoConsumo);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(14, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(352, 51);
+            this.groupBox1.Size = new System.Drawing.Size(411, 59);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Impuesto Consumo:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Valor:";
-            // 
-            // txtImpuestoConsumo
-            // 
-            this.txtImpuestoConsumo.Location = new System.Drawing.Point(47, 18);
-            this.txtImpuestoConsumo.Name = "txtImpuestoConsumo";
-            this.txtImpuestoConsumo.Size = new System.Drawing.Size(117, 20);
-            this.txtImpuestoConsumo.TabIndex = 1;
-            // 
             // btnSaveImpuestoConsumo
             // 
-            this.btnSaveImpuestoConsumo.Location = new System.Drawing.Point(218, 15);
+            this.btnSaveImpuestoConsumo.Location = new System.Drawing.Point(254, 17);
             this.btnSaveImpuestoConsumo.Name = "btnSaveImpuestoConsumo";
-            this.btnSaveImpuestoConsumo.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveImpuestoConsumo.Size = new System.Drawing.Size(87, 27);
             this.btnSaveImpuestoConsumo.TabIndex = 2;
             this.btnSaveImpuestoConsumo.Text = "Guardar";
             this.btnSaveImpuestoConsumo.UseVisualStyleBackColor = true;
             this.btnSaveImpuestoConsumo.Click += new System.EventHandler(this.SaveInpuestoConsumo);
             // 
+            // txtImpuestoConsumo
+            // 
+            this.txtImpuestoConsumo.Location = new System.Drawing.Point(55, 21);
+            this.txtImpuestoConsumo.Name = "txtImpuestoConsumo";
+            this.txtImpuestoConsumo.Size = new System.Drawing.Size(136, 21);
+            this.txtImpuestoConsumo.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 15);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Valor:";
+            // 
             // SettingsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 103);
+            this.ClientSize = new System.Drawing.Size(474, 119);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "SettingsView";
             this.Text = "SettingsView";
             this.groupBox1.ResumeLayout(false);

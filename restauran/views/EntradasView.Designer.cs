@@ -58,13 +58,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtCantdel = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dateBaja = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
             this.btnDarBaja = new System.Windows.Forms.Button();
             this.txtObservationBaja = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbProductsBaja = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dateBaja = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -80,18 +80,18 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.cmbProvider);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(14, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(555, 466);
+            this.groupBox1.Size = new System.Drawing.Size(647, 538);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Entradas";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(212, 430);
+            this.button2.Location = new System.Drawing.Point(247, 496);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(138, 23);
+            this.button2.Size = new System.Drawing.Size(161, 27);
             this.button2.TabIndex = 11;
             this.button2.Text = "Guardar Datos";
             this.button2.UseVisualStyleBackColor = true;
@@ -106,9 +106,9 @@
             this.columnHeader5,
             this.columnHeader3,
             this.columnHeader6});
-            this.listViewFactura.Location = new System.Drawing.Point(6, 264);
+            this.listViewFactura.Location = new System.Drawing.Point(7, 305);
             this.listViewFactura.Name = "listViewFactura";
-            this.listViewFactura.Size = new System.Drawing.Size(540, 146);
+            this.listViewFactura.Size = new System.Drawing.Size(629, 168);
             this.listViewFactura.TabIndex = 10;
             this.listViewFactura.UseCompatibleStateImageBehavior = false;
             this.listViewFactura.View = System.Windows.Forms.View.Details;
@@ -159,69 +159,69 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.cmbInsumo);
             this.groupBox2.Controls.Add(this.btnNewInsumo);
-            this.groupBox2.Location = new System.Drawing.Point(6, 56);
+            this.groupBox2.Location = new System.Drawing.Point(7, 65);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(540, 202);
+            this.groupBox2.Size = new System.Drawing.Size(630, 233);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Productos:";
             // 
             // txtObservation
             // 
-            this.txtObservation.Location = new System.Drawing.Point(93, 106);
+            this.txtObservation.Location = new System.Drawing.Point(108, 122);
             this.txtObservation.Name = "txtObservation";
-            this.txtObservation.Size = new System.Drawing.Size(435, 48);
+            this.txtObservation.Size = new System.Drawing.Size(507, 55);
             this.txtObservation.TabIndex = 18;
             this.txtObservation.Text = "";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 106);
+            this.label10.Location = new System.Drawing.Point(7, 122);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(81, 13);
+            this.label10.Size = new System.Drawing.Size(91, 15);
             this.label10.TabIndex = 17;
             this.label10.Text = "Observaciones:";
             // 
             // dateAddinsumo
             // 
             this.dateAddinsumo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateAddinsumo.Location = new System.Drawing.Point(422, 64);
+            this.dateAddinsumo.Location = new System.Drawing.Point(492, 74);
             this.dateAddinsumo.Name = "dateAddinsumo";
-            this.dateAddinsumo.Size = new System.Drawing.Size(109, 20);
+            this.dateAddinsumo.Size = new System.Drawing.Size(126, 21);
             this.dateAddinsumo.TabIndex = 16;
             this.dateAddinsumo.Value = new System.DateTime(2019, 1, 15, 10, 4, 54, 0);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(357, 70);
+            this.label9.Location = new System.Drawing.Point(416, 81);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.Size = new System.Drawing.Size(44, 15);
             this.label9.TabIndex = 15;
             this.label9.Text = "Fecha:";
             // 
             // txtVlrUnitario
             // 
-            this.txtVlrUnitario.Location = new System.Drawing.Point(422, 29);
+            this.txtVlrUnitario.Location = new System.Drawing.Point(492, 33);
             this.txtVlrUnitario.Name = "txtVlrUnitario";
-            this.txtVlrUnitario.Size = new System.Drawing.Size(109, 20);
+            this.txtVlrUnitario.Size = new System.Drawing.Size(126, 21);
             this.txtVlrUnitario.TabIndex = 14;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(357, 37);
+            this.label8.Location = new System.Drawing.Point(416, 43);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.Size = new System.Drawing.Size(67, 15);
             this.label8.TabIndex = 13;
             this.label8.Text = "Vlr.Unitario";
             // 
             // txtCantAdd
             // 
-            this.txtCantAdd.Location = new System.Drawing.Point(65, 63);
+            this.txtCantAdd.Location = new System.Drawing.Point(76, 73);
             this.txtCantAdd.Name = "txtCantAdd";
-            this.txtCantAdd.Size = new System.Drawing.Size(149, 20);
+            this.txtCantAdd.Size = new System.Drawing.Size(173, 21);
             this.txtCantAdd.TabIndex = 12;
             this.txtCantAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateInt);
             this.txtCantAdd.Leave += new System.EventHandler(this.CantidadValid_Leave);
@@ -229,17 +229,17 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 70);
+            this.label7.Location = new System.Drawing.Point(8, 81);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 13);
+            this.label7.Size = new System.Drawing.Size(59, 15);
             this.label7.TabIndex = 11;
             this.label7.Text = "Cantidad:";
             // 
             // btnAddItemfact
             // 
-            this.btnAddItemfact.Location = new System.Drawing.Point(245, 169);
+            this.btnAddItemfact.Location = new System.Drawing.Point(286, 195);
             this.btnAddItemfact.Name = "btnAddItemfact";
-            this.btnAddItemfact.Size = new System.Drawing.Size(75, 23);
+            this.btnAddItemfact.Size = new System.Drawing.Size(87, 27);
             this.btnAddItemfact.TabIndex = 10;
             this.btnAddItemfact.Text = "Ingresar";
             this.btnAddItemfact.UseVisualStyleBackColor = true;
@@ -248,25 +248,25 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 37);
+            this.label3.Location = new System.Drawing.Point(7, 43);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.Size = new System.Drawing.Size(59, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "Producto:";
             // 
             // cmbInsumo
             // 
             this.cmbInsumo.FormattingEnabled = true;
-            this.cmbInsumo.Location = new System.Drawing.Point(68, 29);
+            this.cmbInsumo.Location = new System.Drawing.Point(79, 33);
             this.cmbInsumo.Name = "cmbInsumo";
-            this.cmbInsumo.Size = new System.Drawing.Size(146, 21);
+            this.cmbInsumo.Size = new System.Drawing.Size(170, 23);
             this.cmbInsumo.TabIndex = 6;
             // 
             // btnNewInsumo
             // 
-            this.btnNewInsumo.Location = new System.Drawing.Point(245, 27);
+            this.btnNewInsumo.Location = new System.Drawing.Point(286, 31);
             this.btnNewInsumo.Name = "btnNewInsumo";
-            this.btnNewInsumo.Size = new System.Drawing.Size(75, 23);
+            this.btnNewInsumo.Size = new System.Drawing.Size(87, 27);
             this.btnNewInsumo.TabIndex = 7;
             this.btnNewInsumo.Text = "Nuevo";
             this.btnNewInsumo.UseVisualStyleBackColor = true;
@@ -274,25 +274,25 @@
             // 
             // txtNumberSales
             // 
-            this.txtNumberSales.Location = new System.Drawing.Point(426, 20);
+            this.txtNumberSales.Location = new System.Drawing.Point(497, 23);
             this.txtNumberSales.Name = "txtNumberSales";
-            this.txtNumberSales.Size = new System.Drawing.Size(111, 20);
+            this.txtNumberSales.Size = new System.Drawing.Size(129, 21);
             this.txtNumberSales.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(363, 27);
+            this.label2.Location = new System.Drawing.Point(423, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.Size = new System.Drawing.Size(62, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "N. factura:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(251, 17);
+            this.button1.Location = new System.Drawing.Point(293, 20);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(87, 27);
             this.button1.TabIndex = 2;
             this.button1.Text = "Nuevo";
             this.button1.UseVisualStyleBackColor = true;
@@ -301,34 +301,34 @@
             // cmbProvider
             // 
             this.cmbProvider.FormattingEnabled = true;
-            this.cmbProvider.Location = new System.Drawing.Point(74, 19);
+            this.cmbProvider.Location = new System.Drawing.Point(86, 22);
             this.cmbProvider.Name = "cmbProvider";
-            this.cmbProvider.Size = new System.Drawing.Size(146, 21);
+            this.cmbProvider.Size = new System.Drawing.Size(170, 23);
             this.cmbProvider.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 27);
+            this.label1.Location = new System.Drawing.Point(7, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.Size = new System.Drawing.Size(66, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Proveedor:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(200, 32);
+            this.label4.Location = new System.Drawing.Point(233, 37);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
+            this.label4.Size = new System.Drawing.Size(59, 15);
             this.label4.TabIndex = 8;
             this.label4.Text = "Cantidad:";
             // 
             // txtCantdel
             // 
-            this.txtCantdel.Location = new System.Drawing.Point(258, 25);
+            this.txtCantdel.Location = new System.Drawing.Point(301, 29);
             this.txtCantdel.Name = "txtCantdel";
-            this.txtCantdel.Size = new System.Drawing.Size(92, 20);
+            this.txtCantdel.Size = new System.Drawing.Size(107, 21);
             this.txtCantdel.TabIndex = 9;
             this.txtCantdel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateInt);
             this.txtCantdel.Leave += new System.EventHandler(this.CantidadValidBaja_Leave);
@@ -344,18 +344,36 @@
             this.groupBox3.Controls.Add(this.txtCantdel);
             this.groupBox3.Controls.Add(this.cmbProductsBaja);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(12, 484);
+            this.groupBox3.Location = new System.Drawing.Point(14, 558);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(555, 169);
+            this.groupBox3.Size = new System.Drawing.Size(647, 195);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bajas";
             // 
+            // dateBaja
+            // 
+            this.dateBaja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateBaja.Location = new System.Drawing.Point(477, 30);
+            this.dateBaja.Name = "dateBaja";
+            this.dateBaja.Size = new System.Drawing.Size(145, 21);
+            this.dateBaja.TabIndex = 14;
+            this.dateBaja.Value = new System.DateTime(2019, 1, 15, 16, 21, 29, 0);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(423, 37);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(44, 15);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Fecha:";
+            // 
             // btnDarBaja
             // 
-            this.btnDarBaja.Location = new System.Drawing.Point(251, 140);
+            this.btnDarBaja.Location = new System.Drawing.Point(293, 162);
             this.btnDarBaja.Name = "btnDarBaja";
-            this.btnDarBaja.Size = new System.Drawing.Size(75, 23);
+            this.btnDarBaja.Size = new System.Drawing.Size(87, 27);
             this.btnDarBaja.TabIndex = 12;
             this.btnDarBaja.Text = "Dar de Baja";
             this.btnDarBaja.UseVisualStyleBackColor = true;
@@ -363,63 +381,46 @@
             // 
             // txtObservationBaja
             // 
-            this.txtObservationBaja.Location = new System.Drawing.Point(83, 61);
+            this.txtObservationBaja.Location = new System.Drawing.Point(97, 70);
             this.txtObservationBaja.Name = "txtObservationBaja";
-            this.txtObservationBaja.Size = new System.Drawing.Size(454, 65);
+            this.txtObservationBaja.Size = new System.Drawing.Size(529, 74);
             this.txtObservationBaja.TabIndex = 11;
             this.txtObservationBaja.Text = "";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 61);
+            this.label6.Location = new System.Drawing.Point(7, 70);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 13);
+            this.label6.Size = new System.Drawing.Size(78, 15);
             this.label6.TabIndex = 10;
             this.label6.Text = "Observacion:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 32);
+            this.label5.Location = new System.Drawing.Point(3, 37);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.Size = new System.Drawing.Size(59, 15);
             this.label5.TabIndex = 7;
             this.label5.Text = "Producto:";
             // 
             // cmbProductsBaja
             // 
             this.cmbProductsBaja.FormattingEnabled = true;
-            this.cmbProductsBaja.Location = new System.Drawing.Point(65, 24);
+            this.cmbProductsBaja.Location = new System.Drawing.Point(76, 28);
             this.cmbProductsBaja.Name = "cmbProductsBaja";
-            this.cmbProductsBaja.Size = new System.Drawing.Size(128, 21);
+            this.cmbProductsBaja.Size = new System.Drawing.Size(149, 23);
             this.cmbProductsBaja.TabIndex = 8;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(363, 32);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 13);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Fecha:";
-            // 
-            // dateBaja
-            // 
-            this.dateBaja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateBaja.Location = new System.Drawing.Point(409, 26);
-            this.dateBaja.Name = "dateBaja";
-            this.dateBaja.Size = new System.Drawing.Size(125, 20);
-            this.dateBaja.TabIndex = 14;
-            this.dateBaja.Value = new System.DateTime(2019, 1, 15, 16, 21, 29, 0);
             // 
             // EntradasView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(574, 666);
+            this.ClientSize = new System.Drawing.Size(670, 749);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "EntradasView";
             this.Text = "EntradasView";
             this.groupBox1.ResumeLayout(false);

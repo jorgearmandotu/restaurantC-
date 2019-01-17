@@ -82,7 +82,8 @@ namespace restauran.views
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbFormaPago = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -106,7 +107,7 @@ namespace restauran.views
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1005, 696);
+            this.groupBox1.Size = new System.Drawing.Size(984, 654);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pedidos";
@@ -134,6 +135,8 @@ namespace restauran.views
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.cmbFormaPago);
+            this.groupBox6.Controls.Add(this.label7);
             this.groupBox6.Controls.Add(this.lblNameCliente);
             this.groupBox6.Controls.Add(this.btnNewCliente);
             this.groupBox6.Controls.Add(this.label6);
@@ -145,9 +148,9 @@ namespace restauran.views
             this.groupBox6.Controls.Add(this.lblValorPagar);
             this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.Controls.Add(this.listViewPedido);
-            this.groupBox6.Location = new System.Drawing.Point(588, 69);
+            this.groupBox6.Location = new System.Drawing.Point(587, 54);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(386, 601);
+            this.groupBox6.Size = new System.Drawing.Size(386, 586);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Pedido";
@@ -156,7 +159,7 @@ namespace restauran.views
             // 
             this.lblNameCliente.AutoSize = true;
             this.lblNameCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameCliente.Location = new System.Drawing.Point(129, 505);
+            this.lblNameCliente.Location = new System.Drawing.Point(129, 459);
             this.lblNameCliente.MinimumSize = new System.Drawing.Size(157, 20);
             this.lblNameCliente.Name = "lblNameCliente";
             this.lblNameCliente.Size = new System.Drawing.Size(157, 20);
@@ -164,7 +167,7 @@ namespace restauran.views
             // 
             // btnNewCliente
             // 
-            this.btnNewCliente.Location = new System.Drawing.Point(305, 472);
+            this.btnNewCliente.Location = new System.Drawing.Point(300, 427);
             this.btnNewCliente.Name = "btnNewCliente";
             this.btnNewCliente.Size = new System.Drawing.Size(75, 23);
             this.btnNewCliente.TabIndex = 15;
@@ -175,7 +178,7 @@ namespace restauran.views
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 512);
+            this.label6.Location = new System.Drawing.Point(21, 466);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 16);
             this.label6.TabIndex = 13;
@@ -183,7 +186,7 @@ namespace restauran.views
             // 
             // txtIdCliente
             // 
-            this.txtIdCliente.Location = new System.Drawing.Point(142, 473);
+            this.txtIdCliente.Location = new System.Drawing.Point(142, 427);
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.Size = new System.Drawing.Size(157, 22);
             this.txtIdCliente.TabIndex = 12;
@@ -193,15 +196,15 @@ namespace restauran.views
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(48, 479);
+            this.label5.Location = new System.Drawing.Point(55, 433);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 16);
+            this.label5.Size = new System.Drawing.Size(70, 16);
             this.label5.TabIndex = 11;
-            this.label5.Text = "CC CLiente:";
+            this.label5.Text = "Id CLiente:";
             // 
             // btnFacturar
             // 
-            this.btnFacturar.Location = new System.Drawing.Point(104, 551);
+            this.btnFacturar.Location = new System.Drawing.Point(132, 538);
             this.btnFacturar.Name = "btnFacturar";
             this.btnFacturar.Size = new System.Drawing.Size(150, 23);
             this.btnFacturar.TabIndex = 10;
@@ -213,7 +216,7 @@ namespace restauran.views
             // 
             this.lblImpConsumo.AutoSize = true;
             this.lblImpConsumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImpConsumo.Location = new System.Drawing.Point(255, 411);
+            this.lblImpConsumo.Location = new System.Drawing.Point(255, 365);
             this.lblImpConsumo.MinimumSize = new System.Drawing.Size(120, 20);
             this.lblImpConsumo.Name = "lblImpConsumo";
             this.lblImpConsumo.Size = new System.Drawing.Size(120, 20);
@@ -223,7 +226,7 @@ namespace restauran.views
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(111, 415);
+            this.label3.Location = new System.Drawing.Point(111, 369);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(138, 16);
             this.label3.TabIndex = 8;
@@ -233,7 +236,7 @@ namespace restauran.views
             // 
             this.lblValorPagar.AutoSize = true;
             this.lblValorPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorPagar.Location = new System.Drawing.Point(260, 442);
+            this.lblValorPagar.Location = new System.Drawing.Point(260, 396);
             this.lblValorPagar.MinimumSize = new System.Drawing.Size(120, 20);
             this.lblValorPagar.Name = "lblValorPagar";
             this.lblValorPagar.Size = new System.Drawing.Size(120, 20);
@@ -243,7 +246,7 @@ namespace restauran.views
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(155, 446);
+            this.label2.Location = new System.Drawing.Point(155, 400);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 16);
             this.label2.TabIndex = 6;
@@ -257,7 +260,7 @@ namespace restauran.views
             this.cantidad});
             this.listViewPedido.Location = new System.Drawing.Point(6, 21);
             this.listViewPedido.Name = "listViewPedido";
-            this.listViewPedido.Size = new System.Drawing.Size(369, 373);
+            this.listViewPedido.Size = new System.Drawing.Size(369, 335);
             this.listViewPedido.TabIndex = 5;
             this.listViewPedido.UseCompatibleStateImageBehavior = false;
             this.listViewPedido.View = System.Windows.Forms.View.Details;
@@ -283,9 +286,9 @@ namespace restauran.views
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.listViewOtros);
-            this.groupBox5.Location = new System.Drawing.Point(292, 379);
+            this.groupBox5.Location = new System.Drawing.Point(292, 350);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(230, 304);
+            this.groupBox5.Size = new System.Drawing.Size(230, 290);
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Otros";
@@ -296,9 +299,9 @@ namespace restauran.views
             this.columnHeader3,
             this.columnHeader4});
             this.listViewOtros.Enabled = false;
-            this.listViewOtros.Location = new System.Drawing.Point(6, 19);
+            this.listViewOtros.Location = new System.Drawing.Point(7, 19);
             this.listViewOtros.Name = "listViewOtros";
-            this.listViewOtros.Size = new System.Drawing.Size(217, 272);
+            this.listViewOtros.Size = new System.Drawing.Size(217, 263);
             this.listViewOtros.TabIndex = 0;
             this.listViewOtros.UseCompatibleStateImageBehavior = false;
             this.listViewOtros.View = System.Windows.Forms.View.Details;
@@ -320,9 +323,9 @@ namespace restauran.views
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.listViewEspeciales);
-            this.groupBox4.Location = new System.Drawing.Point(9, 379);
+            this.groupBox4.Location = new System.Drawing.Point(16, 350);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(230, 297);
+            this.groupBox4.Size = new System.Drawing.Size(230, 290);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Especiales";
@@ -335,7 +338,7 @@ namespace restauran.views
             this.listViewEspeciales.Enabled = false;
             this.listViewEspeciales.Location = new System.Drawing.Point(7, 19);
             this.listViewEspeciales.Name = "listViewEspeciales";
-            this.listViewEspeciales.Size = new System.Drawing.Size(217, 272);
+            this.listViewEspeciales.Size = new System.Drawing.Size(217, 263);
             this.listViewEspeciales.TabIndex = 0;
             this.listViewEspeciales.UseCompatibleStateImageBehavior = false;
             this.listViewEspeciales.View = System.Windows.Forms.View.Details;
@@ -354,9 +357,9 @@ namespace restauran.views
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.listViewBebidas);
-            this.groupBox3.Location = new System.Drawing.Point(292, 69);
+            this.groupBox3.Location = new System.Drawing.Point(292, 54);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(230, 295);
+            this.groupBox3.Size = new System.Drawing.Size(230, 290);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bebidas";
@@ -369,7 +372,7 @@ namespace restauran.views
             this.listViewBebidas.Enabled = false;
             this.listViewBebidas.Location = new System.Drawing.Point(7, 21);
             this.listViewBebidas.Name = "listViewBebidas";
-            this.listViewBebidas.Size = new System.Drawing.Size(217, 268);
+            this.listViewBebidas.Size = new System.Drawing.Size(217, 263);
             this.listViewBebidas.TabIndex = 0;
             this.listViewBebidas.UseCompatibleStateImageBehavior = false;
             this.listViewBebidas.View = System.Windows.Forms.View.Details;
@@ -388,7 +391,7 @@ namespace restauran.views
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.listViewPlatos);
-            this.groupBox2.Location = new System.Drawing.Point(9, 69);
+            this.groupBox2.Location = new System.Drawing.Point(16, 54);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(230, 290);
             this.groupBox2.TabIndex = 3;
@@ -495,7 +498,7 @@ namespace restauran.views
             // toolStripProductos
             // 
             this.toolStripProductos.Name = "toolStripProductos";
-            this.toolStripProductos.Size = new System.Drawing.Size(47, 22);
+            this.toolStripProductos.Size = new System.Drawing.Size(53, 22);
             this.toolStripProductos.Text = "Recetas";
             this.toolStripProductos.Click += new System.EventHandler(this.ShowProductos);
             // 
@@ -507,7 +510,7 @@ namespace restauran.views
             // toolStripMesas
             // 
             this.toolStripMesas.Name = "toolStripMesas";
-            this.toolStripMesas.Size = new System.Drawing.Size(96, 22);
+            this.toolStripMesas.Size = new System.Drawing.Size(107, 22);
             this.toolStripMesas.Text = "Mesas/secciones";
             this.toolStripMesas.Click += new System.EventHandler(this.ShowMesas);
             // 
@@ -519,7 +522,7 @@ namespace restauran.views
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(52, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(58, 22);
             this.toolStripLabel1.Text = "Personal";
             this.toolStripLabel1.Click += new System.EventHandler(this.GestionPersonal);
             // 
@@ -531,7 +534,7 @@ namespace restauran.views
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(60, 22);
+            this.toolStripLabel2.Size = new System.Drawing.Size(65, 22);
             this.toolStripLabel2.Text = "Inventario";
             this.toolStripLabel2.Click += new System.EventHandler(this.GestionInsumos);
             // 
@@ -543,7 +546,7 @@ namespace restauran.views
             // toolStripLabel3
             // 
             this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(49, 22);
+            this.toolStripLabel3.Size = new System.Drawing.Size(54, 22);
             this.toolStripLabel3.Text = "Settings";
             this.toolStripLabel3.Click += new System.EventHandler(this.SettingsShow);
             // 
@@ -555,7 +558,7 @@ namespace restauran.views
             // toolStripLabel4
             // 
             this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(49, 22);
+            this.toolStripLabel4.Size = new System.Drawing.Size(53, 22);
             this.toolStripLabel4.Text = "Clientes";
             this.toolStripLabel4.Click += new System.EventHandler(this.ClientesShow);
             // 
@@ -564,21 +567,33 @@ namespace restauran.views
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
-            // panel1
+            // label7
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1008, 720);
-            this.panel1.TabIndex = 11;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 505);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(105, 16);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Forma de Pago:";
+            // 
+            // cmbFormaPago
+            // 
+            this.cmbFormaPago.FormattingEnabled = true;
+            this.cmbFormaPago.Items.AddRange(new object[] {
+            "Efectivo",
+            "Tarjeta"});
+            this.cmbFormaPago.Location = new System.Drawing.Point(142, 497);
+            this.cmbFormaPago.Name = "cmbFormaPago";
+            this.cmbFormaPago.Size = new System.Drawing.Size(157, 24);
+            this.cmbFormaPago.TabIndex = 18;
             // 
             // Pedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1008, 681);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.panel1);
             this.Name = "Pedidos";
             this.Text = "Pedidos";
             this.groupBox1.ResumeLayout(false);
@@ -649,6 +664,7 @@ namespace restauran.views
         private System.Windows.Forms.TextBox txtIdCliente;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblNameCliente;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox cmbFormaPago;
+        private System.Windows.Forms.Label label7;
     }
 }

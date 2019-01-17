@@ -27,7 +27,7 @@ namespace restauran.views
             InitializeComponent();
             //log.ShowDialog();
             LoadPlatos();
-			consulta();
+			Consulta();
             LoadMesas();
             LoadMeseros();
             LoadClientes();
@@ -316,7 +316,7 @@ namespace restauran.views
 			}
 		}
 
-		private void consulta()
+		private void Consulta()
 		{
 			/*using (SqlConnection con1 = new SqlConnection(DataAcces.conection))
 			{
@@ -363,7 +363,7 @@ namespace restauran.views
                     con.Close();
                 }catch(Exception ex)
                 {
-                    MessageBox.Show("Error: ", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error: "+ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -389,7 +389,7 @@ namespace restauran.views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: ", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error: "+ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -464,16 +464,40 @@ namespace restauran.views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: ", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error: "+ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
         private void FacturarPedido(object sender, EventArgs e)
         {
-            //listPedidos;
+            //listPedido //restar a insumos las recetas
+            string idCliente = txtIdCliente.Text;
+            DateTime fecha = DateTime.Now;
+            Clientes cliente = listClientes.Find(x => x.Identificacion == idCliente);
+            string mesero = cmbMesero.Text;
+            string formaPago = cmbFormaPago.Text;
+            Factura factura = new Factura(fecha, cliente.Nombre, cliente.Identificacion, cliente.Direccion, mesero, formaPago);
+            RestarInsumos();
         }
 
+        private void RestarInsumos()
+        {
+            foreach (Pedido pedido in listPedidos)
+            {
+                if(pedido.Id == cmbMesa.SelectedIndex)
+                {
+                    string plato = pedido.Name;
+                    int cantidad = pedido.Cantidad;
+                    decimal precio = pedido.Precio;
+                    Platos platoSelect = listPlatos.Find(x => x.Nombre == plato);
+                    //consultar receta// restar a insumos
+                    string sqlReceta = $"SELECT * FROM recetas WHERE plato = {platoSelect.Id} ";
+
+                }
+                
+            }
+        }
         private void ValidCliente(object sender, EventArgs e)
         {
             ValidCliente();

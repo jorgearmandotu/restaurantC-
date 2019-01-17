@@ -40,18 +40,18 @@
             this.groupBox1.Controls.Add(this.btnAddMesa);
             this.groupBox1.Controls.Add(this.txtNameMesa);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
+            this.groupBox1.Location = new System.Drawing.Point(15, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(286, 89);
+            this.groupBox1.Size = new System.Drawing.Size(334, 103);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mesas/Secciones";
             // 
             // btnAddMesa
             // 
-            this.btnAddMesa.Location = new System.Drawing.Point(107, 56);
+            this.btnAddMesa.Location = new System.Drawing.Point(125, 65);
             this.btnAddMesa.Name = "btnAddMesa";
-            this.btnAddMesa.Size = new System.Drawing.Size(75, 23);
+            this.btnAddMesa.Size = new System.Drawing.Size(87, 27);
             this.btnAddMesa.TabIndex = 2;
             this.btnAddMesa.Text = "Agregar";
             this.btnAddMesa.UseVisualStyleBackColor = true;
@@ -59,26 +59,27 @@
             // 
             // txtNameMesa
             // 
-            this.txtNameMesa.Location = new System.Drawing.Point(66, 20);
+            this.txtNameMesa.Location = new System.Drawing.Point(77, 23);
             this.txtNameMesa.Name = "txtNameMesa";
-            this.txtNameMesa.Size = new System.Drawing.Size(200, 20);
+            this.txtNameMesa.Size = new System.Drawing.Size(233, 21);
             this.txtNameMesa.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 27);
+            this.label1.Location = new System.Drawing.Point(19, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
             // Mesas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 111);
+            this.ClientSize = new System.Drawing.Size(359, 128);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Mesas";
             this.Text = "Mesas";
             this.groupBox1.ResumeLayout(false);

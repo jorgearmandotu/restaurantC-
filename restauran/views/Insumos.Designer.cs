@@ -52,18 +52,18 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
+            this.groupBox1.Location = new System.Drawing.Point(15, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(371, 189);
+            this.groupBox1.Size = new System.Drawing.Size(433, 218);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Insumos";
             // 
             // btnIngresoInsumo
             // 
-            this.btnIngresoInsumo.Location = new System.Drawing.Point(61, 143);
+            this.btnIngresoInsumo.Location = new System.Drawing.Point(71, 165);
             this.btnIngresoInsumo.Name = "btnIngresoInsumo";
-            this.btnIngresoInsumo.Size = new System.Drawing.Size(224, 23);
+            this.btnIngresoInsumo.Size = new System.Drawing.Size(261, 27);
             this.btnIngresoInsumo.TabIndex = 7;
             this.btnIngresoInsumo.Text = "Ingresar";
             this.btnIngresoInsumo.UseVisualStyleBackColor = true;
@@ -71,79 +71,80 @@
             // 
             // txtStockMinimo
             // 
-            this.txtStockMinimo.Location = new System.Drawing.Point(85, 100);
+            this.txtStockMinimo.Location = new System.Drawing.Point(99, 115);
             this.txtStockMinimo.Name = "txtStockMinimo";
-            this.txtStockMinimo.Size = new System.Drawing.Size(200, 20);
+            this.txtStockMinimo.Size = new System.Drawing.Size(233, 21);
             this.txtStockMinimo.TabIndex = 6;
             this.txtStockMinimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateTxtStockMinimokeypress);
             this.txtStockMinimo.Leave += new System.EventHandler(this.txtStockMinimo_Leave);
             // 
             // txtStockInicial
             // 
-            this.txtStockInicial.Location = new System.Drawing.Point(85, 75);
+            this.txtStockInicial.Location = new System.Drawing.Point(99, 87);
             this.txtStockInicial.Name = "txtStockInicial";
-            this.txtStockInicial.Size = new System.Drawing.Size(200, 20);
+            this.txtStockInicial.Size = new System.Drawing.Size(233, 21);
             this.txtStockInicial.TabIndex = 5;
             this.txtStockInicial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumbertxtStockInical);
             this.txtStockInicial.Leave += new System.EventHandler(this.LeaveTxtStockInical);
             // 
             // txtUnidad
             // 
-            this.txtUnidad.Location = new System.Drawing.Point(85, 50);
+            this.txtUnidad.Location = new System.Drawing.Point(99, 58);
             this.txtUnidad.Name = "txtUnidad";
-            this.txtUnidad.Size = new System.Drawing.Size(200, 20);
+            this.txtUnidad.Size = new System.Drawing.Size(233, 21);
             this.txtUnidad.TabIndex = 4;
             // 
             // txtNameInsumo
             // 
-            this.txtNameInsumo.Location = new System.Drawing.Point(85, 22);
+            this.txtNameInsumo.Location = new System.Drawing.Point(99, 25);
             this.txtNameInsumo.Name = "txtNameInsumo";
-            this.txtNameInsumo.Size = new System.Drawing.Size(200, 20);
+            this.txtNameInsumo.Size = new System.Drawing.Size(233, 21);
             this.txtNameInsumo.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 57);
+            this.label4.Location = new System.Drawing.Point(7, 66);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
+            this.label4.Size = new System.Drawing.Size(50, 15);
             this.label4.TabIndex = 3;
             this.label4.Text = "Unidad:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1, 107);
+            this.label3.Location = new System.Drawing.Point(1, 123);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
+            this.label3.Size = new System.Drawing.Size(85, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "Stock Minimo:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 82);
+            this.label2.Location = new System.Drawing.Point(7, 95);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.Size = new System.Drawing.Size(73, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "stock Inicial:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 29);
+            this.label1.Location = new System.Drawing.Point(7, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.Size = new System.Drawing.Size(58, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre: ";
             // 
             // Insumos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(389, 207);
+            this.ClientSize = new System.Drawing.Size(454, 239);
             this.Controls.Add(this.groupBox1);
-            this.MaximumSize = new System.Drawing.Size(405, 246);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximumSize = new System.Drawing.Size(470, 278);
             this.Name = "Insumos";
             this.Text = "Insumos";
             this.groupBox1.ResumeLayout(false);

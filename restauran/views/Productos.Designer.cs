@@ -69,18 +69,18 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(7, 12);
+            this.groupBox1.Location = new System.Drawing.Point(8, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(631, 462);
+            this.groupBox1.Size = new System.Drawing.Size(736, 533);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Recetas";
             // 
             // btnSaveReceta
             // 
-            this.btnSaveReceta.Location = new System.Drawing.Point(264, 426);
+            this.btnSaveReceta.Location = new System.Drawing.Point(308, 492);
             this.btnSaveReceta.Name = "btnSaveReceta";
-            this.btnSaveReceta.Size = new System.Drawing.Size(106, 23);
+            this.btnSaveReceta.Size = new System.Drawing.Size(124, 27);
             this.btnSaveReceta.TabIndex = 11;
             this.btnSaveReceta.Text = "Guardar Receta";
             this.btnSaveReceta.UseVisualStyleBackColor = true;
@@ -89,9 +89,9 @@
             // cmbNamePlato
             // 
             this.cmbNamePlato.FormattingEnabled = true;
-            this.cmbNamePlato.Location = new System.Drawing.Point(70, 46);
+            this.cmbNamePlato.Location = new System.Drawing.Point(82, 53);
             this.cmbNamePlato.Name = "cmbNamePlato";
-            this.cmbNamePlato.Size = new System.Drawing.Size(150, 21);
+            this.cmbNamePlato.Size = new System.Drawing.Size(174, 23);
             this.cmbNamePlato.TabIndex = 2;
             this.cmbNamePlato.SelectedIndexChanged += new System.EventHandler(this.CmbNamePlato_SelectedIndexChanged);
             // 
@@ -103,9 +103,9 @@
             this.Ingredientes.Controls.Add(this.txtCantidadIngrediente);
             this.Ingredientes.Controls.Add(this.label7);
             this.Ingredientes.Controls.Add(this.listInsumos);
-            this.Ingredientes.Location = new System.Drawing.Point(9, 138);
+            this.Ingredientes.Location = new System.Drawing.Point(10, 159);
             this.Ingredientes.Name = "Ingredientes";
-            this.Ingredientes.Size = new System.Drawing.Size(611, 282);
+            this.Ingredientes.Size = new System.Drawing.Size(713, 325);
             this.Ingredientes.TabIndex = 12;
             this.Ingredientes.TabStop = false;
             this.Ingredientes.Text = "Ingredientes:";
@@ -115,9 +115,9 @@
             this.listViewReceta.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.listViewReceta.Location = new System.Drawing.Point(198, 72);
+            this.listViewReceta.Location = new System.Drawing.Point(231, 83);
             this.listViewReceta.Name = "listViewReceta";
-            this.listViewReceta.Size = new System.Drawing.Size(396, 198);
+            this.listViewReceta.Size = new System.Drawing.Size(461, 228);
             this.listViewReceta.TabIndex = 10;
             this.listViewReceta.UseCompatibleStateImageBehavior = false;
             this.listViewReceta.View = System.Windows.Forms.View.Details;
@@ -135,9 +135,9 @@
             // 
             // btnNewIngrediente
             // 
-            this.btnNewIngrediente.Location = new System.Drawing.Point(479, 29);
+            this.btnNewIngrediente.Location = new System.Drawing.Point(559, 33);
             this.btnNewIngrediente.Name = "btnNewIngrediente";
-            this.btnNewIngrediente.Size = new System.Drawing.Size(115, 23);
+            this.btnNewIngrediente.Size = new System.Drawing.Size(134, 27);
             this.btnNewIngrediente.TabIndex = 9;
             this.btnNewIngrediente.Text = "Nuevo Ingrediente";
             this.btnNewIngrediente.UseVisualStyleBackColor = true;
@@ -145,9 +145,9 @@
             // 
             // btnAddIngrediente
             // 
-            this.btnAddIngrediente.Location = new System.Drawing.Point(381, 29);
+            this.btnAddIngrediente.Location = new System.Drawing.Point(444, 33);
             this.btnAddIngrediente.Name = "btnAddIngrediente";
-            this.btnAddIngrediente.Size = new System.Drawing.Size(75, 23);
+            this.btnAddIngrediente.Size = new System.Drawing.Size(87, 27);
             this.btnAddIngrediente.TabIndex = 8;
             this.btnAddIngrediente.Text = "Agregar";
             this.btnAddIngrediente.UseVisualStyleBackColor = true;
@@ -155,9 +155,9 @@
             // 
             // txtCantidadIngrediente
             // 
-            this.txtCantidadIngrediente.Location = new System.Drawing.Point(246, 19);
+            this.txtCantidadIngrediente.Location = new System.Drawing.Point(287, 22);
             this.txtCantidadIngrediente.Name = "txtCantidadIngrediente";
-            this.txtCantidadIngrediente.Size = new System.Drawing.Size(100, 20);
+            this.txtCantidadIngrediente.Size = new System.Drawing.Size(116, 21);
             this.txtCantidadIngrediente.TabIndex = 7;
             this.txtCantidadIngrediente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateInt);
             this.txtCantidadIngrediente.Leave += new System.EventHandler(this.txtCantidadIngrediente_Leave);
@@ -165,33 +165,34 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(183, 20);
+            this.label7.Location = new System.Drawing.Point(213, 23);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 13);
+            this.label7.Size = new System.Drawing.Size(57, 15);
             this.label7.TabIndex = 3;
             this.label7.Text = "cantidad:";
             // 
             // listInsumos
             // 
             this.listInsumos.FormattingEnabled = true;
-            this.listInsumos.Location = new System.Drawing.Point(6, 19);
+            this.listInsumos.ItemHeight = 15;
+            this.listInsumos.Location = new System.Drawing.Point(7, 22);
             this.listInsumos.Name = "listInsumos";
-            this.listInsumos.Size = new System.Drawing.Size(155, 251);
+            this.listInsumos.Size = new System.Drawing.Size(180, 289);
             this.listInsumos.TabIndex = 6;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(363, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(423, 22);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(171, 112);
+            this.pictureBox1.Size = new System.Drawing.Size(199, 129);
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
             // btnAddImg
             // 
-            this.btnAddImg.Location = new System.Drawing.Point(176, 98);
+            this.btnAddImg.Location = new System.Drawing.Point(205, 113);
             this.btnAddImg.Name = "btnAddImg";
-            this.btnAddImg.Size = new System.Drawing.Size(52, 23);
+            this.btnAddImg.Size = new System.Drawing.Size(61, 27);
             this.btnAddImg.TabIndex = 4;
             this.btnAddImg.Text = "Buscar";
             this.btnAddImg.UseVisualStyleBackColor = true;
@@ -199,16 +200,16 @@
             // 
             // txtImage
             // 
-            this.txtImage.Location = new System.Drawing.Point(70, 100);
+            this.txtImage.Location = new System.Drawing.Point(82, 115);
             this.txtImage.Name = "txtImage";
-            this.txtImage.Size = new System.Drawing.Size(100, 20);
+            this.txtImage.Size = new System.Drawing.Size(116, 21);
             this.txtImage.TabIndex = 7;
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(70, 73);
+            this.txtPrecio.Location = new System.Drawing.Point(82, 84);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(150, 20);
+            this.txtPrecio.Size = new System.Drawing.Size(174, 21);
             this.txtPrecio.TabIndex = 3;
             this.txtPrecio.Leave += new System.EventHandler(this.NumberTxt_Leave);
             // 
@@ -221,44 +222,44 @@
             "Bebidas",
             "Especiales",
             "Otros"});
-            this.cmbCategoria.Location = new System.Drawing.Point(70, 19);
+            this.cmbCategoria.Location = new System.Drawing.Point(82, 22);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(150, 21);
+            this.cmbCategoria.Size = new System.Drawing.Size(174, 23);
             this.cmbCategoria.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 107);
+            this.label4.Location = new System.Drawing.Point(7, 123);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.Size = new System.Drawing.Size(55, 15);
             this.label4.TabIndex = 3;
             this.label4.Text = "imagen: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 80);
+            this.label3.Location = new System.Drawing.Point(7, 92);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.Size = new System.Drawing.Size(47, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "precio: ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 54);
+            this.label2.Location = new System.Drawing.Point(7, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.Size = new System.Drawing.Size(41, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "Plato: ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 28);
+            this.label1.Location = new System.Drawing.Point(7, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.Size = new System.Drawing.Size(66, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Categoria: ";
             // 
@@ -268,10 +269,11 @@
             // 
             // Productos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 481);
+            this.ClientSize = new System.Drawing.Size(754, 555);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Productos";
             this.Text = "productos";
             this.groupBox1.ResumeLayout(false);

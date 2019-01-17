@@ -16,5 +16,11 @@ namespace restauran.views
         {
             InitializeComponent();
         }
+
+        private void FacturacionView_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewerFactura.RefreshReport();
+        }
     }
 }
