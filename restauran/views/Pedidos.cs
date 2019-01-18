@@ -477,7 +477,11 @@ namespace restauran.views
             Clientes cliente = listClientes.Find(x => x.Identificacion == idCliente);
             string mesero = cmbMesero.Text;
             string formaPago = cmbFormaPago.Text;
-            Factura factura = new Factura(fecha, cliente.Nombre, cliente.Identificacion, cliente.Direccion, mesero, formaPago);
+            if(cliente != null)
+            {
+                Factura factura = new Factura(fecha, cliente.Nombre, cliente.Identificacion, cliente.Direccion, mesero, formaPago);
+            }
+            
             RestarInsumos();
         }
 
@@ -493,7 +497,7 @@ namespace restauran.views
                     Platos platoSelect = listPlatos.Find(x => x.Nombre == plato);
                     //consultar receta// restar a insumos
                     string sqlReceta = $"SELECT * FROM recetas WHERE plato = {platoSelect.Id} ";
-
+                    // while => restar cantidad a insumo
                 }
                 
             }
