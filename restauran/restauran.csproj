@@ -208,7 +208,6 @@
       <DependentUpon>SettingsView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\restauran.models.Clientes.datasource" />
     <None Include="Properties\DataSources\restauran.models.Factura.datasource" />
     <None Include="Properties\DataSources\restauran.models.Pedido.datasource" />
     <None Include="Properties\Settings.settings">

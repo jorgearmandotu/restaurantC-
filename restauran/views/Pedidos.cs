@@ -31,6 +31,7 @@ namespace restauran.views
             LoadMesas();
             LoadMeseros();
             LoadClientes();
+            cmbFormaPago.SelectedIndex = 0;
         }
 
 		private void ShowProductos(object sender, EventArgs e)
@@ -437,6 +438,7 @@ namespace restauran.views
         {
             ClientesView clientes = new ClientesView("");
             clientes.ShowDialog();
+            LoadClientes();
         }
 
         private void LoadClientes()
@@ -472,35 +474,77 @@ namespace restauran.views
         private void FacturarPedido(object sender, EventArgs e)
         {
             //listPedido //restar a insumos las recetas
-            string idCliente = txtIdCliente.Text;
+            string idCliente = txtIdCliente.Text.Trim();
             DateTime fecha = DateTime.Now;
             Clientes cliente = listClientes.Find(x => x.Identificacion == idCliente);
             string mesero = cmbMesero.Text;
             string formaPago = cmbFormaPago.Text;
             if(cliente != null)
             {
-                Factura factura = new Factura(fecha, cliente.Nombre, cliente.Identificacion, cliente.Direccion, mesero, formaPago);
+                Factura factura = new Factura(fecha, cliente.Nombre, cliente.Identificacion, cliente.Direccion,
+                    mesero, formaPago);
+                FacturacionView reporteFactura = new FacturacionView(factura, listPedidos);
+                reporteFactura.ShowDialog();
             }
-            
-            RestarInsumos();
+            else
+            {
+                Factura factura = new Factura(fecha, "", idCliente, "", mesero, formaPago);
+                FacturacionView reporteFactura = new FacturacionView(factura, listPedidos);
+                reporteFactura.ShowDialog();
+                RestarInsumos();
+            }
         }
 
         private void RestarInsumos()
         {
+            int idPedido = cmbMesa.SelectedIndex;
             foreach (Pedido pedido in listPedidos)
             {
                 if(pedido.Id == cmbMesa.SelectedIndex)
                 {
                     string plato = pedido.Name;
-                    int cantidad = pedido.Cantidad;
+                    int cantidadPedido = pedido.Cantidad;
                     decimal precio = pedido.Precio;
                     Platos platoSelect = listPlatos.Find(x => x.Nombre == plato);
                     //consultar receta// restar a insumos
-                    string sqlReceta = $"SELECT * FROM recetas WHERE plato = {platoSelect.Id} ";
-                    // while => restar cantidad a insumo
+                    if(platoSelect != null)
+                    {
+                        string sqlReceta = $"SELECT * FROM recetas WHERE plato = {platoSelect.Id} ";
+                        // while => restar cantidad a insumo
+                        using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+                        {
+                            try
+                            {
+                                con.Open();
+                                OleDbCommand cmd = new OleDbCommand(sqlReceta, con);
+                                OleDbDataReader dr = cmd.ExecuteReader();
+                                listClientes.Clear();
+                                while (dr.Read())
+                                {
+                                    string platoReceta = dr["plato"].ToString();
+                                    string insumo = dr["insumo"].ToString();
+                                    int cantidadInsumo = Convert.ToInt32(dr["cantidad"])*cantidadPedido;
+
+                                    string sqlInsumo = $"UPDATE  insumos SET stock= (stock - {cantidadInsumo} )  WHERE id = {insumo};";
+                                    OleDbCommand cmd2 = new OleDbCommand(sqlInsumo, con);
+                                    cmd2.ExecuteNonQuery();
+                                }
+                                con.Close();
+                                
+                            }catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                    }   }
+
                 }
                 
             }
+            listPedidos.RemoveAll(x => x.Id == idPedido);
+            listViewPedido.Items.Clear();
+            txtIdCliente.Text = "";
+            lblNameCliente.Text = "";
+            cmbFormaPago.SelectedIndex = 0;
         }
         private void ValidCliente(object sender, EventArgs e)
         {

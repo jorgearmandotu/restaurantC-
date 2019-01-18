@@ -34,6 +34,8 @@ namespace restauran.views
             this.cmbMesero = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cmbFormaPago = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.lblNameCliente = new System.Windows.Forms.Label();
             this.btnNewCliente = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -82,8 +84,6 @@ namespace restauran.views
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cmbFormaPago = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -154,6 +154,27 @@ namespace restauran.views
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Pedido";
+            // 
+            // cmbFormaPago
+            // 
+            this.cmbFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFormaPago.FormattingEnabled = true;
+            this.cmbFormaPago.Items.AddRange(new object[] {
+            "Efectivo",
+            "Tarjeta"});
+            this.cmbFormaPago.Location = new System.Drawing.Point(142, 497);
+            this.cmbFormaPago.Name = "cmbFormaPago";
+            this.cmbFormaPago.Size = new System.Drawing.Size(157, 24);
+            this.cmbFormaPago.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 505);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(105, 16);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Forma de Pago:";
             // 
             // lblNameCliente
             // 
@@ -566,26 +587,6 @@ namespace restauran.views
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 505);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(105, 16);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Forma de Pago:";
-            // 
-            // cmbFormaPago
-            // 
-            this.cmbFormaPago.FormattingEnabled = true;
-            this.cmbFormaPago.Items.AddRange(new object[] {
-            "Efectivo",
-            "Tarjeta"});
-            this.cmbFormaPago.Location = new System.Drawing.Point(142, 497);
-            this.cmbFormaPago.Name = "cmbFormaPago";
-            this.cmbFormaPago.Size = new System.Drawing.Size(157, 24);
-            this.cmbFormaPago.TabIndex = 18;
             // 
             // Pedidos
             // 

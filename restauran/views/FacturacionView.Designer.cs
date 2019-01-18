@@ -47,7 +47,6 @@
             this.Controls.Add(this.reportViewerFactura);
             this.Name = "FacturacionView";
             this.Text = "FacturacionView";
-            this.Load += new System.EventHandler(this.FacturacionView_Load);
             this.ResumeLayout(false);
 
         }

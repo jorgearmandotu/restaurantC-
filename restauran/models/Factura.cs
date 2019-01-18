@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace restauran.models
 {
-    class Factura
+    public class Factura
     {
         private int nFactura;
         private DateTime fecha;
@@ -15,6 +15,8 @@ namespace restauran.models
         private string direccionCliente;
         private string atendidoPor;
         private string formadePago;
+
+        private List<Pedido> pedido;
 
         public Factura(DateTime fecha, string nombreCliente, string identificacion, 
             string direccionCliente, string atendidoPor, string formadePago)
@@ -35,6 +37,7 @@ namespace restauran.models
         public string DireccionCliente { get => direccionCliente; set => direccionCliente = value; }
         public string AtendidoPor { get => atendidoPor; set => atendidoPor = value; }
         public string FormadePago { get => formadePago; set => formadePago = value; }
+        internal List<Pedido> Pedido { get => pedido; set => pedido = value; }
 
         private int ObtenerNfactura()
         {

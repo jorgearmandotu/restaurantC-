@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace restauran.models
 {
-    class Pedido
+    public class Pedido
     {
         private int id;//mesa
         private string name;//name producto
