@@ -318,7 +318,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(233, 37);
+            this.label4.Location = new System.Drawing.Point(3, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 15);
             this.label4.TabIndex = 8;
@@ -326,9 +326,9 @@
             // 
             // txtCantdel
             // 
-            this.txtCantdel.Location = new System.Drawing.Point(301, 29);
+            this.txtCantdel.Location = new System.Drawing.Point(76, 62);
             this.txtCantdel.Name = "txtCantdel";
-            this.txtCantdel.Size = new System.Drawing.Size(107, 21);
+            this.txtCantdel.Size = new System.Drawing.Size(149, 21);
             this.txtCantdel.TabIndex = 9;
             this.txtCantdel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateInt);
             this.txtCantdel.Leave += new System.EventHandler(this.CantidadValidBaja_Leave);
@@ -344,9 +344,9 @@
             this.groupBox3.Controls.Add(this.txtCantdel);
             this.groupBox3.Controls.Add(this.cmbProductsBaja);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(14, 558);
+            this.groupBox3.Location = new System.Drawing.Point(667, 21);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(647, 195);
+            this.groupBox3.Size = new System.Drawing.Size(333, 320);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bajas";
@@ -354,7 +354,7 @@
             // dateBaja
             // 
             this.dateBaja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateBaja.Location = new System.Drawing.Point(477, 30);
+            this.dateBaja.Location = new System.Drawing.Point(76, 95);
             this.dateBaja.Name = "dateBaja";
             this.dateBaja.Size = new System.Drawing.Size(145, 21);
             this.dateBaja.TabIndex = 14;
@@ -363,7 +363,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(423, 37);
+            this.label11.Location = new System.Drawing.Point(6, 101);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(44, 15);
             this.label11.TabIndex = 13;
@@ -371,7 +371,7 @@
             // 
             // btnDarBaja
             // 
-            this.btnDarBaja.Location = new System.Drawing.Point(293, 162);
+            this.btnDarBaja.Location = new System.Drawing.Point(165, 264);
             this.btnDarBaja.Name = "btnDarBaja";
             this.btnDarBaja.Size = new System.Drawing.Size(87, 27);
             this.btnDarBaja.TabIndex = 12;
@@ -381,16 +381,16 @@
             // 
             // txtObservationBaja
             // 
-            this.txtObservationBaja.Location = new System.Drawing.Point(97, 70);
+            this.txtObservationBaja.Location = new System.Drawing.Point(96, 169);
             this.txtObservationBaja.Name = "txtObservationBaja";
-            this.txtObservationBaja.Size = new System.Drawing.Size(529, 74);
+            this.txtObservationBaja.Size = new System.Drawing.Size(222, 74);
             this.txtObservationBaja.TabIndex = 11;
             this.txtObservationBaja.Text = "";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 70);
+            this.label6.Location = new System.Drawing.Point(6, 169);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 15);
             this.label6.TabIndex = 10;
@@ -417,7 +417,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 749);
+            this.ClientSize = new System.Drawing.Size(1005, 559);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

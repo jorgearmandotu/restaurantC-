@@ -9,33 +9,33 @@ namespace restauran.models
     public class Pedido
     {
         private int id;//mesa
-        private string name;//name producto
+        private string producto;//name producto
         private int cantidad;//cantidad
-        private decimal precio;//precio
+        private decimal vlrUnit;//precio
         //private int idProduct;
 
         public Pedido(int id, string name, int cantidad, decimal precio)
         {
             this.id = id;
-            this.name = name;
+            this.producto = name;
             this.cantidad = cantidad;
-            this.precio = precio;
+            this.vlrUnit = precio;
         }
 
         public int Id { get => id; set => id = value; }
-        public string Name { get => name; set => name = value; }
+        public string Producto { get => producto; set => producto = value; }
         public int Cantidad { get => cantidad; set => cantidad = value; }
-        public decimal Precio
+        public decimal Vlr_Unit
         {
             get
             {
-                return precio;
+                return vlrUnit;
             }
             set
             {
                 if(value > 0)
                 {
-                    precio = value;
+                    vlrUnit = value;
                 }
             }
         }

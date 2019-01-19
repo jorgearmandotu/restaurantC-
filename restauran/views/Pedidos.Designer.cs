@@ -154,6 +154,7 @@ namespace restauran.views
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Pedido";
+            this.groupBox6.Enter += new System.EventHandler(this.groupBox6_Enter);
             // 
             // cmbFormaPago
             // 

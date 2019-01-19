@@ -15,11 +15,13 @@ namespace restauran.models
         private string direccionCliente;
         private string atendidoPor;
         private string formadePago;
+        private string impuestoConsumo;
+        private string vlrPagar;
 
-        private List<Pedido> pedido;
+        //private List<Pedido> pedido;
 
         public Factura(DateTime fecha, string nombreCliente, string identificacion, 
-            string direccionCliente, string atendidoPor, string formadePago)
+            string direccionCliente, string atendidoPor, string formadePago, string impuesto, string vlrPagar)
         {
             this.NFactura = ObtenerNfactura();
             this.Fecha = fecha;
@@ -28,6 +30,8 @@ namespace restauran.models
             this.DireccionCliente = direccionCliente;
             this.AtendidoPor = atendidoPor;
             this.FormadePago = formadePago;
+            this.impuestoConsumo = impuesto;
+            this.vlrPagar = vlrPagar;
         }
 
         public int NFactura { get => nFactura; set => nFactura = value; }
@@ -37,7 +41,9 @@ namespace restauran.models
         public string DireccionCliente { get => direccionCliente; set => direccionCliente = value; }
         public string AtendidoPor { get => atendidoPor; set => atendidoPor = value; }
         public string FormadePago { get => formadePago; set => formadePago = value; }
-        internal List<Pedido> Pedido { get => pedido; set => pedido = value; }
+        public string ImpuestoConsumo { get => impuestoConsumo; set => impuestoConsumo = value; }
+        public string VlrPagar { get => vlrPagar; set => vlrPagar = value; }
+        //internal List<Pedido> Pedido { get => pedido; set => pedido = value; }
 
         private int ObtenerNfactura()
         {

@@ -52,6 +52,7 @@ namespace restauran.views
 			Mesas mesa = new Mesas();
 			mesa.ShowDialog();
             LoadMesas();
+            cmbMesa.SelectedIndex = 0;
 		}
 
 		private void LoadPlatos()
@@ -126,7 +127,7 @@ namespace restauran.views
                 }
                 else
                 {
-                    Pedido pedidoExistente = listPedidos.Find(y => y.Name == namePedido && y.Id==idPedido);
+                    Pedido pedidoExistente = listPedidos.Find(y => y.Producto == namePedido && y.Id==idPedido);
                     if (pedidoExistente != null)
                     {
                         pedidoExistente.Cantidad += 1;
@@ -162,7 +163,7 @@ namespace restauran.views
 				}
 				else
 				{
-					Pedido pedidoExistente = listPedidos.Find(y => y.Name == namePedido && y.Id == idPedido);
+					Pedido pedidoExistente = listPedidos.Find(y => y.Producto == namePedido && y.Id == idPedido);
 					if (pedidoExistente != null)
 					{
 						pedidoExistente.Cantidad += 1;
@@ -199,7 +200,7 @@ namespace restauran.views
 				}
 				else
 				{
-					Pedido pedidoExistente = listPedidos.Find(y => y.Name == namePedido && y.Id == idPedido);
+					Pedido pedidoExistente = listPedidos.Find(y => y.Producto == namePedido && y.Id == idPedido);
 					if (pedidoExistente != null)
 					{
 						pedidoExistente.Cantidad += 1;
@@ -235,7 +236,7 @@ namespace restauran.views
 				}
 				else
 				{
-					Pedido pedidoExistente = listPedidos.Find(y => y.Name == namePedido && y.Id == idPedido);
+					Pedido pedidoExistente = listPedidos.Find(y => y.Producto == namePedido && y.Id == idPedido);
 					if (pedidoExistente != null)
 					{
 						pedidoExistente.Cantidad += 1;
@@ -282,10 +283,10 @@ namespace restauran.views
 				if (ped.Id == cmbMesa.SelectedIndex)
 				{
 					//MessageBox.Show(cmbMesa.SelectedIndex.ToString());
-					string[] row = { ped.Name, ped.Precio.ToString(), ped.Cantidad.ToString() };
+					string[] row = { ped.Producto, ped.Vlr_Unit.ToString(), ped.Cantidad.ToString() };
 					var listViewItem = new ListViewItem(row);
 					listViewPedido.Items.Add(listViewItem);
-					vlrPagar += ped.Cantidad*ped.Precio;
+					vlrPagar += ped.Cantidad*ped.Vlr_Unit;
 				}
 			}
 			lblValorPagar.Text = String.Format("{0:C}",vlrPagar);
@@ -300,7 +301,7 @@ namespace restauran.views
 			{
 				string namePedido = listViewPedido.SelectedItems[0].Text;
 				int idPedido = cmbMesa.SelectedIndex;
-				Pedido pedidoselect = listPedidos.Find(y => y.Name == namePedido && y.Id == idPedido);
+				Pedido pedidoselect = listPedidos.Find(y => y.Producto == namePedido && y.Id == idPedido);
 				if (pedidoselect != null)
 				{
 					if (pedidoselect.Cantidad > 1)
@@ -479,16 +480,28 @@ namespace restauran.views
             Clientes cliente = listClientes.Find(x => x.Identificacion == idCliente);
             string mesero = cmbMesero.Text;
             string formaPago = cmbFormaPago.Text;
-            if(cliente != null)
+            int idPedio = cmbMesa.SelectedIndex;
+            string vlrImpConsumo = lblImpConsumo.Text;
+            string vlrPagar = lblValorPagar.Text;
+            if (cliente != null)
             {
                 Factura factura = new Factura(fecha, cliente.Nombre, cliente.Identificacion, cliente.Direccion,
-                    mesero, formaPago);
-                FacturacionView reporteFactura = new FacturacionView(factura, listPedidos);
+                    mesero, formaPago, vlrImpConsumo, vlrPagar);
+                List<Pedido> pedido = new List<Pedido>();
+                foreach (Pedido p in listPedidos)
+                {
+                    if(p.Id == idPedio)
+                    {
+                        pedido.Add(p);
+                    }
+                }
+                FacturacionView reporteFactura = new FacturacionView(factura, pedido);
                 reporteFactura.ShowDialog();
+                RestarInsumos();
             }
             else
             {
-                Factura factura = new Factura(fecha, "", idCliente, "", mesero, formaPago);
+                Factura factura = new Factura(fecha, "", idCliente, "", mesero, formaPago, vlrImpConsumo, vlrPagar);
                 FacturacionView reporteFactura = new FacturacionView(factura, listPedidos);
                 reporteFactura.ShowDialog();
                 RestarInsumos();
@@ -502,9 +515,9 @@ namespace restauran.views
             {
                 if(pedido.Id == cmbMesa.SelectedIndex)
                 {
-                    string plato = pedido.Name;
+                    string plato = pedido.Producto;
                     int cantidadPedido = pedido.Cantidad;
-                    decimal precio = pedido.Precio;
+                    decimal precio = pedido.Vlr_Unit;
                     Platos platoSelect = listPlatos.Find(x => x.Nombre == plato);
                     //consultar receta// restar a insumos
                     if(platoSelect != null)
@@ -580,6 +593,11 @@ namespace restauran.views
             cliente.ShowDialog();
             LoadClientes();
             ValidCliente();
+        }
+
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
