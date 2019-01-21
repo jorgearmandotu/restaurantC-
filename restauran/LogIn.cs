@@ -60,7 +60,7 @@ namespace restauran
 
         private void LogIn_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            Application.Exit();
         }
     }
 }

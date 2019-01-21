@@ -65,6 +65,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbProductsBaja = new System.Windows.Forms.ComboBox();
+            this.btnEstadoInventario = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -413,17 +414,27 @@
             this.cmbProductsBaja.Size = new System.Drawing.Size(149, 23);
             this.cmbProductsBaja.TabIndex = 8;
             // 
+            // btnEstadoInventario
+            // 
+            this.btnEstadoInventario.Location = new System.Drawing.Point(737, 391);
+            this.btnEstadoInventario.Name = "btnEstadoInventario";
+            this.btnEstadoInventario.Size = new System.Drawing.Size(151, 23);
+            this.btnEstadoInventario.TabIndex = 2;
+            this.btnEstadoInventario.Text = "Estado Inventario";
+            this.btnEstadoInventario.UseVisualStyleBackColor = true;
+            this.btnEstadoInventario.Click += new System.EventHandler(this.ShowDetail);
+            // 
             // EntradasView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 559);
+            this.Controls.Add(this.btnEstadoInventario);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "EntradasView";
             this.Text = "EntradasView";
-            //this.Load += new System.EventHandler(this.EntradasView_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -473,5 +484,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.DateTimePicker dateBaja;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnEstadoInventario;
     }
 }

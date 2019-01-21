@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogIn));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLogIn = new System.Windows.Forms.Button();
             this.txtUser = new System.Windows.Forms.TextBox();
@@ -114,6 +115,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(342, 178);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LogIn";
             this.Text = "LOG IN";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LogIn_FormClosing);

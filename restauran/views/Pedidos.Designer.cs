@@ -598,6 +598,7 @@ namespace restauran.views
             this.Controls.Add(this.toolStrip1);
             this.Name = "Pedidos";
             this.Text = "Pedidos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Pedidos_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox6.ResumeLayout(false);

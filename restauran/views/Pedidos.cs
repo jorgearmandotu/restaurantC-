@@ -599,5 +599,10 @@ namespace restauran.views
         {
 
         }
+
+        private void Pedidos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

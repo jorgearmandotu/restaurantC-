@@ -307,6 +307,10 @@ namespace restauran.views
             }
         }
 
-        
+        private void ShowDetail(object sender, EventArgs e)
+        {
+            InventarioView inventario = new InventarioView();
+            inventario.ShowDialog();
+        }
     }
 }

@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controller\DataAcces.cs" />
+    <Compile Include="controller\DataAplication.cs" />
     <Compile Include="controller\Talks.cs" />
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
@@ -124,6 +125,12 @@
     </Compile>
     <Compile Include="views\Insumos.Designer.cs">
       <DependentUpon>Insumos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\InventarioView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\InventarioView.Designer.cs">
+      <DependentUpon>InventarioView.cs</DependentUpon>
     </Compile>
     <Compile Include="views\Mesas.cs">
       <SubType>Form</SubType>
@@ -189,6 +196,9 @@
     <EmbeddedResource Include="views\Insumos.resx">
       <DependentUpon>Insumos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\InventarioView.resx">
+      <DependentUpon>InventarioView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\Mesas.resx">
       <DependentUpon>Mesas.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +251,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="asets\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
