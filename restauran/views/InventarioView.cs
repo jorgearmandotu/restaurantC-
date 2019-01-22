@@ -22,7 +22,7 @@ namespace restauran.views
 
         private void StockActual()
         {
-            string sql = "SELECT * FROM insumos";
+            string sql = "SELECT * FROM insumos ORDER BY insumo ASC";
             listViewDetail.Columns.Add("Insumo", 230);
             listViewDetail.Columns.Add("Und", 50, textAlign:HorizontalAlignment.Center);
             listViewDetail.Columns.Add("Existencias", 100, textAlign:HorizontalAlignment.Right);
@@ -90,6 +90,43 @@ namespace restauran.views
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ConsultXfecha(object sender, EventArgs e)
+        {
+            string fechaInicio = dateTimeFechaInicio.Text;
+            string fechaFin = dateTimeFechaFin.Text;
+
+            string sqlPlatos = "SELECT * FROM platos";
+            DataSet dsPlatos = DataAplication.Execute(sqlPlatos);
+            string sql = string.Format($"SELECT * FROM salidas WHERE fecha >= #{fechaInicio}# AND fecha<#{fechaFin}#");
+            Console.WriteLine(sql);
+            DataSet ds = DataAplication.Execute(sql);
+            listViewDetail.Clear();
+            listViewDetail.Columns.Add("Plato", 200);
+            listViewDetail.Columns.Add("cantidad", 50, textAlign: HorizontalAlignment.Center);
+            listViewDetail.Columns.Add("Fecha", 100, textAlign: HorizontalAlignment.Center);
+            listViewDetail.Columns.Add("N.Factura", 100, textAlign: HorizontalAlignment.Center);
+            //if (ds.Tables.Count > 0)//verifico q devuelva resultados
+            //{
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    string namePlato = "";
+                    foreach (DataRow drP in dsPlatos.Tables[0].Rows)
+                    {
+                        if (drP["Id"].ToString() == dr["plato"].ToString())
+                        {
+                            namePlato = drP["plato"].ToString();
+                            break;
+                        }
+                    }
+                    string[] row = { namePlato, dr["cantidad"].ToString(), dr["fecha"].ToString(), dr["factura"].ToString() };
+                MessageBox.Show(namePlato+" "+ dr["cantidad"].ToString());
+                    ListViewItem item = new ListViewItem(row);
+                    listViewDetail.Items.Add(item);
+                }
+            //}
+            
         }
     }
 }

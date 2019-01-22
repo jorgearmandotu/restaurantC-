@@ -1,8 +1,11 @@
-﻿using System;
+﻿using restauran.controller;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace restauran.models
 {
@@ -48,6 +51,26 @@ namespace restauran.models
         private int ObtenerNfactura()
         {
             int nFactura = 0;
+            string sql = "SELECT TOP 1 nFactura FROM facturacion ORDER BY nFactura DESC ";
+            try
+            {
+                DataSet ds = DataAplication.Execute(sql);
+                foreach (DataRow rows in ds.Tables[0].Rows)
+                {
+                    nFactura = Convert.ToInt32(rows["nFactura"]);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (nFactura < 100 || nFactura > 998)
+            {
+                nFactura = 100;
+            }else
+            {
+                nFactura++;
+            }
             return nFactura;
         }
     }

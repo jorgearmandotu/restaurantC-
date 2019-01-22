@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace restauran.models
 {
-    class Clientes
+    public class Clientes
     {
+        private int id;
         private string nombre;
         private string identificacion;
         private string tipoIdentificacion;
@@ -16,8 +17,9 @@ namespace restauran.models
         private string direccion;
         //private List<Pedido> pedido;
 
-        public Clientes(string nombre, string identificacion, string tipoIdentificacion, string telefonoo, string email, string direccion)
+        public Clientes(int id, string nombre, string identificacion, string tipoIdentificacion, string telefonoo, string email, string direccion)
         {
+            this.Id = id;
             this.Nombre = nombre;
             this.Identificacion = identificacion;
             this.TipoIdentificacion = tipoIdentificacion;
@@ -32,6 +34,7 @@ namespace restauran.models
         public string Telefonoo { get => telefonoo; set => telefonoo = value; }
         public string Email { get => email; set => email = value; }
         public string Direccion { get => direccion; set => direccion = value; }
+        public int Id { get => id; set => id = value; }
         //internal List<Pedido> Pedido { get => pedido; set => pedido = value; }
     }
 }

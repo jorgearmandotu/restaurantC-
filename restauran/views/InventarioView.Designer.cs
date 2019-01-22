@@ -30,11 +30,12 @@
         {
             this.listViewDetail = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimeFechaFin = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimeFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnPorFecha = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,43 +50,25 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dateTimePicker2);
+            this.panel1.Controls.Add(this.btnPorFecha);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.dateTimeFechaFin);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.dateTimePicker1);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.dateTimeFechaInicio);
             this.panel1.Controls.Add(this.listViewDetail);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(633, 341);
             this.panel1.TabIndex = 2;
             // 
-            // button1
+            // dateTimeFechaFin
             // 
-            this.button1.Location = new System.Drawing.Point(3, 23);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(77, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Inventario";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(214, 16);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(92, 20);
-            this.dateTimePicker1.TabIndex = 2;
-            this.dateTimePicker1.Value = new System.DateTime(2019, 1, 21, 10, 55, 29, 0);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(138, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Fecha Inicial:";
+            this.dateTimeFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeFechaFin.Location = new System.Drawing.Point(404, 16);
+            this.dateTimeFechaFin.Name = "dateTimeFechaFin";
+            this.dateTimeFechaFin.Size = new System.Drawing.Size(92, 20);
+            this.dateTimeFechaFin.TabIndex = 5;
             // 
             // label2
             // 
@@ -96,13 +79,42 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Fecha Final:";
             // 
-            // dateTimePicker2
+            // label1
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(404, 16);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(92, 20);
-            this.dateTimePicker2.TabIndex = 5;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(138, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Fecha Inicial:";
+            // 
+            // dateTimeFechaInicio
+            // 
+            this.dateTimeFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeFechaInicio.Location = new System.Drawing.Point(214, 16);
+            this.dateTimeFechaInicio.Name = "dateTimeFechaInicio";
+            this.dateTimeFechaInicio.Size = new System.Drawing.Size(92, 20);
+            this.dateTimeFechaInicio.TabIndex = 2;
+            this.dateTimeFechaInicio.Value = new System.DateTime(2019, 1, 21, 10, 55, 29, 0);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Ventas por fecha";
+            // 
+            // btnPorFecha
+            // 
+            this.btnPorFecha.Location = new System.Drawing.Point(524, 16);
+            this.btnPorFecha.Name = "btnPorFecha";
+            this.btnPorFecha.Size = new System.Drawing.Size(75, 23);
+            this.btnPorFecha.TabIndex = 7;
+            this.btnPorFecha.Text = "Consultar";
+            this.btnPorFecha.UseVisualStyleBackColor = true;
+            this.btnPorFecha.Click += new System.EventHandler(this.ConsultXfecha);
             // 
             // InventarioView
             // 
@@ -123,9 +135,10 @@
         private System.Windows.Forms.ListView listViewDetail;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimeFechaInicio;
+        private System.Windows.Forms.DateTimePicker dateTimeFechaFin;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnPorFecha;
     }
 }

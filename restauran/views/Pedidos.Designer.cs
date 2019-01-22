@@ -160,9 +160,6 @@ namespace restauran.views
             // 
             this.cmbFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFormaPago.FormattingEnabled = true;
-            this.cmbFormaPago.Items.AddRange(new object[] {
-            "Efectivo",
-            "Tarjeta"});
             this.cmbFormaPago.Location = new System.Drawing.Point(142, 497);
             this.cmbFormaPago.Name = "cmbFormaPago";
             this.cmbFormaPago.Size = new System.Drawing.Size(157, 24);

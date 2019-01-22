@@ -22,7 +22,6 @@ namespace restauran.views
         List<Clientes> listClientes = new List<Clientes>();
 		public Pedidos()
         {
-            
             //LogIn log = new LogIn();
             InitializeComponent();
             //log.ShowDialog();
@@ -31,7 +30,21 @@ namespace restauran.views
             LoadMesas();
             LoadMeseros();
             LoadClientes();
+            LoadModoPago();
             cmbFormaPago.SelectedIndex = 0;
+        }
+
+        private void LoadModoPago()
+        {
+            string sql = "SELECT * FROM medioPago";
+            DataSet ds = DataAplication.Execute(sql);
+            /*foreach (DataRow rows in ds.Tables[0].Rows)
+            {
+                cmbFormaPago.Items.Add(rows["namePago"].ToString());
+            }*/
+            cmbFormaPago.DataSource = ds.Tables[0];
+            cmbFormaPago.DisplayMember = ds.Tables[0].Columns["namePago"].ToString();
+            cmbFormaPago.ValueMember = ds.Tables[0].Columns["Id"].ToString();
         }
 
 		private void ShowProductos(object sender, EventArgs e)
@@ -373,7 +386,7 @@ namespace restauran.views
 
         private void LoadMeseros()
         {
-            using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+            /*using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
             {
                 try
                 {
@@ -393,6 +406,17 @@ namespace restauran.views
                 {
                     MessageBox.Show("Error: "+ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }*/
+            try
+            {
+                string sql = "Select * From personal";
+                DataSet ds = DataAplication.Execute(sql);
+                cmbMesero.DataSource = ds.Tables[0];
+                cmbMesero.DisplayMember = ds.Tables[0].Columns["nombre"].ToString();
+                cmbMesero.ValueMember = ds.Tables[0].Columns["Id"].ToString();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -455,13 +479,14 @@ namespace restauran.views
                     listClientes.Clear();
                     while (dr.Read())
                     {
+                        int id = Convert.ToInt32(dr["Id"]);
                         string name = dr["nombre"].ToString();
                         string identificacion = dr["identificacion"].ToString();
                         string tipoId = dr["tipoId"].ToString();
                         string telefono = dr["telefono"].ToString();
                         string email = dr["email"].ToString();
                         string direccion = dr["direccion"].ToString();
-                        listClientes.Add(new Clientes(name, identificacion, tipoId, telefono, email, direccion));
+                        listClientes.Add(new Clientes(id, name, identificacion, tipoId, telefono, email, direccion));
                     }
                     con.Close();
                 }
@@ -480,6 +505,7 @@ namespace restauran.views
             Clientes cliente = listClientes.Find(x => x.Identificacion == idCliente);
             string mesero = cmbMesero.Text;
             string formaPago = cmbFormaPago.Text;
+            string idFormaPago = cmbFormaPago.SelectedValue.ToString();
             int idPedio = cmbMesa.SelectedIndex;
             string vlrImpConsumo = lblImpConsumo.Text;
             string vlrPagar = lblValorPagar.Text;
@@ -495,17 +521,19 @@ namespace restauran.views
                         pedido.Add(p);
                     }
                 }
-                FacturacionView reporteFactura = new FacturacionView(factura, pedido);
+                FacturacionView reporteFactura = new FacturacionView(factura, pedido, cliente, idFormaPago);
                 reporteFactura.ShowDialog();
                 RestarInsumos();
             }
             else
             {
-                Factura factura = new Factura(fecha, "", idCliente, "", mesero, formaPago, vlrImpConsumo, vlrPagar);
+                MessageBox.Show("Debe Ingresar al cliente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+              /*  Factura factura = new Factura(fecha, "", idCliente, "", mesero, formaPago, vlrImpConsumo, vlrPagar);
                 FacturacionView reporteFactura = new FacturacionView(factura, listPedidos);
                 reporteFactura.ShowDialog();
-                RestarInsumos();
+                RestarInsumos();*/
             }
+            LoadClientes();
         }
 
         private void RestarInsumos()
