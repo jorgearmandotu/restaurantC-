@@ -99,7 +99,9 @@ namespace restauran.views
 
             string sqlPlatos = "SELECT * FROM platos";
             DataSet dsPlatos = DataAplication.Execute(sqlPlatos);
-            string sql = string.Format($"SELECT * FROM salidas WHERE fecha >= #{fechaInicio}# AND fecha<#{fechaFin}#");
+            string sql = string.Format($"SELECT * FROM salidas WHERE((salidas.[fecha] <=#{fechaFin} 23:59:59#) AND fecha >= #{fechaInicio}#)");
+               // $"((salidas.fecha) Between #{fechaInicio}# And #{fechaFin}#));");
+
             Console.WriteLine(sql);
             DataSet ds = DataAplication.Execute(sql);
             listViewDetail.Clear();
@@ -107,8 +109,8 @@ namespace restauran.views
             listViewDetail.Columns.Add("cantidad", 50, textAlign: HorizontalAlignment.Center);
             listViewDetail.Columns.Add("Fecha", 100, textAlign: HorizontalAlignment.Center);
             listViewDetail.Columns.Add("N.Factura", 100, textAlign: HorizontalAlignment.Center);
-            //if (ds.Tables.Count > 0)//verifico q devuelva resultados
-            //{
+            if (ds.Tables.Count > 0)//verifico q devuelva resultados
+            {
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
                     string namePlato = "";
@@ -121,11 +123,10 @@ namespace restauran.views
                         }
                     }
                     string[] row = { namePlato, dr["cantidad"].ToString(), dr["fecha"].ToString(), dr["factura"].ToString() };
-                MessageBox.Show(namePlato+" "+ dr["cantidad"].ToString());
                     ListViewItem item = new ListViewItem(row);
                     listViewDetail.Items.Add(item);
                 }
-            //}
+            }
             
         }
     }

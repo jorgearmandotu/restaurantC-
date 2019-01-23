@@ -56,6 +56,9 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Scrypt, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Scrypt.NET.1.3.0\lib\net20\Scrypt.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -76,6 +79,7 @@
   <ItemGroup>
     <Compile Include="controller\DataAcces.cs" />
     <Compile Include="controller\DataAplication.cs" />
+    <Compile Include="controller\Helpper.cs" />
     <Compile Include="controller\Talks.cs" />
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
