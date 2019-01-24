@@ -96,6 +96,7 @@
     <Compile Include="models\Platos.cs" />
     <Compile Include="models\Provider.cs" />
     <Compile Include="models\Recetas.cs" />
+    <Compile Include="models\Users.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -123,6 +124,12 @@
     </Compile>
     <Compile Include="views\FacturacionView.Designer.cs">
       <DependentUpon>FacturacionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\GestionusuariosView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\GestionusuariosView.Designer.cs">
+      <DependentUpon>GestionusuariosView.cs</DependentUpon>
     </Compile>
     <Compile Include="views\Insumos.cs">
       <SubType>Form</SubType>
@@ -196,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\FacturacionView.resx">
       <DependentUpon>FacturacionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\GestionusuariosView.resx">
+      <DependentUpon>GestionusuariosView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Insumos.resx">
       <DependentUpon>Insumos.cs</DependentUpon>

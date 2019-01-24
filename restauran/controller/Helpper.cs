@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scrypt;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -9,9 +10,20 @@ namespace restauran.controller
 {
     class Helpper
     {
-        private void EncriptPwd(string pwd)
+        public string EncriptPwd(string pwd)
         {
-            SHA1 
+            ScryptEncoder encoder = new ScryptEncoder();
+
+            string hashsedPassword = encoder.Encode(pwd);
+            return hashsedPassword;
+        }
+
+        public bool ComparePwd(string pwd, string passwordDb)
+        {
+            bool areEquals = false;
+            ScryptEncoder encoder = new ScryptEncoder();
+            areEquals = encoder.Compare(pwd, passwordDb);
+            return areEquals;
         }
     }
 }

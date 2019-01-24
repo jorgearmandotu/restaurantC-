@@ -16,12 +16,13 @@ namespace restauran.views
 {
     public partial class Pedidos : Form
     {
-
+        private static Users usuario = null;
         private List<Pedido> listPedidos = new List<Pedido>();
-		List<Platos> listPlatos = new List<Platos>();
-        List<Clientes> listClientes = new List<Clientes>();
-		public Pedidos()
+		private List<Platos> listPlatos = new List<Platos>();
+        private List<Clientes> listClientes = new List<Clientes>();
+		public Pedidos(Users user)
         {
+            usuario = user;
             //LogIn log = new LogIn();
             InitializeComponent();
             //log.ShowDialog();
@@ -32,6 +33,20 @@ namespace restauran.views
             LoadClientes();
             LoadModoPago();
             cmbFormaPago.SelectedIndex = 0;
+            if (user.Administrador)
+            {
+                toolStripPersonal.Enabled = true;
+                toolStripPersonal.Visible = true;
+                toolStripSettings.Enabled = true;
+                toolStripSettings.Visible = true;
+                toolStripInventario.Enabled = true;
+                toolStripInventario.Visible = true;
+                //toolStripSeparatorInventario.Visible = true;
+            }
+            else
+            {
+
+            }
         }
 
         private void LoadModoPago()
@@ -448,7 +463,6 @@ namespace restauran.views
                 listViewBebidas.Enabled = true;
                 listViewEspeciales.Enabled = true;
                 listViewOtros.Enabled = true;
-
             }
             else
             {
@@ -631,6 +645,15 @@ namespace restauran.views
         private void Pedidos_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void showUsers(object sender, EventArgs e)
+        {
+            //ventana usuarios
+            GestionusuariosView userGestion = new GestionusuariosView(usuario);
+            {
+                userGestion.ShowDialog();
+            }
         }
     }
 }

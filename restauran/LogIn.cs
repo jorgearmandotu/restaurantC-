@@ -1,4 +1,5 @@
 ﻿using restauran.controller;
+using restauran.models;
 using restauran.views;
 using System;
 using System.Collections.Generic;
@@ -22,28 +23,29 @@ namespace restauran
 
 		private void btnLogIn_Click(object sender, EventArgs e)
 		{
-			logIn();
+			IntentLogIn();
 		}
 
-		private void logIn()
+		private void IntentLogIn()
 		{
-			String user = txtUser.Text;
-			String password = txtPassword.Text;
+			String user = txtUser.Text.Trim();
+			String password = txtPassword.Text.Trim();
 			Talks talk = new Talks();
-			if(talk.logIn(user, password))
+            Users log = talk.LogIn(user, password);
+
+            if (log != null)
 			{
-				Console.WriteLine("logueado");
+				//Console.WriteLine("logueado");
                 //MessageBox.Show("logueado");
                 //Productos products = new Productos();
                 //products.Show();
-                Pedidos pedido = new Pedidos();
+                Pedidos pedido = new Pedidos(log);
                 this.Hide();
                 pedido.ShowDialog();
                 this.Dispose();
 			}
 			else
 			{
-				Console.WriteLine("no login");
 				MessageBox.Show("Datos no validos");
 				
 			}

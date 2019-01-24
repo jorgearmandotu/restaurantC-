@@ -76,14 +76,16 @@ namespace restauran.views
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMesas = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripPersonal = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparatorPersonal = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripInventario = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparatorInventario = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSettings = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparatorSettings = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripUsuarios = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -495,14 +497,16 @@ namespace restauran.views
             this.toolStripSeparator2,
             this.toolStripMesas,
             this.toolStripSeparator3,
-            this.toolStripLabel1,
-            this.toolStripSeparator4,
-            this.toolStripLabel2,
-            this.toolStripSeparator5,
-            this.toolStripLabel3,
-            this.toolStripSeparator6,
+            this.toolStripPersonal,
+            this.toolStripSeparatorPersonal,
+            this.toolStripInventario,
+            this.toolStripSeparatorInventario,
+            this.toolStripSettings,
+            this.toolStripSeparatorSettings,
             this.toolStripLabel4,
-            this.toolStripSeparator7});
+            this.toolStripSeparator7,
+            this.toolStripUsuarios,
+            this.toolStripSeparator4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1008, 25);
@@ -538,41 +542,47 @@ namespace restauran.views
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripLabel1
+            // toolStripPersonal
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(58, 22);
-            this.toolStripLabel1.Text = "Personal";
-            this.toolStripLabel1.Click += new System.EventHandler(this.GestionPersonal);
+            this.toolStripPersonal.Enabled = false;
+            this.toolStripPersonal.Name = "toolStripPersonal";
+            this.toolStripPersonal.Size = new System.Drawing.Size(58, 22);
+            this.toolStripPersonal.Text = "Personal";
+            this.toolStripPersonal.Visible = false;
+            this.toolStripPersonal.Click += new System.EventHandler(this.GestionPersonal);
             // 
-            // toolStripSeparator4
+            // toolStripSeparatorPersonal
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparatorPersonal.Name = "toolStripSeparatorPersonal";
+            this.toolStripSeparatorPersonal.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripLabel2
+            // toolStripInventario
             // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(65, 22);
-            this.toolStripLabel2.Text = "Inventario";
-            this.toolStripLabel2.Click += new System.EventHandler(this.GestionInsumos);
+            this.toolStripInventario.Enabled = false;
+            this.toolStripInventario.Name = "toolStripInventario";
+            this.toolStripInventario.Size = new System.Drawing.Size(65, 22);
+            this.toolStripInventario.Text = "Inventario";
+            this.toolStripInventario.Visible = false;
+            this.toolStripInventario.Click += new System.EventHandler(this.GestionInsumos);
             // 
-            // toolStripSeparator5
+            // toolStripSeparatorInventario
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparatorInventario.Name = "toolStripSeparatorInventario";
+            this.toolStripSeparatorInventario.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripLabel3
+            // toolStripSettings
             // 
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(54, 22);
-            this.toolStripLabel3.Text = "Settings";
-            this.toolStripLabel3.Click += new System.EventHandler(this.SettingsShow);
+            this.toolStripSettings.Enabled = false;
+            this.toolStripSettings.Name = "toolStripSettings";
+            this.toolStripSettings.Size = new System.Drawing.Size(54, 22);
+            this.toolStripSettings.Text = "Settings";
+            this.toolStripSettings.Visible = false;
+            this.toolStripSettings.Click += new System.EventHandler(this.SettingsShow);
             // 
-            // toolStripSeparator6
+            // toolStripSeparatorSettings
             // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparatorSettings.Name = "toolStripSeparatorSettings";
+            this.toolStripSeparatorSettings.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripLabel4
             // 
@@ -585,6 +595,18 @@ namespace restauran.views
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripUsuarios
+            // 
+            this.toolStripUsuarios.Name = "toolStripUsuarios";
+            this.toolStripUsuarios.Size = new System.Drawing.Size(59, 22);
+            this.toolStripUsuarios.Text = "Usuarios";
+            this.toolStripUsuarios.Click += new System.EventHandler(this.showUsers);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // Pedidos
             // 
@@ -651,12 +673,12 @@ namespace restauran.views
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ComboBox cmbMesero;
 		private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripLabel toolStripPersonal;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorPersonal;
+        private System.Windows.Forms.ToolStripLabel toolStripInventario;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorInventario;
+        private System.Windows.Forms.ToolStripLabel toolStripSettings;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorSettings;
         private System.Windows.Forms.ToolStripLabel toolStripLabel4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.Button btnNewCliente;
@@ -666,5 +688,7 @@ namespace restauran.views
         private System.Windows.Forms.Label lblNameCliente;
         private System.Windows.Forms.ComboBox cmbFormaPago;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ToolStripLabel toolStripUsuarios;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }
