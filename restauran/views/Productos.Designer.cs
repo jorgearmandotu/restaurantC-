@@ -84,7 +84,7 @@
             this.btnSaveReceta.TabIndex = 11;
             this.btnSaveReceta.Text = "Guardar Receta";
             this.btnSaveReceta.UseVisualStyleBackColor = true;
-            this.btnSaveReceta.Click += new System.EventHandler(this.btnSaveReceta_Click);
+            this.btnSaveReceta.Click += new System.EventHandler(this.BtnSaveReceta_Click);
             // 
             // cmbNamePlato
             // 
@@ -121,7 +121,7 @@
             this.listViewReceta.TabIndex = 10;
             this.listViewReceta.UseCompatibleStateImageBehavior = false;
             this.listViewReceta.View = System.Windows.Forms.View.Details;
-            this.listViewReceta.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewReceta_MouseDoubleClick);
+            this.listViewReceta.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListViewReceta_MouseDoubleClick);
             // 
             // columnHeader1
             // 
@@ -141,7 +141,7 @@
             this.btnNewIngrediente.TabIndex = 9;
             this.btnNewIngrediente.Text = "Nuevo Ingrediente";
             this.btnNewIngrediente.UseVisualStyleBackColor = true;
-            this.btnNewIngrediente.Click += new System.EventHandler(this.btnNewIngrediente_Click);
+            this.btnNewIngrediente.Click += new System.EventHandler(this.BtnNewIngrediente_Click);
             // 
             // btnAddIngrediente
             // 
@@ -151,7 +151,7 @@
             this.btnAddIngrediente.TabIndex = 8;
             this.btnAddIngrediente.Text = "Agregar";
             this.btnAddIngrediente.UseVisualStyleBackColor = true;
-            this.btnAddIngrediente.Click += new System.EventHandler(this.btnAddIngrediente_Click);
+            this.btnAddIngrediente.Click += new System.EventHandler(this.BtnAddIngrediente_Click);
             // 
             // txtCantidadIngrediente
             // 
@@ -160,7 +160,7 @@
             this.txtCantidadIngrediente.Size = new System.Drawing.Size(116, 21);
             this.txtCantidadIngrediente.TabIndex = 7;
             this.txtCantidadIngrediente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateInt);
-            this.txtCantidadIngrediente.Leave += new System.EventHandler(this.txtCantidadIngrediente_Leave);
+            this.txtCantidadIngrediente.Leave += new System.EventHandler(this.TxtCantidadIngrediente_Leave);
             // 
             // label7
             // 
@@ -196,7 +196,7 @@
             this.btnAddImg.TabIndex = 4;
             this.btnAddImg.Text = "Buscar";
             this.btnAddImg.UseVisualStyleBackColor = true;
-            this.btnAddImg.Click += new System.EventHandler(this.btnAddImg_Click);
+            this.btnAddImg.Click += new System.EventHandler(this.BtnAddImg_Click);
             // 
             // txtImage
             // 
@@ -274,6 +274,9 @@
             this.ClientSize = new System.Drawing.Size(754, 555);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(770, 594);
+            this.MinimumSize = new System.Drawing.Size(770, 594);
             this.Name = "Productos";
             this.Text = "productos";
             this.groupBox1.ResumeLayout(false);

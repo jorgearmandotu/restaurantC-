@@ -22,9 +22,9 @@ namespace restauran.controller
                     con.Open();
                     //OleDbCommand cmd = new OleDbCommand(sql, con);
                     //OleDbDataReader dr = cmd.ExecuteReader();
-                    OleDbDataAdapter dp = new OleDbDataAdapter(sql, con);
+                    OleDbDataAdapter dp = new OleDbDataAdapter(string.Format(sql), con);
                     dp.Fill(ds);
-                    con.Close();
+                    //con.Close();
                 }
             }
             catch (Exception ex)
@@ -45,7 +45,7 @@ namespace restauran.controller
                     con.Open();
                     OleDbCommand cmd = new OleDbCommand(sql, con);
                     cmd.ExecuteNonQuery();
-                    con.Close();
+                    //con.Close();
                     res = true;
                 }
             }
@@ -65,8 +65,11 @@ namespace restauran.controller
                 using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
                 {
                     con.Open();
-                    OleDbCommand cmd = new OleDbCommand(sql, con);
-                    cmd.CommandText = sql;
+                    OleDbCommand cmd = new OleDbCommand(sql, con)
+                    {
+                        CommandText = sql
+                    };
+                    //cmd.CommandText = sql;
                     
                     foreach (string dato in array)
                     {
@@ -75,7 +78,7 @@ namespace restauran.controller
                     }
                     
                     cmd.ExecuteNonQuery();
-                    con.Close();
+                    //con.Close();
                     res = true;
                 }
             }

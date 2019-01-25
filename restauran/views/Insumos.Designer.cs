@@ -67,7 +67,7 @@
             this.btnIngresoInsumo.TabIndex = 7;
             this.btnIngresoInsumo.Text = "Ingresar";
             this.btnIngresoInsumo.UseVisualStyleBackColor = true;
-            this.btnIngresoInsumo.Click += new System.EventHandler(this.btnIngresoInsumo_Click);
+            this.btnIngresoInsumo.Click += new System.EventHandler(this.BtnIngresoInsumo_Click);
             // 
             // txtStockMinimo
             // 
@@ -76,7 +76,7 @@
             this.txtStockMinimo.Size = new System.Drawing.Size(233, 21);
             this.txtStockMinimo.TabIndex = 6;
             this.txtStockMinimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateTxtStockMinimokeypress);
-            this.txtStockMinimo.Leave += new System.EventHandler(this.txtStockMinimo_Leave);
+            this.txtStockMinimo.Leave += new System.EventHandler(this.TxtStockMinimo_Leave);
             // 
             // txtStockInicial
             // 
@@ -144,7 +144,9 @@
             this.ClientSize = new System.Drawing.Size(454, 239);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(470, 278);
+            this.MinimumSize = new System.Drawing.Size(470, 278);
             this.Name = "Insumos";
             this.Text = "Insumos";
             this.groupBox1.ResumeLayout(false);

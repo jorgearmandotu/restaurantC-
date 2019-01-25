@@ -100,6 +100,9 @@
             this.ClientSize = new System.Drawing.Size(395, 282);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(411, 321);
+            this.MinimumSize = new System.Drawing.Size(411, 321);
             this.Name = "Categoria";
             this.Text = "Categoria";
             this.groupBox1.ResumeLayout(false);

@@ -45,7 +45,7 @@ namespace restauran.views
                         cmd.Parameters.Add("@Email", OleDbType.Char).Value = email;
                         cmd.Parameters.Add("@Direccion", OleDbType.Char).Value = direccion;
                         cmd.ExecuteNonQuery();
-                        con.Close();
+                        //con.Close();
                         MessageBox.Show("Transacion exitosa", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtTipoId.Text = "CC";
                         txtIdentificacion.Text = "";

@@ -56,7 +56,7 @@ namespace restauran.views
 
                         cmd.ExecuteNonQuery();
 
-                        con.Close();
+                        //con.Close();
 
                         txtDireccion.Text = "";
                         txtEmail.Text = "";
@@ -107,7 +107,7 @@ namespace restauran.views
                         OleDbCommand cmd = new OleDbCommand(sql, con);
                         cmd.Parameters.Add("@Id", OleDbType.Char).Value = persona.Identificacion;
                         cmd.ExecuteNonQuery();
-                        con.Close();
+                        //con.Close();
                         txtCCDel.Text = "";
                         txtNameRetiro.Text = "";
                         txtMotivoRetiro.Text = "";
@@ -170,7 +170,7 @@ namespace restauran.views
                             fechaIngreso, fechaRetiro, direccion, causaRetiro));
                         //cmbNombre.Items.Add(Convert.ToString(dr["nombre"]));
                     }
-                    con.Close();
+                    //con.Close();
                     //listPersonal.Insert(0, new Personal { Identificacion = Convert.ToString(0), Nombre = "<Seleccionar>" });
                     
                 }

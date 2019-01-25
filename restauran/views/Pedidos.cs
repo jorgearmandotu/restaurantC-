@@ -41,7 +41,13 @@ namespace restauran.views
                 toolStripSettings.Visible = true;
                 toolStripInventario.Enabled = true;
                 toolStripInventario.Visible = true;
-                //toolStripSeparatorInventario.Visible = true;
+                toolStripUsuarios.Enabled = true;
+                toolStripUsuarios.Visible = true;
+                toolStripSeparatorInventario.Visible = true;
+                toolStripSeparatorPersonal.Visible = true;
+                toolStripSeparatorSettings.Visible = true;
+                toolStripSeparatorUser.Visible = true;
+
             }
             else
             {
@@ -107,7 +113,7 @@ namespace restauran.views
 					listPlatos .Add(new Platos(id, plato, precio, image, categoria));
 
 				}
-				con.Close();
+				//con.Close();
 			}
 
 			foreach ( Platos plato in listPlatos) {
@@ -370,7 +376,7 @@ namespace restauran.views
 					Console.WriteLine(Convert.ToString(dr["insumo"]));
 
 				}
-				con.Close();
+				//con.Close();
 			}
 		}
 
@@ -390,7 +396,7 @@ namespace restauran.views
                         cmbMesa.Items.Add(Convert.ToString(dr["nombre"]));
 
                     }
-                    con.Close();
+                    //con.Close();
                 }catch(Exception ex)
                 {
                     MessageBox.Show("Error: "+ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -502,7 +508,7 @@ namespace restauran.views
                         string direccion = dr["direccion"].ToString();
                         listClientes.Add(new Clientes(id, name, identificacion, tipoId, telefono, email, direccion));
                     }
-                    con.Close();
+                    //con.Close();
                 }
                 catch (Exception ex)
                 {
@@ -564,14 +570,17 @@ namespace restauran.views
                     //consultar receta// restar a insumos
                     if(platoSelect != null)
                     {
-                        string sqlReceta = $"SELECT * FROM recetas WHERE plato = {platoSelect.Id} ";
+                        string sqlReceta = $"SELECT * FROM recetas WHERE plato = @idPlato ";
                         // while => restar cantidad a insumo
                         using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
                         {
                             try
                             {
                                 con.Open();
-                                OleDbCommand cmd = new OleDbCommand(sqlReceta, con);
+                                OleDbCommand cmd = new OleDbCommand();
+                                cmd.CommandText = sqlReceta;
+                                cmd.Connection = con;
+                                cmd.Parameters.Add("@idPlato", OleDbType.Integer).Value = platoSelect.Id;
                                 OleDbDataReader dr = cmd.ExecuteReader();
                                 listClientes.Clear();
                                 while (dr.Read())
@@ -580,11 +589,11 @@ namespace restauran.views
                                     string insumo = dr["insumo"].ToString();
                                     int cantidadInsumo = Convert.ToInt32(dr["cantidad"])*cantidadPedido;
 
-                                    string sqlInsumo = $"UPDATE  insumos SET stock= (stock - {cantidadInsumo} )  WHERE id = {insumo};";
+                                    string sqlInsumo = string.Format($"UPDATE  insumos SET stock= (stock - {cantidadInsumo} )  WHERE id = {insumo};");
                                     OleDbCommand cmd2 = new OleDbCommand(sqlInsumo, con);
                                     cmd2.ExecuteNonQuery();
                                 }
-                                con.Close();
+                                //con.Close();
                                 
                             }catch (Exception ex)
                             {
@@ -647,7 +656,7 @@ namespace restauran.views
             Application.Exit();
         }
 
-        private void showUsers(object sender, EventArgs e)
+        private void ShowUsers(object sender, EventArgs e)
         {
             //ventana usuarios
             GestionusuariosView userGestion = new GestionusuariosView(usuario);

@@ -226,14 +226,14 @@ namespace restauran.views
 
                         cmd.ExecuteNonQuery();
 
-                        string sql2 = $"UPDATE  insumos SET stock= (stock + {ingreso.Cantidad} )  WHERE id = @Id;";
+                        string sql2 = string.Format($"UPDATE  insumos SET stock= (stock + {ingreso.Cantidad} )  WHERE id = @Id;");
                         //cmd.Parameters.Add("@Cant", OleDbType.Integer).Value = ingreso.Cantidad;
                         cmd.Parameters.Add("@Id", OleDbType.Integer).Value = ingreso.Insumo;
                         MessageBox.Show(sql2);
                         cmd.CommandText = sql2;
                         cmd.ExecuteNonQuery();
                         transaction.Commit();
-                        con.Close();
+                        //con.Close();
                     }
                     catch (Exception ex)
                     {
@@ -268,14 +268,14 @@ namespace restauran.views
                 {
                     int cantidad = Convert.ToInt32(txtCantdel.Text);
                     InsumosModel insumoExistente = listInsumos.Find(x => x.Insumo == cmbProductsBaja.Text);
-                    
+
                     OleDbCommand cmd = new OleDbCommand();
                     cmd.Connection = con;
                     con.Open();
                     transaction = con.BeginTransaction();
                     cmd.Connection = con;
                     cmd.Transaction = transaction;
-                    string sql = $"UPDATE insumos SET stock = (stock - {cantidad} )  WHERE id = @Id;";
+                    string sql = string.Format($"UPDATE insumos SET stock = (stock - {cantidad} )  WHERE id = @Id;");
                     string sql2 = $"INSERT INTO bajas (insumo, cantidad, observacion, fecha) VALUES (@insumo, @cantidad," +
                         $"@observacion, @fecha)";
                     cmd.Parameters.Add("@Id", OleDbType.Integer).Value = insumoExistente.Id;
@@ -288,7 +288,7 @@ namespace restauran.views
                     cmd.CommandText = sql2;
                     cmd.ExecuteNonQuery();
                     transaction.Commit();
-                    con.Close();
+                    //con.Close();
                     MessageBox.Show("Transaccion exitosa", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtCantdel.Text = "";
                     cmbProductsBaja.Text = "";

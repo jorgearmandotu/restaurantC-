@@ -38,7 +38,7 @@ namespace restauran.controller
                 string pwd = dr["password"].ToString();
                 Helpper crypt = new Helpper();
                 bool dataCorrect = crypt.ComparePwd(password, pwd);
-                if (dataCorrect == true && user == usuario && admin)
+                if (dataCorrect == true && user == usuario)
                 {
                     Console.WriteLine("se logueo "+usuario+" "+admin);
                     userLog = new Users(usuario, "", admin);
@@ -52,6 +52,7 @@ namespace restauran.controller
             }
             else
             {
+                Console.WriteLine("No hubo registros");
                 return userLog;
             }
 		}

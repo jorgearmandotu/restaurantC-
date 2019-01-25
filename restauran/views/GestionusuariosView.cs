@@ -18,8 +18,8 @@ namespace restauran.views
         public GestionusuariosView(Users user)
         {
             InitializeComponent();
-            LoadUsers();
             usuarioLog = user;
+            LoadUsers();
         }
         private void LoadUsers()
         {
@@ -46,8 +46,7 @@ namespace restauran.views
             {
                 Helpper help = new Helpper();
                 password = help.EncriptPwd(password);
-                string sql = String.Format($"INSERT INTO users (usuario, password, administrador) VALUES ('{usuario}', '{password}', {admin});");
-                MessageBox.Show(sql);
+                string sql = String.Format($"INSERT INTO users (usuario, [password], administrador) VALUES ('{usuario}', '{password}', {admin});");
                 string[] data = {usuario, password, admin.ToString()};
                 if(DataAplication.InsertData(sql))
                 {
@@ -56,6 +55,7 @@ namespace restauran.views
                     txtRepitPassword.Text = "";
                     checkBoxAdministrador.Checked = false;
                     txtUsuario.Text = "";
+                    LoadUsers();
                 }
                 else
                 {
@@ -81,10 +81,14 @@ namespace restauran.views
             }
             else if(usuario == usuarioLog.Usuario)
             {
-                if (VerifiquePass(password, usuarioDel))
+                if (VerifiquePass(password, usuario))
                 {
                     string sql = string.Format($"delete from users where usuario = '{usuarioDel}'");
                     DataAplication.Execute(sql);
+                    txtUserValid.Text = "";
+                    txtPasswordValid.Text = "";
+                    LoadUsers();
+                    //cmbUserDelete.SelectedIndex = 0;
                 }
                 else
                 {
@@ -101,13 +105,11 @@ namespace restauran.views
             bool res = false;
             string sql = string.Format($"SELECT * FROM users WHERE usuario = '{user}'");
             DataSet ds = DataAplication.Execute(sql);
-            Users userDel = null;
             if(ds.Tables.Count > 0)
             {
-                userDel = new Users(ds.Tables[0].Rows[0].cel.ToString(), );
+                Helpper help = new Helpper();
+                res = help.ComparePwd(pwd, ds.Tables[0].Rows[0]["password"].ToString());
             }
-            Helpper help = new Helpper();
-            
             return res;
         }
     }

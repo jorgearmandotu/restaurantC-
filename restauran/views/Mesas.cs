@@ -30,7 +30,7 @@ namespace restauran.views
                     OleDbCommand cmd = new OleDbCommand(sql, con);
                     cmd.Parameters.Add("@nombre", OleDbType.Char).Value = txtNameMesa.Text.Trim().ToUpper();
                     cmd.ExecuteNonQuery();
-                    con.Close();
+                    //con.Close();
                     MessageBox.Show("Transacion exitosa", "Transaccion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtNameMesa.Text = "";
                 }catch(Exception ex)

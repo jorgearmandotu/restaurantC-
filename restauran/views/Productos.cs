@@ -21,24 +21,24 @@ namespace restauran.views
 		public Productos()
 		{
 			InitializeComponent();
-			cargarInsumos();
-			cargarcmbPlatos();
+			CargarInsumos();
+			CargarcmbPlatos();
 		}
 
-		private void btnNewCategoria_Click(object sender, EventArgs e)
+		private void BtnNewCategoria_Click(object sender, EventArgs e)
 		{
 			Categoria cat = new Categoria();
 			cat.ShowDialog();
 		}
 
-		private void btnNewIngrediente_Click(object sender, EventArgs e)
+		private void BtnNewIngrediente_Click(object sender, EventArgs e)
 		{
 			Insumos insumo = new Insumos();
 			insumo.ShowDialog();
-			cargarInsumos();
+			CargarInsumos();
 		}
 
-		private void cargarInsumos()
+		private void CargarInsumos()
 		{
 			listInsumos.Items.Clear();
 			listIngredientes.Clear();
@@ -59,7 +59,7 @@ namespace restauran.views
 					listIngredientes.Add(new InsumosModel(id, name, unidad, stock, stockMinimo));
 
 				}
-				con.Close();
+				//con.Close();
 			}
 			foreach (InsumosModel insumo in listIngredientes)
 			{
@@ -67,7 +67,7 @@ namespace restauran.views
 			}
 		}
 
-		private void cargarcmbPlatos()
+		private void CargarcmbPlatos()
 		{
 			listPlatos.Clear();
 			using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
@@ -87,7 +87,7 @@ namespace restauran.views
 					listPlatos.Add(new Platos(id, plato, precio, image, categoria));
 
 				}
-				con.Close();
+				//con.Close();
 			}
 			foreach (Platos plato in listPlatos)
 			{
@@ -95,7 +95,7 @@ namespace restauran.views
 			}
 		}
 
-		private void btnAddIngrediente_Click(object sender, EventArgs e)
+		private void BtnAddIngrediente_Click(object sender, EventArgs e)
 		{
 			if(listInsumos.SelectedItem != null && txtCantidadIngrediente.TextLength > 0)
 			{
@@ -114,7 +114,7 @@ namespace restauran.views
 						{
 							//agrego el nuevo ingrediente a la receta
 							listReceta.Add(new Recetas(idPlato, ingredienteEncontrado.Id, Convert.ToInt32(txtCantidadIngrediente.Text)));
-							cargarReceta();
+							CargarReceta();
 						}
 						else
 						{
@@ -122,14 +122,14 @@ namespace restauran.views
 							ingrediente.IdPlato = idPlato;
 							ingrediente.Insumo = ingredienteEncontrado.Id;
 							ingrediente.Cantidad = Convert.ToInt32(txtCantidadIngrediente.Text);
-							cargarReceta();
+							CargarReceta();
 						}
 					}
 					else
 					{
 						//agrego ingrediente a receta
 						listReceta.Add(new Recetas(idPlato, ingredienteEncontrado.Id, Convert.ToInt32(txtCantidadIngrediente.Text)));
-						cargarReceta();
+						CargarReceta();
 					}
 					txtCantidadIngrediente.Text = "";
 				}
@@ -137,7 +137,7 @@ namespace restauran.views
 
 		}
 
-		private void cargarReceta()
+		private void CargarReceta()
 		{
 			listViewReceta.Items.Clear();
 			//receta.Clear();
@@ -196,10 +196,10 @@ namespace restauran.views
                 txtImage.Text = plato.Image;
             }
 			LoadDataRecetas();
-			cargarReceta();
+			CargarReceta();
 		}
 
-		private void btnSaveReceta_Click(object sender, EventArgs e)
+		private void BtnSaveReceta_Click(object sender, EventArgs e)
 		{
 			//valido q todos los datos esten completos
 			if (cmbCategoria.SelectedIndex >-1 && cmbNamePlato.Text.Length >0 && txtPrecio.TextLength > 0)
@@ -241,23 +241,31 @@ namespace restauran.views
                 platoExistente.Precio = Convert.ToDecimal(txtPrecio.Text);
                 platoExistente.Image = txtImage.Text;
 
-                string sql = $"UPDATE PLATOS SET categoria = {platoExistente.Categoria}, " +
-                    $"precio = {platoExistente.Precio}, [image] = '{platoExistente.Image}' WHERE id = {platoExistente.Id}; ";
+                string sql = $"UPDATE PLATOS SET categoria = @categoria, " +
+                    $"precio = @precio, [image] = @image WHERE id = @idPlato; ";
                 using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
                 {
-                    OleDbCommand cmd = new OleDbCommand();
-                    cmd.Connection = con;
+                    OleDbCommand cmd = new OleDbCommand()
+                    {
+                        Connection = con
+                    };
+                    //cmd.Connection = con;
                     try
                     {
                         con.Open();
                         cmd.CommandText = sql;
+                        cmd.Parameters.Add("@categoria", OleDbType.Char).Value = platoExistente.Categoria;
+                        cmd.Parameters.Add("@precio", OleDbType.Decimal).Value = platoExistente.Precio;
+                        cmd.Parameters.Add("@image", OleDbType.Char).Value = platoExistente.Image;
+                        cmd.Parameters.Add("@idPlato", OleDbType.Integer).Value = platoExistente.Id;
                         if (cmd.ExecuteNonQuery() > 0)
                         {
-                            con.Close();
-                            string sqldelReceta = $"DELETE FROM recetas WHERE plato = {platoExistente.Id}";
+                            //con.Close();
+                            string sqldelReceta = $"DELETE FROM recetas WHERE plato = @platoId";
                             OleDbTransaction transaction = null;
                             cmd.Connection = con;
-
+                            
+                            
                             try
                             {
                                 con.Open();
@@ -265,13 +273,14 @@ namespace restauran.views
                                 cmd.Connection = con;
                                 cmd.Transaction = transaction;
                                 cmd.CommandText = sqldelReceta;//primera sentencia sql
+                                cmd.Parameters.Add("@platoId", OleDbType.Integer).Value = platoExistente.Id;
                                 cmd.ExecuteNonQuery();
 
                                 //ingreso receta
                                 foreach (Recetas ingrediente in listReceta)
                                 {
-                                    cmd.CommandText = $"INSERT INTO recetas (plato, insumo, cantidad) " +
-                                        $"VALUES ({platoExistente.Id}, {ingrediente.Insumo}, {ingrediente.Cantidad});";
+                                    cmd.CommandText = string.Format($"INSERT INTO recetas (plato, insumo, cantidad) " +
+                                        $"VALUES ({platoExistente.Id}, {ingrediente.Insumo}, {ingrediente.Cantidad});");
                                     cmd.ExecuteNonQuery();
                                 }
                                 transaction.Commit();
@@ -303,17 +312,24 @@ namespace restauran.views
 					Convert.ToDecimal(txtPrecio.Text), txtImage.Text, (cmbCategoria.SelectedIndex + 1));
 
 				string sql = $"INSERT INTO platos (plato, precio, [image], categoria)" +
-					$" VALUES('{plato.Nombre}', {plato.Precio}, '{plato.Image}', {plato.Categoria});";
+					$" VALUES(@plato, @precio, @image, @categoria);";
 
 				using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
 				{
-					OleDbCommand cmd = new OleDbCommand();
-					cmd.Connection = con;
+					OleDbCommand cmd = new OleDbCommand()
+                    {
+                        Connection = con
+                    };
+					//cmd.Connection = con;
 					try
 					{
 						con.Open();
 						cmd.Connection = con;
 						cmd.CommandText = sql;
+                        cmd.Parameters.Add("@plato", OleDbType.Char).Value = plato.Nombre;
+                        cmd.Parameters.Add("@precio", OleDbType.Decimal).Value = plato.Precio;
+                        cmd.Parameters.Add("@image", OleDbType.Char).Value = plato.Image;
+                        cmd.Parameters.Add("@categoria", OleDbType.Integer).Value = plato.Categoria;
 						if (cmd.ExecuteNonQuery() > 0)
 						{
 							//obtengo id de plato y recorro listado de ingredientes
@@ -323,12 +339,12 @@ namespace restauran.views
 								con.Open();
 								cmd.Connection = con;
 								//recargo el cmb platos y refresco la list
-								cargarcmbPlatos();
+								CargarcmbPlatos();
 								int idPlatoInsertar = ObtenerIdPlato(1, plato.Nombre);
 								foreach (Recetas ingrediente in listReceta)
 								{
-									cmd.CommandText = $"INSERT INTO recetas (plato, insumo, cantidad) " +
-										$"VALUES ({idPlatoInsertar}, {ingrediente.Insumo}, {ingrediente.Cantidad});";
+									cmd.CommandText = string.Format($"INSERT INTO recetas (plato, insumo, cantidad) " +
+										$"VALUES ({idPlatoInsertar}, {ingrediente.Insumo}, {ingrediente.Cantidad});");
 									cmd.ExecuteNonQuery();
 								}
 								txtCantidadIngrediente.Text = "";
@@ -349,7 +365,7 @@ namespace restauran.views
 						MessageBox.Show("no se pudo ingresar el plato: " + ex.Message);
 					}
 					//no es necesario al salir del bloque using se cierra la coneccion
-					con.Close();
+					//con.Close();
 				}
 
 			}
@@ -360,8 +376,11 @@ namespace restauran.views
 			string sql = "SELECT plato, insumo, cantidad FROM recetas;";
 			using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
 			{
-				OleDbCommand cmd = new OleDbCommand();
-				cmd.Connection = con;
+				OleDbCommand cmd = new OleDbCommand()
+                {
+                    Connection = con
+                };
+				//cmd.Connection = con;
 				try
 				{
 					con.Open();
@@ -376,7 +395,7 @@ namespace restauran.views
 						Recetas recetaPlato = new Recetas(plato, insumo, cantidad);
 						listReceta.Add(recetaPlato);
 					}
-					con.Close();
+					//con.Close();
 				}
 				catch (Exception ex)
 				{
@@ -403,7 +422,7 @@ namespace restauran.views
 			return name;
 		}
 
-        private void btnAddImg_Click(object sender, EventArgs e)
+        private void BtnAddImg_Click(object sender, EventArgs e)
         {
             //abro cuadro de dialogo
             selectImage.ShowDialog();
@@ -437,7 +456,7 @@ namespace restauran.views
             }
         }
 
-        private void txtCantidadIngrediente_Leave(object sender, EventArgs e)
+        private void TxtCantidadIngrediente_Leave(object sender, EventArgs e)
         {
             try
             {
@@ -448,7 +467,7 @@ namespace restauran.views
             }
         }
 
-        private void listViewReceta_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void ListViewReceta_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (listViewReceta.SelectedItems != null)
             {
@@ -462,7 +481,7 @@ namespace restauran.views
                 if(recetaEncontrada != null)
                 {
                     listReceta.Remove(recetaEncontrada);
-                    cargarReceta();
+                    CargarReceta();
                 }
             }
         }

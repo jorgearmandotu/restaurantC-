@@ -71,9 +71,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(16, 15);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(744, 211);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -82,7 +82,7 @@
             // txtDireccion
             // 
             this.txtDireccion.Location = new System.Drawing.Point(515, 97);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(209, 22);
             this.txtDireccion.TabIndex = 11;
@@ -90,7 +90,7 @@
             // btnIngresar
             // 
             this.btnIngresar.Location = new System.Drawing.Point(324, 153);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(100, 28);
             this.btnIngresar.TabIndex = 12;
@@ -101,7 +101,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(137, 97);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(209, 22);
             this.txtEmail.TabIndex = 10;
@@ -109,7 +109,7 @@
             // txtTelefono
             // 
             this.txtTelefono.Location = new System.Drawing.Point(515, 60);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(209, 22);
             this.txtTelefono.TabIndex = 9;
@@ -117,7 +117,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(137, 60);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(209, 22);
             this.txtNombre.TabIndex = 8;
@@ -125,7 +125,7 @@
             // txtIdentificacion
             // 
             this.txtIdentificacion.Location = new System.Drawing.Point(515, 22);
-            this.txtIdentificacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdentificacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdentificacion.Name = "txtIdentificacion";
             this.txtIdentificacion.Size = new System.Drawing.Size(209, 22);
             this.txtIdentificacion.TabIndex = 7;
@@ -133,7 +133,7 @@
             // txtTipoId
             // 
             this.txtTipoId.Location = new System.Drawing.Point(137, 22);
-            this.txtTipoId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTipoId.Margin = new System.Windows.Forms.Padding(4);
             this.txtTipoId.Name = "txtTipoId";
             this.txtTipoId.Size = new System.Drawing.Size(209, 22);
             this.txtTipoId.TabIndex = 6;
@@ -196,7 +196,10 @@
             this.ClientSize = new System.Drawing.Size(770, 235);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(786, 274);
+            this.MinimumSize = new System.Drawing.Size(786, 274);
             this.Name = "ClientesView";
             this.Text = "ClientesView";
             this.groupBox1.ResumeLayout(false);

@@ -45,7 +45,7 @@ namespace restauran.views
                         cmd.Parameters.Add("@Others", OleDbType.Char).Value = others;
 
                         cmd.ExecuteNonQuery();
-                        con.Close();
+                        //con.Close();
                         txtIdProvider.Text = "";
                         txtNameProvider.Text = "";
                         txtPhoneProvider.Text = "";

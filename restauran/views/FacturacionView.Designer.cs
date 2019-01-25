@@ -36,14 +36,14 @@
             this.reportViewerFactura.Location = new System.Drawing.Point(12, 12);
             this.reportViewerFactura.Name = "reportViewerFactura";
             this.reportViewerFactura.ServerReport.BearerToken = null;
-            this.reportViewerFactura.Size = new System.Drawing.Size(783, 433);
+            this.reportViewerFactura.Size = new System.Drawing.Size(981, 535);
             this.reportViewerFactura.TabIndex = 0;
             // 
             // FacturacionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1005, 559);
             this.Controls.Add(this.reportViewerFactura);
             this.Name = "FacturacionView";
             this.Text = "FacturacionView";

@@ -122,6 +122,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 389);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(516, 428);
+            this.MinimumSize = new System.Drawing.Size(516, 428);
             this.Name = "InventarioView";
             this.Text = "InventarioView";
             this.panel1.ResumeLayout(false);
