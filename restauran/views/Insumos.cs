@@ -22,7 +22,41 @@ namespace restauran.views
 
 		private void BtnIngresoInsumo_Click(object sender, EventArgs e)
 		{
-			
+            string nombre = txtNameInsumo.Text.Trim().ToUpper();
+            string unidad = txtUnidad.Text.Trim().ToUpper();
+            try
+            {
+                using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+                {
+                    try
+                    {
+                        int stockInicial = Convert.ToInt32(txtStockInicial.Text.Trim());
+                        int stockMinimo = Convert.ToInt32(txtStockMinimo.Text.Trim());
+                        string sql = "INSERT INTO insumos (insumo, stock, unidad, stockMinimo) VALUES(@insumo, @stock, @unidad, @stockMinimo)";
+                        con.Open();
+                        OleDbCommand cmd = new OleDbCommand(sql, con);
+                        cmd.Parameters.Add("@insumo", OleDbType.Char).Value = nombre;
+                        cmd.Parameters.Add("@stock", OleDbType.Integer).Value = stockInicial;
+                        cmd.Parameters.Add("@unidad", OleDbType.Char).Value = unidad;
+                        cmd.Parameters.Add("@stockMinimo", OleDbType.Integer).Value = stockMinimo;
+                        cmd.ExecuteNonQuery();
+                        //con.Close();
+                        MessageBox.Show("Transacion exitosa", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtNameInsumo.Text = "";
+                        txtStockInicial.Text = "";
+                        txtStockMinimo.Text = "";
+                        txtUnidad.Text = "";
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 		}
 
         private void ValidateNumbertxtStockInical(object sender, KeyPressEventArgs e)

@@ -30,7 +30,7 @@ namespace restauran.controller
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine(ex.Message);
             }
             return ds;
         }
@@ -52,7 +52,7 @@ namespace restauran.controller
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine(ex.Message);
             }
             return res;
         }
@@ -85,7 +85,7 @@ namespace restauran.controller
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine(ex.Message);
             }
             return res;
         }

@@ -201,7 +201,7 @@
             this.MaximumSize = new System.Drawing.Size(786, 274);
             this.MinimumSize = new System.Drawing.Size(786, 274);
             this.Name = "ClientesView";
-            this.Text = "ClientesView";
+            this.Text = "Clientes";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

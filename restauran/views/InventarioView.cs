@@ -23,9 +23,9 @@ namespace restauran.views
         private void StockActual()
         {
             string sql = "SELECT * FROM insumos ORDER BY insumo ASC";
-            listViewDetail.Columns.Add("Insumo", 230);
-            listViewDetail.Columns.Add("Und", 50, textAlign:HorizontalAlignment.Center);
-            listViewDetail.Columns.Add("Existencias", 100, textAlign:HorizontalAlignment.Right);
+            listViewDetail.Columns.Add("Insumo", 300);
+            listViewDetail.Columns.Add("Und", 80, textAlign:HorizontalAlignment.Center);
+            listViewDetail.Columns.Add("Existencias", 150, textAlign:HorizontalAlignment.Right);
             try
             {
                 /*using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
@@ -102,13 +102,13 @@ namespace restauran.views
             string sql = string.Format($"SELECT * FROM salidas WHERE((salidas.[fecha] <=#{fechaFin} 23:59:59#) AND fecha >= #{fechaInicio}#)");
                // $"((salidas.fecha) Between #{fechaInicio}# And #{fechaFin}#));");
 
-            Console.WriteLine(sql);
+            //Console.WriteLine(sql);
             DataSet ds = DataAplication.Execute(sql);
             listViewDetail.Clear();
-            listViewDetail.Columns.Add("Plato", 200);
-            listViewDetail.Columns.Add("cantidad", 50, textAlign: HorizontalAlignment.Center);
-            listViewDetail.Columns.Add("Fecha", 100, textAlign: HorizontalAlignment.Center);
-            listViewDetail.Columns.Add("N.Factura", 100, textAlign: HorizontalAlignment.Center);
+            listViewDetail.Columns.Add("Plato", 300);
+            listViewDetail.Columns.Add("cantidad", 80, textAlign: HorizontalAlignment.Center);
+            listViewDetail.Columns.Add("Fecha", 150, textAlign: HorizontalAlignment.Center);
+            listViewDetail.Columns.Add("N.Factura", 150, textAlign: HorizontalAlignment.Center);
             if (ds.Tables.Count > 0)//verifico q devuelva resultados
             {
                 foreach (DataRow dr in ds.Tables[0].Rows)

@@ -66,7 +66,6 @@ namespace restauran.views
                         txtPhone.Text = "";
                         txtTipoId.Text = "CC";
                         dateFechaIngreso.ResetText();
-                        LoadListPersonal();
                         MessageBox.Show("Transaccion Exitosa", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
@@ -74,12 +73,20 @@ namespace restauran.views
                         MessageBox.Show("Error: " + ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                LoadListPersonal();
             }
         }
 
-        private void ViewNametxt(object sender, EventArgs e)
+        private void ValidPersonalEnter(object sender, KeyPressEventArgs e)
         {
-            string id = txtCCDel.Text;
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                ValidPersonal();
+            }
+        }
+        private void ValidPersonal()
+        {
+            string id = txtCCDel.Text.Trim();
             Personal persona = listPersonal.Find(x => x.Identificacion == id);
             if (persona != null)
             {
@@ -89,6 +96,10 @@ namespace restauran.views
             {
                 txtNameRetiro.Text = "";
             }
+        }
+        private void ViewNametxt(object sender, EventArgs e)
+        {
+            ValidPersonal();
         }
 
         private void RetirarPersonal(object sender, EventArgs e)

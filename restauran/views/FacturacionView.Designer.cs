@@ -46,7 +46,7 @@
             this.ClientSize = new System.Drawing.Size(1005, 559);
             this.Controls.Add(this.reportViewerFactura);
             this.Name = "FacturacionView";
-            this.Text = "FacturacionView";
+            this.Text = "Facturacion";
             this.ResumeLayout(false);
 
         }

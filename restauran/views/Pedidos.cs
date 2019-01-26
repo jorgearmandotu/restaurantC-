@@ -27,7 +27,7 @@ namespace restauran.views
             InitializeComponent();
             //log.ShowDialog();
             LoadPlatos();
-			Consulta();
+			//Consulta();
             LoadMesas();
             LoadMeseros();
             LoadClientes();
@@ -352,7 +352,7 @@ namespace restauran.views
 			}
 		}
 
-		private void Consulta()
+		/*private void Consulta()
 		{
 			/*using (SqlConnection con1 = new SqlConnection(DataAcces.conection))
 			{
@@ -365,7 +365,7 @@ namespace restauran.views
 				}
 				con1.Close();
 			}*/
-			using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
+			/*using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
 			{
 				con.Open();
 				OleDbCommand cmd = new OleDbCommand("Select * From insumos", con);
@@ -378,7 +378,7 @@ namespace restauran.views
 				}
 				//con.Close();
 			}
-		}
+		}*/
 
         private void LoadMesas()
         {
@@ -577,9 +577,12 @@ namespace restauran.views
                             try
                             {
                                 con.Open();
-                                OleDbCommand cmd = new OleDbCommand();
-                                cmd.CommandText = sqlReceta;
-                                cmd.Connection = con;
+                                OleDbCommand cmd = new OleDbCommand()
+                                {
+                                    CommandText = sqlReceta,
+                                    Connection = con
+                            };
+                                //cmd.Connection = con;
                                 cmd.Parameters.Add("@idPlato", OleDbType.Integer).Value = platoSelect.Id;
                                 OleDbDataReader dr = cmd.ExecuteReader();
                                 listClientes.Clear();
@@ -646,10 +649,6 @@ namespace restauran.views
             ValidCliente();
         }
 
-        private void groupBox6_Enter(object sender, EventArgs e)
-        {
-
-        }
 
         private void Pedidos_FormClosing(object sender, FormClosingEventArgs e)
         {

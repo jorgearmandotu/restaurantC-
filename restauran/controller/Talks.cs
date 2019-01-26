@@ -40,19 +40,19 @@ namespace restauran.controller
                 bool dataCorrect = crypt.ComparePwd(password, pwd);
                 if (dataCorrect == true && user == usuario)
                 {
-                    Console.WriteLine("se logueo "+usuario+" "+admin);
+                    //Console.WriteLine("se logueo "+usuario+" "+admin);
                     userLog = new Users(usuario, "", admin);
                     return userLog;
                 }
                 else
                 {
-                    Console.WriteLine("No se logeo "+usuario+" "+password);
+                    //Console.WriteLine("No se logeo "+usuario+" "+password);
                     return userLog; 
                 }
             }
             else
             {
-                Console.WriteLine("No hubo registros");
+                //Console.WriteLine("No hubo registros");
                 return userLog;
             }
 		}

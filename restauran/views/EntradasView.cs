@@ -44,7 +44,7 @@ namespace restauran.views
         {
             cmbProvider.Items.Clear();
             listProvider.Clear();
-            string sql = "SELECT * FROM PROVEEDOR";
+            string sql = "SELECT * FROM PROVEEDOR ORDER BY proveedor ASC";
             try
             {
                 using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
@@ -76,7 +76,7 @@ namespace restauran.views
             cmbInsumo.Items.Clear();
             cmbProductsBaja.Items.Clear();
             listInsumos.Clear();
-            string sql = "SELECT * FROM insumos";
+            string sql = "SELECT * FROM insumos ORDER BY insumo ASC";
             try
             {
                 using (OleDbConnection con = new OleDbConnection(DataAcces.conection))
@@ -229,11 +229,10 @@ namespace restauran.views
                         string sql2 = string.Format($"UPDATE  insumos SET stock= (stock + {ingreso.Cantidad} )  WHERE id = @Id;");
                         //cmd.Parameters.Add("@Cant", OleDbType.Integer).Value = ingreso.Cantidad;
                         cmd.Parameters.Add("@Id", OleDbType.Integer).Value = ingreso.Insumo;
-                        MessageBox.Show(sql2);
                         cmd.CommandText = sql2;
                         cmd.ExecuteNonQuery();
                         transaction.Commit();
-                        //con.Close();
+                        con.Close();
                     }
                     catch (Exception ex)
                     {

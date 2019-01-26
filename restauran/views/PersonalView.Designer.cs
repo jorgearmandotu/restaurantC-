@@ -105,6 +105,7 @@
             this.txtCCDel.Size = new System.Drawing.Size(210, 21);
             this.txtCCDel.TabIndex = 8;
             this.txtCCDel.TabStop = false;
+            this.txtCCDel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidPersonalEnter);
             this.txtCCDel.Leave += new System.EventHandler(this.ViewNametxt);
             // 
             // label12

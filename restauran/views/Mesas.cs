@@ -1,4 +1,5 @@
 ﻿using restauran.controller;
+using restauran.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,12 @@ namespace restauran.views
 {
 	public partial class Mesas : Form
 	{
-		public Mesas()
-		{
-			InitializeComponent();
-		}
+        public Mesas()
+        {
+            InitializeComponent();
+        }
 
-        private void btnAddMesa_Click(object sender, EventArgs e)
+        private void BtnAddMesa_Click(object sender, EventArgs e)
         {
             string sql = "INSERT INTO mesas (nombre) VALUES(@nombre)";
             using (OleDbConnection con = new OleDbConnection(DataAcces.conection))

@@ -156,7 +156,6 @@ namespace restauran.views
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Pedido";
-            this.groupBox6.Enter += new System.EventHandler(this.groupBox6_Enter);
             // 
             // cmbFormaPago
             // 
@@ -621,6 +620,7 @@ namespace restauran.views
             this.ClientSize = new System.Drawing.Size(1008, 681);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
+            this.MinimumSize = new System.Drawing.Size(1024, 720);
             this.Name = "Pedidos";
             this.Text = "Pedidos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Pedidos_FormClosing);

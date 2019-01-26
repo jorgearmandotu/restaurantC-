@@ -15,7 +15,9 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>NombreCliente</rd:DefaultName>
@@ -46,14 +48,16 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Identificacion</rd:DefaultName>
         <Top>1.55815cm</Top>
         <Left>3.40995cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.88125cm</Width>
+        <Width>4.06104cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -76,12 +80,14 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Fecha</rd:DefaultName>
-        <Top>0.59655cm</Top>
-        <Left>11.8237cm</Left>
+        <Top>0.59656cm</Top>
+        <Left>10.45668cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>2</ZIndex>
@@ -106,7 +112,9 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>NFactura</rd:DefaultName>
@@ -140,8 +148,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox26</rd:DefaultName>
-        <Top>0.59655cm</Top>
-        <Left>9.3237cm</Left>
+        <Top>0.59656cm</Top>
+        <Left>7.95668cm</Left>
         <Height>0.6cm</Height>
         <Width>1.8691cm</Width>
         <ZIndex>4</ZIndex>
@@ -264,8 +272,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox30</rd:DefaultName>
-        <Top>1.55814cm</Top>
-        <Left>9.41189cm</Left>
+        <Top>1.55815cm</Top>
+        <Left>7.95668cm</Left>
         <Height>0.6cm</Height>
         <Width>2.23542cm</Width>
         <ZIndex>8</ZIndex>
@@ -292,12 +300,14 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>AtendidoPor</rd:DefaultName>
-        <Top>1.55814cm</Top>
-        <Left>11.8237cm</Left>
+        <Top>1.55815cm</Top>
+        <Left>10.45668cm</Left>
         <Height>0.9175cm</Height>
         <Width>3.32021cm</Width>
         <ZIndex>9</ZIndex>
@@ -315,13 +325,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>5.50396cm</Width>
+              <Width>6.21382cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.49118cm</Width>
+              <Width>3.20104cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.78222cm</Width>
+              <Width>3.49208cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -551,7 +561,7 @@
         <Top>4.25662cm</Top>
         <Left>0.86995cm</Left>
         <Height>1.2cm</Height>
-        <Width>10.77736cm</Width>
+        <Width>12.90694cm</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -736,7 +746,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataFactura</DataSetName>
         <Top>5.87058cm</Top>
-        <Left>4.21377cm</Left>
+        <Left>6.34336cm</Left>
         <Height>1.2cm</Height>
         <Width>7.43353cm</Width>
         <ZIndex>11</ZIndex>

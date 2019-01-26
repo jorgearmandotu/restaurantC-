@@ -23,14 +23,18 @@ namespace restauran.views
         }
 
         private void IngresarFactura(Factura factura, Clientes cliente, List<Pedido> pedido, string idFormaPago)
-        { 
+        {
+            //string sql = String.Format($"INSERT INTO facturacion (nFactura, cliente, pago, fecha, mesero, vlrFacturado) " +
+            //      $"VAlUES (?,?,?,?,?,?)");
             string sql = String.Format($"INSERT INTO facturacion (nFactura, cliente, pago, fecha, mesero, vlrFacturado) " +
-                    $"VAlUES (?,?,?,?,?,?)");
+                    $"VAlUES ({factura.NFactura}, {cliente.Id}, {factura.FormadePago}, {factura.Fecha}, {factura.AtendidoPor}, {factura.VlrPagar})");
 
             //OleDbType.Date = factura.Fecha;
             string[] arr = { factura.NFactura.ToString(), cliente.Id.ToString(), factura.FormadePago,
-                factura.Fecha.ToString(), idFormaPago, factura.VlrPagar };
-            if (DataAplication.InsertData(sql, arr))
+                factura.Fecha.ToString(), factura.AtendidoPor, factura.VlrPagar };
+            //if (DataAplication.InsertData(sql, arr))
+            MessageBox.Show(sql);
+            if (DataAplication.InsertData(sql))
             {
                 Thread th = new Thread(() => CargarSalidas(pedido, factura));
                 th.Start();
@@ -49,6 +53,7 @@ namespace restauran.views
             foreach(Pedido p in pedido){
                 int idPlato = 0;
                 string sqlSalidas = $"INSERT INTO salidas (plato, cantidad, fecha, factura) VALUES( ?,?,?,? )";
+                MessageBox.Show(sqlSalidas);
                 foreach (DataRow plato in dt.Rows)
                 {
                     if(plato["plato"].ToString() == p.Producto)

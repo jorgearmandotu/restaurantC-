@@ -41,15 +41,23 @@
             // 
             // listViewDetail
             // 
+            this.listViewDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewDetail.Location = new System.Drawing.Point(3, 83);
             this.listViewDetail.Name = "listViewDetail";
-            this.listViewDetail.Size = new System.Drawing.Size(449, 279);
+            this.listViewDetail.Size = new System.Drawing.Size(885, 502);
             this.listViewDetail.TabIndex = 0;
             this.listViewDetail.UseCompatibleStateImageBehavior = false;
             this.listViewDetail.View = System.Windows.Forms.View.Details;
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.btnPorFecha);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.dateTimeFechaFin);
@@ -57,14 +65,16 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dateTimeFechaInicio);
             this.panel1.Controls.Add(this.listViewDetail);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(474, 365);
+            this.panel1.Size = new System.Drawing.Size(896, 593);
             this.panel1.TabIndex = 2;
             // 
             // btnPorFecha
             // 
-            this.btnPorFecha.Location = new System.Drawing.Point(286, 54);
+            this.btnPorFecha.Location = new System.Drawing.Point(353, 54);
             this.btnPorFecha.Name = "btnPorFecha";
             this.btnPorFecha.Size = new System.Drawing.Size(75, 23);
             this.btnPorFecha.TabIndex = 7;
@@ -77,24 +87,24 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 13);
+            this.label3.Size = new System.Drawing.Size(98, 15);
             this.label3.TabIndex = 6;
             this.label3.Text = "Ventas por fecha";
             // 
             // dateTimeFechaFin
             // 
             this.dateTimeFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeFechaFin.Location = new System.Drawing.Point(367, 16);
+            this.dateTimeFechaFin.Location = new System.Drawing.Point(528, 18);
             this.dateTimeFechaFin.Name = "dateTimeFechaFin";
-            this.dateTimeFechaFin.Size = new System.Drawing.Size(92, 20);
+            this.dateTimeFechaFin.Size = new System.Drawing.Size(134, 21);
             this.dateTimeFechaFin.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(296, 23);
+            this.label2.Location = new System.Drawing.Point(439, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.Size = new System.Drawing.Size(74, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "Fecha Final:";
             // 
@@ -103,16 +113,16 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(113, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.Size = new System.Drawing.Size(79, 15);
             this.label1.TabIndex = 3;
             this.label1.Text = "Fecha Inicial:";
             // 
             // dateTimeFechaInicio
             // 
             this.dateTimeFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeFechaInicio.Location = new System.Drawing.Point(189, 17);
+            this.dateTimeFechaInicio.Location = new System.Drawing.Point(198, 17);
             this.dateTimeFechaInicio.Name = "dateTimeFechaInicio";
-            this.dateTimeFechaInicio.Size = new System.Drawing.Size(92, 20);
+            this.dateTimeFechaInicio.Size = new System.Drawing.Size(134, 21);
             this.dateTimeFechaInicio.TabIndex = 2;
             this.dateTimeFechaInicio.Value = new System.DateTime(2019, 1, 21, 10, 55, 29, 0);
             // 
@@ -120,13 +130,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 389);
+            this.ClientSize = new System.Drawing.Size(914, 611);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(516, 428);
-            this.MinimumSize = new System.Drawing.Size(516, 428);
+            this.MaximumSize = new System.Drawing.Size(1280, 720);
+            this.MinimumSize = new System.Drawing.Size(750, 428);
             this.Name = "InventarioView";
-            this.Text = "InventarioView";
+            this.Text = "Reportes";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

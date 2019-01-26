@@ -55,7 +55,7 @@
             this.btnAddMesa.TabIndex = 2;
             this.btnAddMesa.Text = "Agregar";
             this.btnAddMesa.UseVisualStyleBackColor = true;
-            this.btnAddMesa.Click += new System.EventHandler(this.btnAddMesa_Click);
+            this.btnAddMesa.Click += new System.EventHandler(this.BtnAddMesa_Click);
             // 
             // txtNameMesa
             // 

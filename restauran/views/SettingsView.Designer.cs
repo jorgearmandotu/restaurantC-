@@ -84,7 +84,7 @@
             this.MaximumSize = new System.Drawing.Size(490, 158);
             this.MinimumSize = new System.Drawing.Size(490, 158);
             this.Name = "SettingsView";
-            this.Text = "SettingsView";
+            this.Text = "Settings";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
