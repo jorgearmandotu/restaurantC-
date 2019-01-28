@@ -31,7 +31,7 @@ namespace restauran.views
 
             //OleDbType.Date = factura.Fecha;
             string[] arr = { factura.NFactura.ToString(), cliente.Id.ToString(), factura.FormadePago,
-                factura.Fecha.ToString(), factura.AtendidoPor, factura.VlrPagar };
+                "#"+factura.Fecha.ToString()+"#", factura.AtendidoPor, factura.VlrPagar };
             //if (DataAplication.InsertData(sql, arr))
             MessageBox.Show(sql);
             if (DataAplication.InsertData(sql))
