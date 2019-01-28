@@ -20,6 +20,7 @@ namespace restauran.views
         private List<Pedido> listPedidos = new List<Pedido>();
 		private List<Platos> listPlatos = new List<Platos>();
         private List<Clientes> listClientes = new List<Clientes>();
+        private decimal valorPagar=0;
 		public Pedidos(Users user)
         {
             usuario = user;
@@ -323,6 +324,7 @@ namespace restauran.views
 					vlrPagar += ped.Cantidad*ped.Vlr_Unit;
 				}
 			}
+            valorPagar = vlrPagar;
 			lblValorPagar.Text = String.Format("{0:C}",vlrPagar);
             decimal impConsumo = Properties.Settings.Default.ImpuestoConsumo;
 			decimal imp = vlrPagar * impConsumo;
@@ -523,16 +525,16 @@ namespace restauran.views
             string idCliente = txtIdCliente.Text.Trim();
             DateTime fecha = DateTime.Now;
             Clientes cliente = listClientes.Find(x => x.Identificacion == idCliente);
-            string mesero = cmbMesero.Text;
+            string mesero = cmbMesero.SelectedValue.ToString();
             string formaPago = cmbFormaPago.Text;
             string idFormaPago = cmbFormaPago.SelectedValue.ToString();
             int idPedio = cmbMesa.SelectedIndex;
             string vlrImpConsumo = lblImpConsumo.Text;
-            string vlrPagar = lblValorPagar.Text;
+            decimal vlrPagar = valorPagar;//lblValorPagar.Text;
             if (cliente != null)
             {
                 Factura factura = new Factura(fecha, cliente.Nombre, cliente.Identificacion, cliente.Direccion,
-                    mesero, formaPago, vlrImpConsumo, vlrPagar);
+                    mesero, formaPago, vlrImpConsumo, vlrPagar.ToString());
                 List<Pedido> pedido = new List<Pedido>();
                 foreach (Pedido p in listPedidos)
                 {

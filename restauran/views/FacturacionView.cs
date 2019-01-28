@@ -25,19 +25,31 @@ namespace restauran.views
         private void IngresarFactura(Factura factura, Clientes cliente, List<Pedido> pedido, string idFormaPago)
         {
             //string sql = String.Format($"INSERT INTO facturacion (nFactura, cliente, pago, fecha, mesero, vlrFacturado) " +
-            //      $"VAlUES (?,?,?,?,?,?)");
-            string sql = String.Format($"INSERT INTO facturacion (nFactura, cliente, pago, fecha, mesero, vlrFacturado) " +
-                    $"VAlUES ({factura.NFactura}, {cliente.Id}, {factura.FormadePago}, {factura.Fecha}, {factura.AtendidoPor}, {factura.VlrPagar})");
+              //    $"VAlUES (?,?,?,?,?,?)");
+            string sql = String.Format($"INSERT INTO facturacion (nFactura, cliente, pago, [fecha], mesero, vlrFacturado) " +
+                    $"VAlUES ({factura.NFactura}, {cliente.Id}, '{factura.FormadePago}', {factura.Fecha.ToShortDateString()}, {factura.AtendidoPor}, {factura.VlrPagar})");
 
             //OleDbType.Date = factura.Fecha;
-            string[] arr = { factura.NFactura.ToString(), cliente.Id.ToString(), factura.FormadePago,
-                "#"+factura.Fecha.ToString()+"#", factura.AtendidoPor, factura.VlrPagar };
+            //string[] arr = { factura.NFactura.ToString(), cliente.Id.ToString(), "'"+factura.FormadePago+"'",
+              //  factura.Fecha.ToShortDateString(), factura.AtendidoPor, factura.VlrPagar.ToString() };
             //if (DataAplication.InsertData(sql, arr))
-            MessageBox.Show(sql);
+            //MessageBox.Show(sql);
             if (DataAplication.InsertData(sql))
             {
                 Thread th = new Thread(() => CargarSalidas(pedido, factura));
                 th.Start();
+                DataSet ds = DataAplication.Execute($"SELECT nombre FROM personal WHERE Id = {factura.AtendidoPor};");
+                if (ds.Tables.Count > 0)
+                {
+                    factura.AtendidoPor = ds.Tables[0].Rows[0]["nombre"].ToString();
+                }
+                else
+                {
+                    factura.AtendidoPor = "cordillera del sabor";
+                }
+                decimal vlr = Convert.ToDecimal(factura.VlrPagar);
+                factura.VlrPagar = string.Format("{0:C}", vlr);
+                MessageBox.Show(factura.VlrPagar);
                 CargarReporte(factura, pedido);
             }
             else
@@ -53,7 +65,7 @@ namespace restauran.views
             foreach(Pedido p in pedido){
                 int idPlato = 0;
                 string sqlSalidas = $"INSERT INTO salidas (plato, cantidad, fecha, factura) VALUES( ?,?,?,? )";
-                MessageBox.Show(sqlSalidas);
+                //MessageBox.Show(sqlSalidas);
                 foreach (DataRow plato in dt.Rows)
                 {
                     if(plato["plato"].ToString() == p.Producto)

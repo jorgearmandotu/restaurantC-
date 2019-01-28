@@ -203,7 +203,20 @@
             <TextRuns>
               <TextRun>
                 <Value>NOMBRE</Value>
-                <Style />
+                <Style>
+                  <FontSize>6pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>CLIENTE:</Value>
+                <Style>
+                  <FontSize>6pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -212,7 +225,7 @@
         <rd:DefaultName>Textbox28</rd:DefaultName>
         <Top>2.33453cm</Top>
         <Left>0.86995cm</Left>
-        <Height>0.6cm</Height>
+        <Height>0.89104cm</Height>
         <Width>1.9091cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
