@@ -30,12 +30,12 @@
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogIn));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogIn = new System.Windows.Forms.Button();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -55,9 +55,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "LOG IN";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::restauran.Properties.Resources.cordilleraSaborMarco;
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(278, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(176, 144);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnLogIn
             // 
-            this.btnLogIn.Location = new System.Drawing.Point(151, 118);
+            this.btnLogIn.Location = new System.Drawing.Point(64, 113);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(164, 23);
             this.btnLogIn.TabIndex = 3;
@@ -73,7 +84,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUser.Location = new System.Drawing.Point(103, 25);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(137, 20);
+            this.txtUser.Size = new System.Drawing.Size(149, 20);
             this.txtUser.TabIndex = 1;
             // 
             // txtPassword
@@ -84,7 +95,7 @@
             this.txtPassword.Location = new System.Drawing.Point(103, 58);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '♣';
-            this.txtPassword.Size = new System.Drawing.Size(137, 20);
+            this.txtPassword.Size = new System.Drawing.Size(149, 20);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
@@ -111,17 +122,6 @@
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "USUARIO: ";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(246, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(208, 102);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
             // 
             // LogIn
             // 

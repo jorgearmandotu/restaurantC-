@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntradasView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.listViewFactura = new System.Windows.Forms.ListView();
@@ -191,7 +192,7 @@
             this.dateAddinsumo.Name = "dateAddinsumo";
             this.dateAddinsumo.Size = new System.Drawing.Size(126, 21);
             this.dateAddinsumo.TabIndex = 16;
-            this.dateAddinsumo.Value = new System.DateTime(2019, 1, 15, 10, 4, 54, 0);
+            this.dateAddinsumo.Value = new System.DateTime(2019, 1, 29, 15, 35, 59, 0);
             // 
             // label9
             // 
@@ -257,6 +258,7 @@
             // 
             // cmbInsumo
             // 
+            this.cmbInsumo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInsumo.FormattingEnabled = true;
             this.cmbInsumo.Location = new System.Drawing.Point(79, 33);
             this.cmbInsumo.Name = "cmbInsumo";
@@ -301,6 +303,7 @@
             // 
             // cmbProvider
             // 
+            this.cmbProvider.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvider.FormattingEnabled = true;
             this.cmbProvider.Location = new System.Drawing.Point(86, 22);
             this.cmbProvider.Name = "cmbProvider";
@@ -359,7 +362,7 @@
             this.dateBaja.Name = "dateBaja";
             this.dateBaja.Size = new System.Drawing.Size(145, 21);
             this.dateBaja.TabIndex = 14;
-            this.dateBaja.Value = new System.DateTime(2019, 1, 15, 16, 21, 29, 0);
+            this.dateBaja.Value = new System.DateTime(2019, 1, 29, 15, 40, 1, 0);
             // 
             // label11
             // 
@@ -408,6 +411,7 @@
             // 
             // cmbProductsBaja
             // 
+            this.cmbProductsBaja.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProductsBaja.FormattingEnabled = true;
             this.cmbProductsBaja.Location = new System.Drawing.Point(76, 28);
             this.cmbProductsBaja.Name = "cmbProductsBaja";
@@ -433,6 +437,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EntradasView";
             this.Text = "Entradas";
             this.groupBox1.ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionusuariosView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnIngresarUser = new System.Windows.Forms.Button();
             this.checkBoxAdministrador = new System.Windows.Forms.CheckBox();
@@ -220,6 +221,7 @@
             this.ClientSize = new System.Drawing.Size(453, 329);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(469, 368);
             this.MinimumSize = new System.Drawing.Size(469, 368);

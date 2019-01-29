@@ -28,7 +28,7 @@ namespace restauran
 
 		private void IntentLogIn()
 		{
-			String user = txtUser.Text.Trim();
+			String user = txtUser.Text.Trim().ToUpper();
 			String password = txtPassword.Text.Trim();
 			Talks talk = new Talks();
             Users log = talk.LogIn(user, password);

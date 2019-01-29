@@ -49,7 +49,6 @@ namespace restauran.views
                 }
                 decimal vlr = Convert.ToDecimal(factura.VlrPagar);
                 factura.VlrPagar = string.Format("{0:C}", vlr);
-                MessageBox.Show(factura.VlrPagar);
                 CargarReporte(factura, pedido);
             }
             else

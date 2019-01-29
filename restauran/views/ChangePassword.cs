@@ -10,14 +10,11 @@ using System.Windows.Forms;
 
 namespace restauran.views
 {
-    public partial class About : Form
+    public partial class ChangePassword : Form
     {
-        public About()
+        public ChangePassword()
         {
             InitializeComponent();
-            richTextBox1.SelectAll();
-            richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
-            richTextBox1.SelectionProtected = true;
         }
     }
 }

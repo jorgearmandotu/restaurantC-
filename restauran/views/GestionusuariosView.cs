@@ -34,7 +34,7 @@ namespace restauran.views
 
         private void AddUser(object sender, EventArgs e)
         {
-            string usuario = txtUsuario.Text.Trim();
+            string usuario = txtUsuario.Text.Trim().ToUpper();
             string password = txtPassword.Text.Trim();
             string passwordRepeat = txtRepitPassword.Text.Trim();
             bool admin = checkBoxAdministrador.Checked;
@@ -73,7 +73,7 @@ namespace restauran.views
         private void DelUser(object sender, EventArgs e)
         {
             string usuarioDel = cmbUserDelete.Text.Trim();
-            string usuario = txtUserValid.Text.Trim();
+            string usuario = txtUserValid.Text.Trim().ToUpper();
             string password = txtPasswordValid.Text.Trim();
             if (usuarioDel.Length<=0 || usuario.Length<=0 || password.Length<=0)
             {

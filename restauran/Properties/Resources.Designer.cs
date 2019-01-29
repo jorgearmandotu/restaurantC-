@@ -63,6 +63,16 @@ namespace restauran.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cordilleraSaborMarco {
+            get {
+                object obj = ResourceManager.GetObject("cordilleraSaborMarco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logoCordilleraSaborFondoBlanco {
             get {
                 object obj = ResourceManager.GetObject("logoCordilleraSaborFondoBlanco", resourceCulture);

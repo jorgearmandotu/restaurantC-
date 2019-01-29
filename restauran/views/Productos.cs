@@ -23,7 +23,21 @@ namespace restauran.views
 			InitializeComponent();
 			CargarInsumos();
 			CargarcmbPlatos();
+            cargarCmbCategorias();
 		}
+
+        private void cargarCmbCategorias()
+        {
+            string sql = "SELECT categoria FROM categorias";
+            DataSet ds = DataAplication.Execute(sql);
+            if(ds.Tables.Count > 0)
+            {
+                cmbCategoria.Items.Add(ds.Tables[0].Rows[0]["categoria"]);
+                cmbCategoria.Items.Add(ds.Tables[0].Rows[1]["categoria"]);
+                cmbCategoria.Items.Add(ds.Tables[0].Rows[2]["categoria"]);
+                cmbCategoria.Items.Add(ds.Tables[0].Rows[3]["categoria"]);
+            }
+        }
 
 		private void BtnNewCategoria_Click(object sender, EventArgs e)
 		{
@@ -260,7 +274,7 @@ namespace restauran.views
                         cmd.Parameters.Add("@idPlato", OleDbType.Integer).Value = platoExistente.Id;
                         if (cmd.ExecuteNonQuery() > 0)
                         {
-                            //con.Close();
+                            con.Close();
                             string sqldelReceta = $"DELETE FROM recetas WHERE plato = @platoId";
                             OleDbTransaction transaction = null;
                             cmd.Connection = con;

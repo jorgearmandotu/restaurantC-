@@ -34,6 +34,7 @@ namespace restauran.views
             LoadClientes();
             LoadModoPago();
             cmbFormaPago.SelectedIndex = 0;
+            cargarlblGroupBox();
             if (user.Administrador)
             {
                 toolStripPersonal.Enabled = true;
@@ -87,7 +88,7 @@ namespace restauran.views
 			Mesas mesa = new Mesas();
 			mesa.ShowDialog();
             LoadMesas();
-            cmbMesa.SelectedIndex = 0;
+            cmbMesa.ResetText();
 		}
 
 		private void LoadPlatos()
@@ -663,6 +664,29 @@ namespace restauran.views
             GestionusuariosView userGestion = new GestionusuariosView(usuario);
             {
                 userGestion.ShowDialog();
+            }
+        }
+
+        private void ShowAbout(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
+        }
+
+        private void cargarlblGroupBox()
+        {
+            string sql = "SELECT categoria FROM categorias";
+            DataSet ds = DataAplication.Execute(sql);
+            if (ds.Tables.Count > 0)
+            {
+                groupBox1.Text = ds.Tables[0].Rows[0]["categoria"].ToString();
+                groupBox2.Text = ds.Tables[0].Rows[1]["categoria"].ToString();
+                groupBox3.Text = ds.Tables[0].Rows[2]["categoria"].ToString();
+                groupBox4.Text = ds.Tables[0].Rows[3]["categoria"].ToString();
+                /* cmbCategoria.Items.Add(ds.Tables[0].Rows[0]["categoria"]);
+                 cmbCategoria.Items.Add(ds.Tables[0].Rows[1]["categoria"]);
+                 cmbCategoria.Items.Add(ds.Tables[0].Rows[2]["categoria"]);
+                 cmbCategoria.Items.Add(ds.Tables[0].Rows[3]["categoria"]);*/
             }
         }
     }

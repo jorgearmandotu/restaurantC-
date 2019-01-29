@@ -30,7 +30,8 @@ namespace restauran.views
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pedidos));
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.cmbMesero = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -50,19 +51,19 @@ namespace restauran.views
             this.Producto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.precio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cantidad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.listViewOtros = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.listViewEspeciales = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listViewBebidas = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listViewPlatos = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -86,33 +87,35 @@ namespace restauran.views
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripUsuarios = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparatorUser = new System.Windows.Forms.ToolStripSeparator();
-            this.groupBox1.SuspendLayout();
+            this.toolStripAbout = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBox7
             // 
-            this.groupBox1.Controls.Add(this.cmbMesero);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.groupBox6);
-            this.groupBox1.Controls.Add(this.groupBox5);
-            this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.cmbMesa);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 28);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(984, 654);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Pedidos";
+            this.groupBox7.Controls.Add(this.cmbMesero);
+            this.groupBox7.Controls.Add(this.label4);
+            this.groupBox7.Controls.Add(this.groupBox6);
+            this.groupBox7.Controls.Add(this.groupBox4);
+            this.groupBox7.Controls.Add(this.groupBox3);
+            this.groupBox7.Controls.Add(this.groupBox2);
+            this.groupBox7.Controls.Add(this.groupBox1);
+            this.groupBox7.Controls.Add(this.cmbMesa);
+            this.groupBox7.Controls.Add(this.label1);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(12, 28);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(984, 654);
+            this.groupBox7.TabIndex = 0;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Pedidos";
             // 
             // cmbMesero
             // 
@@ -303,15 +306,15 @@ namespace restauran.views
             this.cantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.cantidad.Width = 70;
             // 
-            // groupBox5
+            // groupBox4
             // 
-            this.groupBox5.Controls.Add(this.listViewOtros);
-            this.groupBox5.Location = new System.Drawing.Point(292, 350);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(230, 290);
-            this.groupBox5.TabIndex = 7;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Otros";
+            this.groupBox4.Controls.Add(this.listViewOtros);
+            this.groupBox4.Location = new System.Drawing.Point(292, 350);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(230, 290);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Otros";
             // 
             // listViewOtros
             // 
@@ -337,18 +340,18 @@ namespace restauran.views
             this.columnHeader4.Text = "Precio";
             this.columnHeader4.Width = 82;
             // 
-            // groupBox4
+            // groupBox3
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.listViewEspeciales);
-            this.groupBox4.Location = new System.Drawing.Point(16, 350);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(230, 290);
-            this.groupBox4.TabIndex = 6;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Especiales";
+            this.groupBox3.Controls.Add(this.listViewEspeciales);
+            this.groupBox3.Location = new System.Drawing.Point(16, 350);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(230, 290);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Especiales";
             // 
             // listViewEspeciales
             // 
@@ -374,15 +377,15 @@ namespace restauran.views
             this.columnHeader2.Text = "Precio";
             this.columnHeader2.Width = 82;
             // 
-            // groupBox3
+            // groupBox2
             // 
-            this.groupBox3.Controls.Add(this.listViewBebidas);
-            this.groupBox3.Location = new System.Drawing.Point(292, 54);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(230, 290);
-            this.groupBox3.TabIndex = 4;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Bebidas";
+            this.groupBox2.Controls.Add(this.listViewBebidas);
+            this.groupBox2.Location = new System.Drawing.Point(292, 54);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(230, 290);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Bebidas";
             // 
             // listViewBebidas
             // 
@@ -408,15 +411,15 @@ namespace restauran.views
             this.columnHeader6.Text = "Precio";
             this.columnHeader6.Width = 82;
             // 
-            // groupBox2
+            // groupBox1
             // 
-            this.groupBox2.Controls.Add(this.listViewPlatos);
-            this.groupBox2.Location = new System.Drawing.Point(16, 54);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(230, 290);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Platos";
+            this.groupBox1.Controls.Add(this.listViewPlatos);
+            this.groupBox1.Location = new System.Drawing.Point(16, 54);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(230, 290);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Platos";
             // 
             // listViewPlatos
             // 
@@ -505,7 +508,9 @@ namespace restauran.views
             this.toolStripLabel4,
             this.toolStripSeparator7,
             this.toolStripUsuarios,
-            this.toolStripSeparatorUser});
+            this.toolStripSeparatorUser,
+            this.toolStripAbout,
+            this.toolStripSeparator4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1008, 25);
@@ -613,25 +618,38 @@ namespace restauran.views
             this.toolStripSeparatorUser.Size = new System.Drawing.Size(6, 25);
             this.toolStripSeparatorUser.Visible = false;
             // 
+            // toolStripAbout
+            // 
+            this.toolStripAbout.Name = "toolStripAbout";
+            this.toolStripAbout.Size = new System.Drawing.Size(14, 22);
+            this.toolStripAbout.Text = "?";
+            this.toolStripAbout.Click += new System.EventHandler(this.ShowAbout);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
             // Pedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 681);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1024, 720);
             this.Name = "Pedidos";
             this.Text = "Pedidos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Pedidos_FormClosing);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -640,20 +658,20 @@ namespace restauran.views
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.ComboBox cmbMesa;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListView listViewPedido;
         private System.Windows.Forms.ColumnHeader Producto;
         private System.Windows.Forms.ColumnHeader cantidad;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ListView listViewOtros;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ListView listViewOtros;
+        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListView listViewEspeciales;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -696,5 +714,7 @@ namespace restauran.views
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripLabel toolStripUsuarios;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorUser;
+        private System.Windows.Forms.ToolStripLabel toolStripAbout;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }

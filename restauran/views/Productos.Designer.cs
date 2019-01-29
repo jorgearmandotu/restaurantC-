@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Productos));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSaveReceta = new System.Windows.Forms.Button();
             this.cmbNamePlato = new System.Windows.Forms.ComboBox();
@@ -217,11 +218,6 @@
             // 
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Items.AddRange(new object[] {
-            "Platos",
-            "Bebidas",
-            "Especiales",
-            "Otros"});
             this.cmbCategoria.Location = new System.Drawing.Point(82, 22);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(174, 23);
@@ -274,6 +270,7 @@
             this.ClientSize = new System.Drawing.Size(754, 555);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(770, 594);
             this.MinimumSize = new System.Drawing.Size(770, 594);
