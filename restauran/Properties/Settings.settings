@@ -13,5 +13,17 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\restaurant.accdb</Value>
     </Setting>
+    <Setting Name="Nit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">123456</Value>
+    </Setting>
+    <Setting Name="Telefono" Type="System.String" Scope="User">
+      <Value Profile="(Default)">721002856</Value>
+    </Setting>
+    <Setting Name="Direccion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">catambuco casa x</Value>
+    </Setting>
+    <Setting Name="PiePagina" Type="System.String" Scope="User">
+      <Value Profile="(Default)">pie de pagina</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

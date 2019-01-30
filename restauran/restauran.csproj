@@ -103,6 +103,7 @@
       <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
     <Compile Include="models\Clientes.cs" />
+    <Compile Include="models\DatosEmpresa.cs" />
     <Compile Include="models\Factura.cs" />
     <Compile Include="models\Ingresos.cs" />
     <Compile Include="models\InsumosModel.cs" />
@@ -225,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\Categoria.resx">
       <DependentUpon>Categoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\ClientesView.resx">
       <DependentUpon>ClientesView.cs</DependentUpon>

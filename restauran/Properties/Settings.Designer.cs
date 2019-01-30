@@ -44,5 +44,53 @@ namespace restauran.Properties {
                 return ((string)(this["restaurantConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("123456")]
+        public string Nit {
+            get {
+                return ((string)(this["Nit"]));
+            }
+            set {
+                this["Nit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("721002856")]
+        public string Telefono {
+            get {
+                return ((string)(this["Telefono"]));
+            }
+            set {
+                this["Telefono"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("catambuco casa x")]
+        public string Direccion {
+            get {
+                return ((string)(this["Direccion"]));
+            }
+            set {
+                this["Direccion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("pie de pagina")]
+        public string PiePagina {
+            get {
+                return ((string)(this["PiePagina"]));
+            }
+            set {
+                this["PiePagina"] = value;
+            }
+        }
     }
 }

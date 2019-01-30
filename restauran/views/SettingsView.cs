@@ -16,6 +16,7 @@ namespace restauran.views
         public SettingsView()
         {
             InitializeComponent();
+            LoadData();
         }
 
         private void LoadImpuestoConsumo()
@@ -41,6 +42,28 @@ namespace restauran.views
                 MessageBox.Show("se cmabio el porcentaje de impuesto","",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             catch { MessageBox.Show("Upss!. Algo ocurrio mal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void UpdateDataEmpresa(object sender, EventArgs e)
+        {
+            string nit = txtNit.Text.Trim();
+            string telefono = txtPhone.Text.Trim();
+            string direccion = txtDireccion.Text.Trim();
+            string piePagina = txtPiePagina.Text.Trim();
+            Properties.Settings.Default.Nit = nit;//el ambito debe ser de usuario
+            Properties.Settings.Default.Telefono = telefono;
+            Properties.Settings.Default.Direccion = direccion;
+            Properties.Settings.Default.PiePagina = piePagina;
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Cambios Guardados", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void LoadData()
+        {
+            txtImpuestoConsumo.Text = Properties.Settings.Default.ImpuestoConsumo.ToString();
+            txtNit.Text = Properties.Settings.Default.Nit;
+            txtPhone.Text = Properties.Settings.Default.Telefono;
+            txtDireccion.Text = Properties.Settings.Default.Direccion;
+            txtPiePagina.Text = Properties.Settings.Default.PiePagina;
         }
     }
 }

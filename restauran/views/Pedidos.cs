@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using Application = System.Windows.Forms.Application;
 
 namespace restauran.views
 {
@@ -653,11 +655,6 @@ namespace restauran.views
         }
 
 
-        private void Pedidos_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void ShowUsers(object sender, EventArgs e)
         {
             //ventana usuarios
@@ -688,6 +685,20 @@ namespace restauran.views
                  cmbCategoria.Items.Add(ds.Tables[0].Rows[2]["categoria"]);
                  cmbCategoria.Items.Add(ds.Tables[0].Rows[3]["categoria"]);*/
             }
+        }
+
+        private void ShowCategorias(object sender, EventArgs e)
+        {
+            Categoria categoria = new Categoria();
+            categoria.ShowDialog();
+            cargarlblGroupBox();
+        }
+
+        private void UpdateUser(object sender, EventArgs e)
+        {
+            ChangePassword updateUser = new ChangePassword(usuario);
+            updateUser.ShowDialog();
+            
         }
     }
 }

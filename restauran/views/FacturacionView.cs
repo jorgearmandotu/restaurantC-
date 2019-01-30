@@ -86,6 +86,13 @@ namespace restauran.views
             facturas.Add(factura);
             List<Pedido> pedidos = new List<Pedido>();
             pedidos = pedido;
+            string nit = Properties.Settings.Default.Nit;
+            string telefono = Properties.Settings.Default.Telefono;
+            string direccion = Properties.Settings.Default.Direccion;
+            string piePagina = Properties.Settings.Default.PiePagina;
+            DatosEmpresa dataEmpresa = new DatosEmpresa(nit, telefono, direccion, piePagina);
+            List<DatosEmpresa> empresa = new List<DatosEmpresa>();
+            empresa.Add(dataEmpresa);
             //Conexionsql AcederDatos = new Conexionsql();
             /*foreach (DataRow Lista in AcederDatos.Datos().Rows)
             {
@@ -103,9 +110,11 @@ namespace restauran.views
             this.reportViewerFactura.LocalReport.ReportEmbeddedResource = "restauran.reportes.ReporteFactura.rdlc";
             ReportDataSource rds1 = new ReportDataSource("DataFactura", facturas);
             ReportDataSource rds2 = new ReportDataSource("DataPedido", pedido);
+            ReportDataSource rds3 = new ReportDataSource("DataEmpresa", empresa);
             this.reportViewerFactura.LocalReport.DataSources.Clear();
             this.reportViewerFactura.LocalReport.DataSources.Add(rds1);
             this.reportViewerFactura.LocalReport.DataSources.Add(rds2);
+            this.reportViewerFactura.LocalReport.DataSources.Add(rds3);
             this.reportViewerFactura.RefreshReport();
             
         }
