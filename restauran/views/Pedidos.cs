@@ -524,41 +524,44 @@ namespace restauran.views
 
         private void FacturarPedido(object sender, EventArgs e)
         {
-            //listPedido //restar a insumos las recetas
-            string idCliente = txtIdCliente.Text.Trim();
-            DateTime fecha = DateTime.Now;
-            Clientes cliente = listClientes.Find(x => x.Identificacion == idCliente);
-            string mesero = cmbMesero.SelectedValue.ToString();
-            string formaPago = cmbFormaPago.Text;
-            string idFormaPago = cmbFormaPago.SelectedValue.ToString();
-            int idPedio = cmbMesa.SelectedIndex;
-            string vlrImpConsumo = lblImpConsumo.Text;
-            decimal vlrPagar = valorPagar;//lblValorPagar.Text;
-            if (cliente != null)
+            if(cmbMesero.SelectedIndex>-1 && cmbMesa.SelectedIndex > -1)
             {
-                Factura factura = new Factura(fecha, cliente.Nombre, cliente.Identificacion, cliente.Direccion,
-                    mesero, formaPago, vlrImpConsumo, vlrPagar.ToString());
-                List<Pedido> pedido = new List<Pedido>();
-                foreach (Pedido p in listPedidos)
+                //listPedido //restar a insumos las recetas
+                string idCliente = txtIdCliente.Text.Trim();
+                DateTime fecha = DateTime.Now;
+                Clientes cliente = listClientes.Find(x => x.Identificacion == idCliente);
+                string mesero = cmbMesero.SelectedValue.ToString();
+                string formaPago = cmbFormaPago.Text;
+                string idFormaPago = cmbFormaPago.SelectedValue.ToString();
+                int idPedio = cmbMesa.SelectedIndex;
+                string vlrImpConsumo = lblImpConsumo.Text;
+                decimal vlrPagar = valorPagar;//lblValorPagar.Text;
+                if (cliente != null)
                 {
-                    if(p.Id == idPedio)
+                    Factura factura = new Factura(fecha, cliente.Nombre, cliente.Identificacion, cliente.Direccion,
+                        mesero, formaPago, vlrImpConsumo, vlrPagar.ToString());
+                    List<Pedido> pedido = new List<Pedido>();
+                    foreach (Pedido p in listPedidos)
                     {
-                        pedido.Add(p);
+                        if (p.Id == idPedio)
+                        {
+                            pedido.Add(p);
+                        }
                     }
+                    FacturacionView reporteFactura = new FacturacionView(factura, pedido, cliente, idFormaPago);
+                    reporteFactura.ShowDialog();
+                    RestarInsumos();
                 }
-                FacturacionView reporteFactura = new FacturacionView(factura, pedido, cliente, idFormaPago);
-                reporteFactura.ShowDialog();
-                RestarInsumos();
+                else
+                {
+                    MessageBox.Show("Debe Ingresar al cliente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    /*  Factura factura = new Factura(fecha, "", idCliente, "", mesero, formaPago, vlrImpConsumo, vlrPagar);
+                      FacturacionView reporteFactura = new FacturacionView(factura, listPedidos);
+                      reporteFactura.ShowDialog();
+                      RestarInsumos();*/
+                }
+                LoadClientes();
             }
-            else
-            {
-                MessageBox.Show("Debe Ingresar al cliente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-              /*  Factura factura = new Factura(fecha, "", idCliente, "", mesero, formaPago, vlrImpConsumo, vlrPagar);
-                FacturacionView reporteFactura = new FacturacionView(factura, listPedidos);
-                reporteFactura.ShowDialog();
-                RestarInsumos();*/
-            }
-            LoadClientes();
         }
 
         private void RestarInsumos()
