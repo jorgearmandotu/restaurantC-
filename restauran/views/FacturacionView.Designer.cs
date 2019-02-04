@@ -34,17 +34,20 @@
             // 
             // reportViewerFactura
             // 
+            this.reportViewerFactura.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.reportViewerFactura.Location = new System.Drawing.Point(12, 12);
             this.reportViewerFactura.Name = "reportViewerFactura";
             this.reportViewerFactura.ServerReport.BearerToken = null;
-            this.reportViewerFactura.Size = new System.Drawing.Size(981, 535);
+            this.reportViewerFactura.Size = new System.Drawing.Size(650, 540);
             this.reportViewerFactura.TabIndex = 0;
             // 
             // FacturacionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 559);
+            this.ClientSize = new System.Drawing.Size(674, 559);
             this.Controls.Add(this.reportViewerFactura);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FacturacionView";

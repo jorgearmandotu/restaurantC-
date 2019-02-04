@@ -311,6 +311,12 @@
   <ItemGroup>
     <None Include="asets\logoCordilleraSaborFondoBlanco.png" />
     <None Include="asets\cordilleraSaborMarco.png" />
+    <None Include="asets\5mil.jpg" />
+    <None Include="asets\10mil.jpg" />
+    <None Include="asets\20mil.jpg" />
+    <None Include="asets\50mil.jpeg" />
+    <None Include="asets\100mil.jpg" />
+    <None Include="asets\2mil.jpg" />
     <Content Include="logoCordilleraSaborcs.ico" />
     <Content Include="restaurant.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

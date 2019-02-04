@@ -703,5 +703,138 @@ namespace restauran.views
             updateUser.ShowDialog();
             
         }
+
+        //validar q solo se admintan numeros en valor pagado
+        private void NumberTxt_Leave(object sender, EventArgs e)
+        {
+            string text = txtVlrPagado.Text.Trim();
+            try
+            {
+                decimal number = Convert.ToDecimal(text);
+            }
+            catch
+            {
+                txtVlrPagado.Text = "";
+            }
+        }
+        private void ValidateInt(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                try
+                {
+                    decimal vlr = Convert.ToDecimal(txtVlrPagado.Text);
+                    lblCambio.Text = String.Format("{0:C}", (vlr - valorPagar));
+                }
+                catch
+                {
+
+                }
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void PressBtnBillete(object sender, EventArgs e)
+        {
+            if (txtVlrPagado.Text == "")
+            {
+                txtVlrPagado.Text = 0.ToString();
+            }
+
+            if (sender.ToString() == "System.Windows.Forms.Button, Text: 2.000")
+            {
+                try
+                {
+                    Decimal vlr = Convert.ToDecimal(txtVlrPagado.Text);
+                    vlr += 2000m;
+                    txtVlrPagado.Text = vlr.ToString();
+                    lblCambio.Text = String.Format("{0:C}", (vlr - valorPagar));
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error inesperado " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }else if (sender.ToString() == "System.Windows.Forms.Button, Text: 5.000")
+            {
+                try
+                {
+                    Decimal vlr = Convert.ToDecimal(txtVlrPagado.Text);
+                    vlr += 5000m;
+                    txtVlrPagado.Text = vlr.ToString();
+                    lblCambio.Text = String.Format("{0:C}", (vlr - valorPagar));
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error inesperado " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if(sender.ToString() == "System.Windows.Forms.Button, Text: 10.000")
+            {
+                try
+                {
+                    Decimal vlr = Convert.ToDecimal(txtVlrPagado.Text);
+                    vlr += 10000m;
+                    txtVlrPagado.Text = vlr.ToString();
+                    lblCambio.Text = String.Format("{0:C}", (vlr - valorPagar));
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error inesperado " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if(sender.ToString() == "System.Windows.Forms.Button, Text: 20.000")
+            {
+                try
+                {
+                    Decimal vlr = Convert.ToDecimal(txtVlrPagado.Text);
+                    vlr += 20000m;
+                    txtVlrPagado.Text = vlr.ToString();
+                    lblCambio.Text = String.Format("{0:C}", (vlr - valorPagar));
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error inesperado " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (sender.ToString() == "System.Windows.Forms.Button, Text: 50.000")
+            {
+                try
+                {
+                    Decimal vlr = Convert.ToDecimal(txtVlrPagado.Text);
+                    vlr += 50000m;
+                    txtVlrPagado.Text = vlr.ToString();
+                    lblCambio.Text = String.Format("{0:C}", (vlr - valorPagar));
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error inesperado " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (sender.ToString() == "System.Windows.Forms.Button, Text: 100.000")
+            {
+                try
+                {
+                    Decimal vlr = Convert.ToDecimal(txtVlrPagado.Text);
+                    vlr += 100000m;
+                    txtVlrPagado.Text = vlr.ToString();
+                    lblCambio.Text = String.Format("{0:C}", (vlr - valorPagar));
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error inesperado "+ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
