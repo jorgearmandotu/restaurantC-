@@ -64,7 +64,7 @@ namespace restauran.models
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            if (nFactura < 100 || nFactura > 998)
+            if (nFactura < 100)
             {
                 nFactura = 100;
             }else

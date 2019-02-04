@@ -32,11 +32,15 @@
             this.listViewDetail = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnPorFecha = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.dateTimeFechaFin = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimeFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.radioButtonVentas = new System.Windows.Forms.RadioButton();
+            this.radioButtonEntradas = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.radioButtonBajas = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,9 +49,9 @@
             this.listViewDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewDetail.Location = new System.Drawing.Point(3, 83);
+            this.listViewDetail.Location = new System.Drawing.Point(3, 98);
             this.listViewDetail.Name = "listViewDetail";
-            this.listViewDetail.Size = new System.Drawing.Size(885, 502);
+            this.listViewDetail.Size = new System.Drawing.Size(885, 487);
             this.listViewDetail.TabIndex = 0;
             this.listViewDetail.UseCompatibleStateImageBehavior = false;
             this.listViewDetail.View = System.Windows.Forms.View.Details;
@@ -59,8 +63,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.radioButtonBajas);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.radioButtonEntradas);
+            this.panel1.Controls.Add(this.radioButtonVentas);
             this.panel1.Controls.Add(this.btnPorFecha);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.dateTimeFechaFin);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -75,7 +83,7 @@
             // 
             // btnPorFecha
             // 
-            this.btnPorFecha.Location = new System.Drawing.Point(353, 54);
+            this.btnPorFecha.Location = new System.Drawing.Point(555, 54);
             this.btnPorFecha.Name = "btnPorFecha";
             this.btnPorFecha.Size = new System.Drawing.Size(75, 23);
             this.btnPorFecha.TabIndex = 7;
@@ -83,19 +91,10 @@
             this.btnPorFecha.UseVisualStyleBackColor = true;
             this.btnPorFecha.Click += new System.EventHandler(this.ConsultXfecha);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 15);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Ventas por fecha";
-            // 
             // dateTimeFechaFin
             // 
             this.dateTimeFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeFechaFin.Location = new System.Drawing.Point(528, 18);
+            this.dateTimeFechaFin.Location = new System.Drawing.Point(597, 16);
             this.dateTimeFechaFin.Name = "dateTimeFechaFin";
             this.dateTimeFechaFin.Size = new System.Drawing.Size(134, 21);
             this.dateTimeFechaFin.TabIndex = 5;
@@ -103,7 +102,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(439, 22);
+            this.label2.Location = new System.Drawing.Point(517, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 15);
             this.label2.TabIndex = 4;
@@ -112,7 +111,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(113, 23);
+            this.label1.Location = new System.Drawing.Point(273, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 15);
             this.label1.TabIndex = 3;
@@ -121,11 +120,63 @@
             // dateTimeFechaInicio
             // 
             this.dateTimeFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeFechaInicio.Location = new System.Drawing.Point(198, 17);
+            this.dateTimeFechaInicio.Location = new System.Drawing.Point(358, 16);
             this.dateTimeFechaInicio.Name = "dateTimeFechaInicio";
             this.dateTimeFechaInicio.Size = new System.Drawing.Size(134, 21);
             this.dateTimeFechaInicio.TabIndex = 2;
             this.dateTimeFechaInicio.Value = new System.DateTime(2019, 1, 21, 10, 55, 29, 0);
+            // 
+            // radioButtonVentas
+            // 
+            this.radioButtonVentas.AutoSize = true;
+            this.radioButtonVentas.Location = new System.Drawing.Point(14, 18);
+            this.radioButtonVentas.Name = "radioButtonVentas";
+            this.radioButtonVentas.Size = new System.Drawing.Size(62, 19);
+            this.radioButtonVentas.TabIndex = 9;
+            this.radioButtonVentas.TabStop = true;
+            this.radioButtonVentas.Text = "Ventas";
+            this.radioButtonVentas.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonEntradas
+            // 
+            this.radioButtonEntradas.AutoSize = true;
+            this.radioButtonEntradas.Location = new System.Drawing.Point(96, 18);
+            this.radioButtonEntradas.Name = "radioButtonEntradas";
+            this.radioButtonEntradas.Size = new System.Drawing.Size(74, 19);
+            this.radioButtonEntradas.TabIndex = 10;
+            this.radioButtonEntradas.TabStop = true;
+            this.radioButtonEntradas.Text = "Entradas";
+            this.radioButtonEntradas.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(96, 54);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(197, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Estado actual del inventario";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.EstadoActuatStock);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(358, 54);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(114, 23);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Imprimir Reporte";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonBajas
+            // 
+            this.radioButtonBajas.AutoSize = true;
+            this.radioButtonBajas.Location = new System.Drawing.Point(188, 18);
+            this.radioButtonBajas.Name = "radioButtonBajas";
+            this.radioButtonBajas.Size = new System.Drawing.Size(56, 19);
+            this.radioButtonBajas.TabIndex = 13;
+            this.radioButtonBajas.TabStop = true;
+            this.radioButtonBajas.Text = "Bajas";
+            this.radioButtonBajas.UseVisualStyleBackColor = true;
             // 
             // InventarioView
             // 
@@ -153,7 +204,11 @@
         private System.Windows.Forms.DateTimePicker dateTimeFechaInicio;
         private System.Windows.Forms.DateTimePicker dateTimeFechaFin;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnPorFecha;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RadioButton radioButtonEntradas;
+        private System.Windows.Forms.RadioButton radioButtonVentas;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RadioButton radioButtonBajas;
     }
 }
