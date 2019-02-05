@@ -112,7 +112,7 @@ namespace restauran.views
         private void ReportBajas(string fechaInicio, string fechaFin)
         {
             listViewDetail.Clear();
-            string sql = $"SELECT * FROM bajas WHERE ((bajas.[fecha] <=#{fechaFin} 23:59:59#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC";
+            string sql = $"SELECT * FROM bajas WHERE ((bajas.[fecha] <=#{fechaFin} 00:00:00#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC";
             string sqlInsumo = "SELECT Id, insumo, unidad FROM insumos";
             DataSet dsBajas = DataAplication.Execute(sql);
             listViewDetail.Columns.Add("fecha", 100, textAlign: HorizontalAlignment.Center);
@@ -145,7 +145,7 @@ namespace restauran.views
         private void ReportEntradas(string fechaInicio, string fechaFin)
         {
             listViewDetail.Clear();
-            string sqlEntradas = $"SELECT * from ingresos WHERE ((ingresos.[fecha] <=#{fechaFin} 23:59:59#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC";
+            string sqlEntradas = $"SELECT * from ingresos WHERE ((ingresos.[fecha] <=#{fechaFin} 00:00:00#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC";
             string sqlInsumos = "SELECT Id, insumo, unidad FROM insumos";
             string sqlProveedor = "SELECT iD, proveedor FROM proveedor";
             DataSet dsEntradas = DataAplication.Execute(sqlEntradas);
@@ -196,7 +196,7 @@ namespace restauran.views
         {
             string sqlPlatos = "SELECT * FROM platos";
             string sqlFactura = "SELECT * FROM facturacion";
-            string sql = string.Format($"SELECT * FROM salidas WHERE((salidas.[fecha] <=#{fechaFin} 23:59:59#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC");
+            string sql = string.Format($"SELECT * FROM salidas WHERE((salidas.[fecha] <=#{fechaFin}00:00:00#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC");
             // $"((salidas.fecha) Between #{fechaInicio}# And #{fechaFin}#));");
 
             //Console.WriteLine(sql);

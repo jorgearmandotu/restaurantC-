@@ -73,7 +73,7 @@ namespace restauran.views
                         break;
                     }
                 }
-                string[] datos = {idPlato.ToString(), p.Cantidad.ToString(), factura.Fecha.ToString(), factura.NFactura.ToString()};
+                string[] datos = {idPlato.ToString(), p.Cantidad.ToString(), factura.Fecha.ToShortDateString(), factura.NFactura.ToString()};
                 DataAplication.InsertData(sqlSalidas, datos);
             }
             

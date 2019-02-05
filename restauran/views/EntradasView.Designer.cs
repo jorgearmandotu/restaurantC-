@@ -105,8 +105,8 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader4,
-            this.columnHeader5,
             this.columnHeader3,
+            this.columnHeader5,
             this.columnHeader6});
             this.listViewFactura.Location = new System.Drawing.Point(7, 305);
             this.listViewFactura.Name = "listViewFactura";
