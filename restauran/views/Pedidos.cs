@@ -43,15 +43,23 @@ namespace restauran.views
                 toolStripPersonal.Visible = true;
                 toolStripSettings.Enabled = true;
                 toolStripSettings.Visible = true;
-                toolStripInventario.Enabled = true;
-                toolStripInventario.Visible = true;
+                //toolStripInventario.Enabled = true;
+                //toolStripInventario.Visible = true;
+                toolStripProductos.Visible = true;
+                toolStripProductos.Enabled = true;
+                toolStripMesas.Visible = true;
+                toolStripMesas.Enabled = true;
+                toolStripCategorias.Visible = true;
+                toolStripCategorias.Enabled = true;
                 toolStripUsuarios.Enabled = true;
                 toolStripUsuarios.Visible = true;
                 toolStripSeparatorInventario.Visible = true;
                 toolStripSeparatorPersonal.Visible = true;
                 toolStripSeparatorSettings.Visible = true;
                 toolStripSeparatorUser.Visible = true;
-
+                toolStripSeparatormesas.Visible = true;
+                toolStripSeparatorrecetas.Visible = true;
+                toolStripSeparatorCategoria.Visible = true;
             }
             else
             {
@@ -456,8 +464,16 @@ namespace restauran.views
 
         private void GestionInsumos(object sender, EventArgs e)
         {
-            EntradasView gestion = new EntradasView();
-            gestion.ShowDialog();
+            if (usuario.Administrador)
+            {
+                EntradasView gestion = new EntradasView();
+                gestion.ShowDialog();
+            }
+            else
+            {
+                InventarioView inventario = new InventarioView();
+                inventario.ShowDialog();
+            }
         }
 
         private void SettingsShow(object sender, EventArgs e)

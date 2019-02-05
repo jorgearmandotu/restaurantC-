@@ -26,15 +26,14 @@ namespace restauran.views
         {
             //string sql = String.Format($"INSERT INTO facturacion (nFactura, cliente, pago, fecha, mesero, vlrFacturado) " +
               //    $"VAlUES (?,?,?,?,?,?)");
-            string sql = String.Format($"INSERT INTO facturacion (nFactura, cliente, pago, [fecha], mesero, vlrFacturado) " +
-                    $"VAlUES ({factura.NFactura}, {cliente.Id}, '{factura.FormadePago}', {factura.Fecha.ToShortDateString()}, {factura.AtendidoPor}, {factura.VlrPagar})");
-
+            string sql = String.Format($"INSERT INTO facturacion (nFactura, cliente, pago, fecha, mesero, vlrFacturado) " +
+                    $"VAlUES (?, ?, ?, ?, ?, ?)");
             //OleDbType.Date = factura.Fecha;
-            //string[] arr = { factura.NFactura.ToString(), cliente.Id.ToString(), "'"+factura.FormadePago+"'",
-              //  factura.Fecha.ToShortDateString(), factura.AtendidoPor, factura.VlrPagar.ToString() };
+            string[] arr = { factura.NFactura.ToString(), cliente.Id.ToString(), factura.FormadePago,
+                factura.Fecha.ToString("dd/MM/yyyy"), factura.AtendidoPor, factura.VlrPagar.ToString() };
             //if (DataAplication.InsertData(sql, arr))
             //MessageBox.Show(sql);
-            if (DataAplication.InsertData(sql))
+            if (DataAplication.InsertData(sql, arr))
             {
                 Thread th = new Thread(() => CargarSalidas(pedido, factura));
                 th.Start();
@@ -63,6 +62,7 @@ namespace restauran.views
             DataTable dt = ds.Tables[0];
             foreach(Pedido p in pedido){
                 int idPlato = 0;
+                
                 string sqlSalidas = $"INSERT INTO salidas (plato, cantidad, fecha, factura) VALUES( ?,?,?,? )";
                 //MessageBox.Show(sqlSalidas);
                 foreach (DataRow plato in dt.Rows)
@@ -73,7 +73,7 @@ namespace restauran.views
                         break;
                     }
                 }
-                string[] datos = {idPlato.ToString(), p.Cantidad.ToString(), factura.Fecha.ToShortDateString(), factura.NFactura.ToString()};
+                string[] datos = {idPlato.ToString(), p.Cantidad.ToString(), factura.Fecha.ToString("dd/MM/yyyy"), factura.NFactura.ToString()};
                 DataAplication.InsertData(sqlSalidas, datos);
             }
             

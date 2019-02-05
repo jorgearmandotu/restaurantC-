@@ -31,16 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventarioView));
             this.listViewDetail = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButtonBajas = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.radioButtonEntradas = new System.Windows.Forms.RadioButton();
+            this.radioButtonVentas = new System.Windows.Forms.RadioButton();
             this.btnPorFecha = new System.Windows.Forms.Button();
             this.dateTimeFechaFin = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimeFechaInicio = new System.Windows.Forms.DateTimePicker();
-            this.radioButtonVentas = new System.Windows.Forms.RadioButton();
-            this.radioButtonEntradas = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.radioButtonBajas = new System.Windows.Forms.RadioButton();
+            this.btnExportarXls = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +64,7 @@
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.radioButtonBajas);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnExportarXls);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.radioButtonEntradas);
             this.panel1.Controls.Add(this.radioButtonVentas);
@@ -81,9 +81,52 @@
             this.panel1.Size = new System.Drawing.Size(896, 593);
             this.panel1.TabIndex = 2;
             // 
+            // radioButtonBajas
+            // 
+            this.radioButtonBajas.AutoSize = true;
+            this.radioButtonBajas.Location = new System.Drawing.Point(188, 18);
+            this.radioButtonBajas.Name = "radioButtonBajas";
+            this.radioButtonBajas.Size = new System.Drawing.Size(56, 19);
+            this.radioButtonBajas.TabIndex = 13;
+            this.radioButtonBajas.TabStop = true;
+            this.radioButtonBajas.Text = "Bajas";
+            this.radioButtonBajas.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(96, 54);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(197, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Estado actual del inventario";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.EstadoActuatStock);
+            // 
+            // radioButtonEntradas
+            // 
+            this.radioButtonEntradas.AutoSize = true;
+            this.radioButtonEntradas.Location = new System.Drawing.Point(96, 18);
+            this.radioButtonEntradas.Name = "radioButtonEntradas";
+            this.radioButtonEntradas.Size = new System.Drawing.Size(74, 19);
+            this.radioButtonEntradas.TabIndex = 10;
+            this.radioButtonEntradas.TabStop = true;
+            this.radioButtonEntradas.Text = "Entradas";
+            this.radioButtonEntradas.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonVentas
+            // 
+            this.radioButtonVentas.AutoSize = true;
+            this.radioButtonVentas.Location = new System.Drawing.Point(14, 18);
+            this.radioButtonVentas.Name = "radioButtonVentas";
+            this.radioButtonVentas.Size = new System.Drawing.Size(62, 19);
+            this.radioButtonVentas.TabIndex = 9;
+            this.radioButtonVentas.TabStop = true;
+            this.radioButtonVentas.Text = "Ventas";
+            this.radioButtonVentas.UseVisualStyleBackColor = true;
+            // 
             // btnPorFecha
             // 
-            this.btnPorFecha.Location = new System.Drawing.Point(555, 54);
+            this.btnPorFecha.Location = new System.Drawing.Point(381, 54);
             this.btnPorFecha.Name = "btnPorFecha";
             this.btnPorFecha.Size = new System.Drawing.Size(75, 23);
             this.btnPorFecha.TabIndex = 7;
@@ -126,57 +169,15 @@
             this.dateTimeFechaInicio.TabIndex = 2;
             this.dateTimeFechaInicio.Value = new System.DateTime(2019, 1, 21, 10, 55, 29, 0);
             // 
-            // radioButtonVentas
+            // btnExportarXls
             // 
-            this.radioButtonVentas.AutoSize = true;
-            this.radioButtonVentas.Location = new System.Drawing.Point(14, 18);
-            this.radioButtonVentas.Name = "radioButtonVentas";
-            this.radioButtonVentas.Size = new System.Drawing.Size(62, 19);
-            this.radioButtonVentas.TabIndex = 9;
-            this.radioButtonVentas.TabStop = true;
-            this.radioButtonVentas.Text = "Ventas";
-            this.radioButtonVentas.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonEntradas
-            // 
-            this.radioButtonEntradas.AutoSize = true;
-            this.radioButtonEntradas.Location = new System.Drawing.Point(96, 18);
-            this.radioButtonEntradas.Name = "radioButtonEntradas";
-            this.radioButtonEntradas.Size = new System.Drawing.Size(74, 19);
-            this.radioButtonEntradas.TabIndex = 10;
-            this.radioButtonEntradas.TabStop = true;
-            this.radioButtonEntradas.Text = "Entradas";
-            this.radioButtonEntradas.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(96, 54);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Estado actual del inventario";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.EstadoActuatStock);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(358, 54);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(114, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Imprimir Reporte";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonBajas
-            // 
-            this.radioButtonBajas.AutoSize = true;
-            this.radioButtonBajas.Location = new System.Drawing.Point(188, 18);
-            this.radioButtonBajas.Name = "radioButtonBajas";
-            this.radioButtonBajas.Size = new System.Drawing.Size(56, 19);
-            this.radioButtonBajas.TabIndex = 13;
-            this.radioButtonBajas.TabStop = true;
-            this.radioButtonBajas.Text = "Bajas";
-            this.radioButtonBajas.UseVisualStyleBackColor = true;
+            this.btnExportarXls.Location = new System.Drawing.Point(530, 54);
+            this.btnExportarXls.Name = "btnExportarXls";
+            this.btnExportarXls.Size = new System.Drawing.Size(114, 23);
+            this.btnExportarXls.TabIndex = 12;
+            this.btnExportarXls.Text = "Exportar";
+            this.btnExportarXls.UseVisualStyleBackColor = true;
+            this.btnExportarXls.Click += new System.EventHandler(this.ExportarXls);
             // 
             // InventarioView
             // 
@@ -208,7 +209,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RadioButton radioButtonEntradas;
         private System.Windows.Forms.RadioButton radioButtonVentas;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.RadioButton radioButtonBajas;
+        private System.Windows.Forms.Button btnExportarXls;
     }
 }

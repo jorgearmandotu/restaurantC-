@@ -1,4 +1,5 @@
-﻿using restauran.controller;
+﻿using Microsoft.Office.Interop.Excel;
+using restauran.controller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace restauran.views
 {
     public partial class InventarioView : Form
     {
+        string reporte = "";
         public InventarioView()
         {
             InitializeComponent();
@@ -23,6 +25,7 @@ namespace restauran.views
         private void StockActual()
         {
             listViewDetail.Clear();
+            reporte = "";
             string sql = "SELECT * FROM insumos ORDER BY insumo ASC";
             listViewDetail.Columns.Add("Insumo", 300);
             listViewDetail.Columns.Add("Und", 80, textAlign:HorizontalAlignment.Center);
@@ -95,8 +98,11 @@ namespace restauran.views
 
         private void ConsultXfecha(object sender, EventArgs e)
         {
-            string fechaInicio = dateTimeFechaInicio.Text;
-            string fechaFin = dateTimeFechaFin.Text;
+            //las consuyltas con fechas se hacen en orden mes dia año
+            DateTime fechaInicial = Convert.ToDateTime(dateTimeFechaInicio.Text);
+            string fechaInicio = fechaInicial.ToString("MM/dd/yyyy");
+            DateTime fechaFinal = Convert.ToDateTime(dateTimeFechaFin.Text);
+            string fechaFin = fechaFinal.ToString("MM/dd/yyyy");
             if (radioButtonVentas.Checked)
             {
                 ReportVentas(fechaInicio, fechaFin);
@@ -112,8 +118,11 @@ namespace restauran.views
         private void ReportBajas(string fechaInicio, string fechaFin)
         {
             listViewDetail.Clear();
-            string sql = $"SELECT * FROM bajas WHERE ((bajas.[fecha] <=#{fechaFin} 00:00:00#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC";
+            reporte = "bajas";
+            //string sql = $"SELECT * FROM bajas WHERE ((bajas.[fecha] <=#{fechaFin} 00:00:00#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC";
+            string sql = $"SELECT * FROM bajas WHERE((fecha >=#{fechaInicio}#) AND fecha<=#{fechaFin}#) ORDER BY fecha DESC; ";
             string sqlInsumo = "SELECT Id, insumo, unidad FROM insumos";
+            Console.WriteLine(sql);
             DataSet dsBajas = DataAplication.Execute(sql);
             listViewDetail.Columns.Add("fecha", 100, textAlign: HorizontalAlignment.Center);
             listViewDetail.Columns.Add("Insumo", 200, textAlign: HorizontalAlignment.Left);
@@ -122,6 +131,7 @@ namespace restauran.views
             listViewDetail.Columns.Add("observaciones", 300, textAlign: HorizontalAlignment.Center);
             if(dsBajas.Tables.Count > 0)
             {
+                Console.WriteLine(sqlInsumo);
                 DataSet dsInsumos = DataAplication.Execute(sqlInsumo);
                 foreach(DataRow drB in dsBajas.Tables[0].Rows)
                 {
@@ -136,7 +146,8 @@ namespace restauran.views
                             break;
                         }
                     }
-                    string[] row = { drB["fecha"].ToString(), insumo, unidad, drB["cantidad"].ToString(), drB["observacion"].ToString() };
+                    DateTime fecha = Convert.ToDateTime(drB["fecha"]);
+                    string[] row = { fecha.ToString("dd/MM/yyyy"), insumo, unidad, drB["cantidad"].ToString(), drB["observacion"].ToString() };
                     ListViewItem item = new ListViewItem(row);
                     listViewDetail.Items.Add(item);
                 }
@@ -145,9 +156,11 @@ namespace restauran.views
         private void ReportEntradas(string fechaInicio, string fechaFin)
         {
             listViewDetail.Clear();
-            string sqlEntradas = $"SELECT * from ingresos WHERE ((ingresos.[fecha] <=#{fechaFin} 00:00:00#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC";
+            reporte = "entradas";
+            string sqlEntradas = $"SELECT * from ingresos WHERE ((fecha>=#{fechaInicio}#) AND fecha <= #{fechaFin}#) ORDER BY fecha DESC";
             string sqlInsumos = "SELECT Id, insumo, unidad FROM insumos";
             string sqlProveedor = "SELECT iD, proveedor FROM proveedor";
+            Console.WriteLine(sqlEntradas);
             DataSet dsEntradas = DataAplication.Execute(sqlEntradas);
             listViewDetail.Columns.Add("fecha", 100, textAlign: HorizontalAlignment.Center);
             listViewDetail.Columns.Add("Insumo", 200, textAlign: HorizontalAlignment.Left);
@@ -159,6 +172,8 @@ namespace restauran.views
             listViewDetail.Columns.Add("Observaciones", 200);
             if (dsEntradas.Tables.Count > 0)
             {
+                Console.WriteLine(sqlInsumos);
+                Console.WriteLine(sqlProveedor);
                 DataSet dsInsumos = DataAplication.Execute(sqlInsumos);
                 DataSet dsProveedor = DataAplication.Execute(sqlProveedor);
                 foreach (DataRow dr in dsEntradas.Tables[0].Rows)
@@ -185,7 +200,8 @@ namespace restauran.views
                     }
                     decimal valorUnidad = Convert.ToDecimal(dr["vlrUnitario"]);
                     string vlrUnitario = string.Format("{0:C}",valorUnidad);
-                    string[] row = {dr["fecha"].ToString(), insumo, unidad, vlrUnitario, dr["cantidad"].ToString(), proveedor,
+                    DateTime fecha = Convert.ToDateTime(dr["fecha"]);
+                    string[] row = {fecha.ToString("dd/MM/yyyy"), insumo, unidad, vlrUnitario, dr["cantidad"].ToString(), proveedor,
                     dr["recibo"].ToString(), dr["observacion"].ToString()};
                     ListViewItem item = new ListViewItem(row);
                     listViewDetail.Items.Add(item);
@@ -196,12 +212,13 @@ namespace restauran.views
         {
             string sqlPlatos = "SELECT * FROM platos";
             string sqlFactura = "SELECT * FROM facturacion";
-            string sql = string.Format($"SELECT * FROM salidas WHERE((salidas.[fecha] <=#{fechaFin}00:00:00#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC");
+            string sql = string.Format($"SELECT * FROM salidas WHERE((salidas.[fecha] <=#{fechaFin}#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC");
             // $"((salidas.fecha) Between #{fechaInicio}# And #{fechaFin}#));");
 
-            //Console.WriteLine(sql);
+            Console.WriteLine(sql);
             DataSet ds = DataAplication.Execute(sql);
             listViewDetail.Clear();
+            reporte = "ventas";
             listViewDetail.Columns.Add("Plato", 300);
             listViewDetail.Columns.Add("cantidad", 80, textAlign: HorizontalAlignment.Center);
             listViewDetail.Columns.Add("Fecha", 150, textAlign: HorizontalAlignment.Center);
@@ -209,6 +226,8 @@ namespace restauran.views
             listViewDetail.Columns.Add("Vlr Factura", 150, textAlign: HorizontalAlignment.Right);
             if (ds.Tables.Count > 0)//verifico q devuelva resultados
             {
+                Console.WriteLine(sqlFactura);
+                Console.WriteLine(sqlPlatos);
                 DataSet dsFactura = DataAplication.Execute(sqlFactura);
                 DataSet dsPlatos = DataAplication.Execute(sqlPlatos);
                 foreach (DataRow dr in ds.Tables[0].Rows)
@@ -233,8 +252,8 @@ namespace restauran.views
                             break;
                         }
                     }
-
-                    string[] row = { namePlato, dr["cantidad"].ToString(), dr["fecha"].ToString(), dr["factura"].ToString(),
+                    DateTime fecha = Convert.ToDateTime(dr["fecha"]);
+                    string[] row = { namePlato, dr["cantidad"].ToString(), fecha.ToString("dd/MM/yyyy"), dr["factura"].ToString(),
                         vlrFacturado };
                     ListViewItem item = new ListViewItem(row);
                     listViewDetail.Items.Add(item);
@@ -246,6 +265,80 @@ namespace restauran.views
         private void EstadoActuatStock(object sender, EventArgs e)
         {
             StockActual();
+            radioButtonBajas.Checked = false;
+            radioButtonEntradas.Checked = false;
+            radioButtonVentas.Checked = false;
+        }
+
+        private void ExportarXls(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|* xlsx", ValidateNames = true })
+            {
+                if (reporte == "")
+                {
+                    //stock actual
+                    string[] row = { "Insumo", "Unidad", "Existencias" };
+                    CreateExel(sfd, row);
+                }else if(reporte == "bajas")
+                {
+                    string[] row = {"Fecha", "Insumo", "Unidad", "Cantidad", "Observaciones"};
+                    CreateExel(sfd, row);
+                }else if (reporte == "entradas")
+                {
+                    string[] row = { "Fecha", "Insumo", "Unidad", "Vlr.Unitario", "Cantidad", "Proveedor", "Recibo", "Observaciones"};
+                    CreateExel(sfd, row);
+                }else if (reporte == "ventas")
+                {
+                    string[] row = { "plato", "Cantidad", "Fecha", "N.Factura", "Vlr Facturado"};
+                    CreateExel(sfd, row);
+                }
+            }
+        }
+
+        private void CreateExel(SaveFileDialog sfd, string[] row)
+        {
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+                Workbook wb = app.Workbooks.Add(XlSheetType.xlWorksheet);
+                Worksheet ws = (Worksheet)app.ActiveSheet;
+                app.Visible = false;
+
+                int columna = 0;
+                //titulos
+                foreach(string title in row)
+                {
+                    //ws.Cells[1, columna + 1].Select.+ColorIndex = 40;
+                    //ws.Cells[1, columna + 1].Style.Font.Bold = true;
+                    ws.Cells[1, columna+1] = title;
+                    columna++;
+                }
+                /*
+                ws.Cells[1, 1] = "Insumo";
+                ws.Cells[1, 2] = "Unidad";
+                ws.Cells[1, 3] = "Existencias";*/
+
+                int i = 2;//fila
+                foreach (ListViewItem item in listViewDetail.Items)
+                {
+                    for(int j = 0; j < columna; j++)
+                    {
+                        //ws.Cells[1, columna + 1].Style.Font.Bold = false;
+                        //ws.Cells[1, columna + 1].Style.Interior.ColorIndex = 0;
+                        ws.Cells[i, j+1] = item.SubItems[j].Text;
+                        Console.WriteLine(item.SubItems[j].Text);
+                    }
+                    i++;
+                   /* ws.Cells[i, 1] = item.SubItems[0].Text;
+                    ws.Cells[i, 2] = item.SubItems[1].Text;
+                    ws.Cells[i, 3] = item.SubItems[2].Text;
+                    i++;*/
+                }
+                wb.SaveAs(sfd.FileName, XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, true, false,
+                    XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
+                app.Quit();
+                MessageBox.Show("Exportacion exitosa", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
