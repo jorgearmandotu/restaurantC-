@@ -82,8 +82,11 @@ namespace restauran.views
         private void CargarReporte( Factura factura, List<Pedido> pedido)
         {
             
-            List<Factura> facturas = new List<Factura>();
-            facturas.Add(factura);
+            List<Factura> facturas = new List<Factura>
+            {
+                factura
+            };
+            //facturas.Add(factura);
             List<Pedido> pedidos = new List<Pedido>();
             pedidos = pedido;
             string nit = Properties.Settings.Default.Nit;
@@ -91,8 +94,11 @@ namespace restauran.views
             string direccion = Properties.Settings.Default.Direccion;
             string piePagina = Properties.Settings.Default.PiePagina;
             DatosEmpresa dataEmpresa = new DatosEmpresa(nit, telefono, direccion, piePagina);
-            List<DatosEmpresa> empresa = new List<DatosEmpresa>();
-            empresa.Add(dataEmpresa);
+            List<DatosEmpresa> empresa = new List<DatosEmpresa>
+            {
+                dataEmpresa
+            };
+            //empresa.Add(dataEmpresa);
             //Conexionsql AcederDatos = new Conexionsql();
             /*foreach (DataRow Lista in AcederDatos.Datos().Rows)
             {

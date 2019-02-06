@@ -32,6 +32,7 @@
             this.listViewDetail = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.radioButtonBajas = new System.Windows.Forms.RadioButton();
+            this.btnExportarXls = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.radioButtonEntradas = new System.Windows.Forms.RadioButton();
             this.radioButtonVentas = new System.Windows.Forms.RadioButton();
@@ -40,8 +41,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimeFechaInicio = new System.Windows.Forms.DateTimePicker();
-            this.btnExportarXls = new System.Windows.Forms.Button();
+            this.pictureBoxLoad = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).BeginInit();
             this.SuspendLayout();
             // 
             // listViewDetail
@@ -49,9 +51,10 @@
             this.listViewDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewDetail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listViewDetail.Location = new System.Drawing.Point(3, 98);
             this.listViewDetail.Name = "listViewDetail";
-            this.listViewDetail.Size = new System.Drawing.Size(885, 487);
+            this.listViewDetail.Size = new System.Drawing.Size(905, 487);
             this.listViewDetail.TabIndex = 0;
             this.listViewDetail.UseCompatibleStateImageBehavior = false;
             this.listViewDetail.View = System.Windows.Forms.View.Details;
@@ -63,6 +66,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.pictureBoxLoad);
             this.panel1.Controls.Add(this.radioButtonBajas);
             this.panel1.Controls.Add(this.btnExportarXls);
             this.panel1.Controls.Add(this.button1);
@@ -78,7 +82,7 @@
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(896, 593);
+            this.panel1.Size = new System.Drawing.Size(916, 593);
             this.panel1.TabIndex = 2;
             // 
             // radioButtonBajas
@@ -91,6 +95,16 @@
             this.radioButtonBajas.TabStop = true;
             this.radioButtonBajas.Text = "Bajas";
             this.radioButtonBajas.UseVisualStyleBackColor = true;
+            // 
+            // btnExportarXls
+            // 
+            this.btnExportarXls.Location = new System.Drawing.Point(530, 54);
+            this.btnExportarXls.Name = "btnExportarXls";
+            this.btnExportarXls.Size = new System.Drawing.Size(114, 23);
+            this.btnExportarXls.TabIndex = 12;
+            this.btnExportarXls.Text = "Exportar";
+            this.btnExportarXls.UseVisualStyleBackColor = true;
+            this.btnExportarXls.Click += new System.EventHandler(this.ExportarXls);
             // 
             // button1
             // 
@@ -169,30 +183,31 @@
             this.dateTimeFechaInicio.TabIndex = 2;
             this.dateTimeFechaInicio.Value = new System.DateTime(2019, 1, 21, 10, 55, 29, 0);
             // 
-            // btnExportarXls
+            // pictureBoxLoad
             // 
-            this.btnExportarXls.Location = new System.Drawing.Point(530, 54);
-            this.btnExportarXls.Name = "btnExportarXls";
-            this.btnExportarXls.Size = new System.Drawing.Size(114, 23);
-            this.btnExportarXls.TabIndex = 12;
-            this.btnExportarXls.Text = "Exportar";
-            this.btnExportarXls.UseVisualStyleBackColor = true;
-            this.btnExportarXls.Click += new System.EventHandler(this.ExportarXls);
+            this.pictureBoxLoad.Enabled = false;
+            this.pictureBoxLoad.Image = global::restauran.Properties.Resources.esperePorFavor;
+            this.pictureBoxLoad.Location = new System.Drawing.Point(215, 155);
+            this.pictureBoxLoad.Name = "pictureBoxLoad";
+            this.pictureBoxLoad.Size = new System.Drawing.Size(500, 165);
+            this.pictureBoxLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxLoad.TabIndex = 14;
+            this.pictureBoxLoad.TabStop = false;
+            this.pictureBoxLoad.Visible = false;
             // 
             // InventarioView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 611);
+            this.ClientSize = new System.Drawing.Size(934, 611);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1280, 720);
-            this.MinimumSize = new System.Drawing.Size(750, 428);
+            this.MinimumSize = new System.Drawing.Size(950, 650);
             this.Name = "InventarioView";
             this.Text = "Reportes";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -211,5 +226,6 @@
         private System.Windows.Forms.RadioButton radioButtonVentas;
         private System.Windows.Forms.RadioButton radioButtonBajas;
         private System.Windows.Forms.Button btnExportarXls;
+        private System.Windows.Forms.PictureBox pictureBoxLoad;
     }
 }

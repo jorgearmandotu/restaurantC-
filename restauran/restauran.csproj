@@ -322,6 +322,8 @@
     <None Include="asets\50mil.jpeg" />
     <None Include="asets\100mil.jpg" />
     <None Include="asets\2mil.jpg" />
+    <None Include="asets\load.gif" />
+    <None Include="asets\esperePorFavor.png" />
     <Content Include="logoCordilleraSaborcs.ico" />
     <Content Include="restaurant.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

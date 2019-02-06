@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace restauran.views
 {
@@ -122,7 +123,6 @@ namespace restauran.views
             //string sql = $"SELECT * FROM bajas WHERE ((bajas.[fecha] <=#{fechaFin} 00:00:00#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC";
             string sql = $"SELECT * FROM bajas WHERE((fecha >=#{fechaInicio}#) AND fecha<=#{fechaFin}#) ORDER BY fecha DESC; ";
             string sqlInsumo = "SELECT Id, insumo, unidad FROM insumos";
-            Console.WriteLine(sql);
             DataSet dsBajas = DataAplication.Execute(sql);
             listViewDetail.Columns.Add("fecha", 100, textAlign: HorizontalAlignment.Center);
             listViewDetail.Columns.Add("Insumo", 200, textAlign: HorizontalAlignment.Left);
@@ -131,7 +131,6 @@ namespace restauran.views
             listViewDetail.Columns.Add("observaciones", 300, textAlign: HorizontalAlignment.Center);
             if(dsBajas.Tables.Count > 0)
             {
-                Console.WriteLine(sqlInsumo);
                 DataSet dsInsumos = DataAplication.Execute(sqlInsumo);
                 foreach(DataRow drB in dsBajas.Tables[0].Rows)
                 {
@@ -160,7 +159,6 @@ namespace restauran.views
             string sqlEntradas = $"SELECT * from ingresos WHERE ((fecha>=#{fechaInicio}#) AND fecha <= #{fechaFin}#) ORDER BY fecha DESC";
             string sqlInsumos = "SELECT Id, insumo, unidad FROM insumos";
             string sqlProveedor = "SELECT iD, proveedor FROM proveedor";
-            Console.WriteLine(sqlEntradas);
             DataSet dsEntradas = DataAplication.Execute(sqlEntradas);
             listViewDetail.Columns.Add("fecha", 100, textAlign: HorizontalAlignment.Center);
             listViewDetail.Columns.Add("Insumo", 200, textAlign: HorizontalAlignment.Left);
@@ -172,8 +170,6 @@ namespace restauran.views
             listViewDetail.Columns.Add("Observaciones", 200);
             if (dsEntradas.Tables.Count > 0)
             {
-                Console.WriteLine(sqlInsumos);
-                Console.WriteLine(sqlProveedor);
                 DataSet dsInsumos = DataAplication.Execute(sqlInsumos);
                 DataSet dsProveedor = DataAplication.Execute(sqlProveedor);
                 foreach (DataRow dr in dsEntradas.Tables[0].Rows)
@@ -215,7 +211,6 @@ namespace restauran.views
             string sql = string.Format($"SELECT * FROM salidas WHERE((salidas.[fecha] <=#{fechaFin}#) AND fecha >= #{fechaInicio}#) ORDER BY fecha DESC");
             // $"((salidas.fecha) Between #{fechaInicio}# And #{fechaFin}#));");
 
-            Console.WriteLine(sql);
             DataSet ds = DataAplication.Execute(sql);
             listViewDetail.Clear();
             reporte = "ventas";
@@ -226,15 +221,13 @@ namespace restauran.views
             listViewDetail.Columns.Add("Vlr Factura", 150, textAlign: HorizontalAlignment.Right);
             if (ds.Tables.Count > 0)//verifico q devuelva resultados
             {
-                Console.WriteLine(sqlFactura);
-                Console.WriteLine(sqlPlatos);
                 DataSet dsFactura = DataAplication.Execute(sqlFactura);
                 DataSet dsPlatos = DataAplication.Execute(sqlPlatos);
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
                     string namePlato = "";
                     string vlrFacturado = "0";
-                    string baja = "";
+                    //string baja = "";
                     foreach (DataRow drP in dsPlatos.Tables[0].Rows)
                     {
                         if (drP["Id"].ToString() == dr["plato"].ToString())
@@ -279,30 +272,52 @@ namespace restauran.views
                     //stock actual
                     string[] row = { "Insumo", "Unidad", "Existencias" };
                     CreateExel(sfd, row);
-                }else if(reporte == "bajas")
+                }
+                else if (reporte == "bajas")
                 {
-                    string[] row = {"Fecha", "Insumo", "Unidad", "Cantidad", "Observaciones"};
+                    string[] row = { "Fecha", "Insumo", "Unidad", "Cantidad", "Observaciones" };
                     CreateExel(sfd, row);
-                }else if (reporte == "entradas")
+                }
+                else if (reporte == "entradas")
                 {
-                    string[] row = { "Fecha", "Insumo", "Unidad", "Vlr.Unitario", "Cantidad", "Proveedor", "Recibo", "Observaciones"};
+                    string[] row = { "Fecha", "Insumo", "Unidad", "Vlr.Unitario", "Cantidad", "Proveedor", "Recibo", "Observaciones" };
                     CreateExel(sfd, row);
-                }else if (reporte == "ventas")
+                }
+                else if (reporte == "ventas")
                 {
-                    string[] row = { "plato", "Cantidad", "Fecha", "N.Factura", "Vlr Facturado"};
+                    string[] row = { "plato", "Cantidad", "Fecha", "N.Factura", "Vlr Facturado" };
                     CreateExel(sfd, row);
                 }
             }
+        }
+
+        private void GenerarExcel()
+        {
+           
         }
 
         private void CreateExel(SaveFileDialog sfd, string[] row)
         {
             if (sfd.ShowDialog() == DialogResult.OK)
             {
+                //mostrar algo hasta q termine el proceso
+                pictureBoxLoad.Visible = true;
+                pictureBoxLoad.Enabled = true;
                 Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
                 Workbook wb = app.Workbooks.Add(XlSheetType.xlWorksheet);
                 Worksheet ws = (Worksheet)app.ActiveSheet;
                 app.Visible = false;
+
+
+                Microsoft.Office.Interop.Excel.Range formatRange;
+                formatRange = ws.get_Range("a1", "z500");
+                formatRange.NumberFormat = "@";
+                formatRange = ws.get_Range("a1");
+                formatRange.EntireRow.Font.Bold = true;
+                formatRange = ws.get_Range("a1","z1");
+                formatRange.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.DarkBlue);
+                formatRange.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.White);
+                formatRange.Font.Size = 12;
 
                 int columna = 0;
                 //titulos
@@ -310,6 +325,13 @@ namespace restauran.views
                 {
                     //ws.Cells[1, columna + 1].Select.+ColorIndex = 40;
                     //ws.Cells[1, columna + 1].Style.Font.Bold = true;
+                    Microsoft.Office.Interop.Excel.Range formatRangeBorder = ws.UsedRange;
+                    Microsoft.Office.Interop.Excel.Range cell = formatRangeBorder.Cells[1, columna+1];
+                    Microsoft.Office.Interop.Excel.Borders border = cell.Borders;
+                    border.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
+                    border.Weight = 4d;
+                    
+
                     ws.Cells[1, columna+1] = title;
                     columna++;
                 }
@@ -325,8 +347,12 @@ namespace restauran.views
                     {
                         //ws.Cells[1, columna + 1].Style.Font.Bold = false;
                         //ws.Cells[1, columna + 1].Style.Interior.ColorIndex = 0;
+                        Microsoft.Office.Interop.Excel.Range formatRangeBorder = ws.UsedRange;
+                        Microsoft.Office.Interop.Excel.Range cell = formatRangeBorder.Cells[i, j+1];
+                        Microsoft.Office.Interop.Excel.Borders border = cell.Borders;
+                        border.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
+                        border.Weight = 2d;
                         ws.Cells[i, j+1] = item.SubItems[j].Text;
-                        Console.WriteLine(item.SubItems[j].Text);
                     }
                     i++;
                    /* ws.Cells[i, 1] = item.SubItems[0].Text;
@@ -337,6 +363,8 @@ namespace restauran.views
                 wb.SaveAs(sfd.FileName, XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, true, false,
                     XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
                 app.Quit();
+                pictureBoxLoad.Visible = false;
+                pictureBoxLoad.Enabled = false;
                 MessageBox.Show("Exportacion exitosa", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
